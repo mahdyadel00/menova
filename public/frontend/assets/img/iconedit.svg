@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="58" height="58" viewBox="0 0 58 58">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="0.615" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4aa4f6"/>
+      <stop offset="1" stop-color="#050f6a"/>
+    </linearGradient>
+    <filter id="Ellipse_103" x="0" y="0" width="58" height="58" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_610" data-name="Group 610" transform="translate(9 6)">
+    <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#Ellipse_103)">
+      <g id="Ellipse_103-2" data-name="Ellipse 103" transform="translate(9 6)" stroke="#4aa4f6" stroke-width="1" fill="url(#linear-gradient)">
+        <circle cx="20" cy="20" r="20" stroke="none"/>
+        <circle cx="20" cy="20" r="19.5" fill="none"/>
+      </g>
+    </g>
+    <g id="_352547_edit_mode_icon" data-name="352547_edit_mode_icon" transform="translate(8 8)">
+      <path id="Path_5608" data-name="Path 5608" d="M6,20.22v3.741H9.741l11.04-11.04L17.04,9.18,6,20.22ZM23.665,10.038a1,1,0,0,0,0-1.412L21.335,6.3a1,1,0,0,0-1.412,0L18.1,8.123l3.741,3.741,1.826-1.826Z" transform="translate(-2.98 -2.982)" fill="#fff"/>
+      <path id="Path_5609" data-name="Path 5609" d="M0,0H24V24H0Z" fill="none"/>
+    </g>
+  </g>
+</svg>
