@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 @section('pageTitle', __('site.home'))
 @section('content')
     <!-- hero area -->

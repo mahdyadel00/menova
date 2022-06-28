@@ -14,6 +14,48 @@ Route::prefix(LaravelLocalization::setLocale())
     ->group(function () {
         Route::middleware('guest')->group(function () {
             Route::get('/', 'HomeController@index')->name('home');
+
+
+            Route::get('/about', function () {
+                return view('frontend.about');
+            });
+            Route::get('/blog', function () {
+                return view('frontend.blogs.blog');
+            });
+            Route::get('/blog-single', function () {
+                return view('frontend.blogs.blog-single');
+            });
+            Route::get('/contact', function () {
+                return view('frontend.contact');
+            });
+            Route::get('/services', function () {
+                return view('frontend.services');
+            });
+            Route::get('/connect', function () {
+                return view('frontend.connect');
+            });
+            Route::get('/raise', function () {
+                return view('frontend.raise');
+            });
+            Route::get('/discuss', function () {
+                return view('frontend.discuss');
+            });
+            Route::get('/discuss-single', function () {
+                return view('frontend.discuss-single');
+            });
+            Route::get('/find-cofounder', function () {
+                return view('frontend.find-cofounder');
+            });
+            Route::get('/user-profile', function () {
+                return view('frontend.user-profile');
+            });
+            Route::get('/login', function () {
+                return view('frontend.login');
+            });
+
+
+
+
             Route::get('/home', 'HomeController@index')->name('home');
             Route::get('/raise', function(){
                 return view('frontend.coming_soon');
