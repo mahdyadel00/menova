@@ -258,7 +258,7 @@ body {
   }
 }*/
 .header-bg {
-  background: url(../img/background/page-header.jpg);
+  background: url(frontend/assets/img/background/page-header.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
@@ -537,17 +537,17 @@ body {
 }
 
 #hero .carousel-1{
-    background-image:url("../img/hero-carousel/1.jpg");
+    background-image:url("/frontend/assets/img/hero-carousel/1.jpg");
     background-position: center;
     background-size: cover;
 
 }
 
 #hero .carousel-2{
-    background-image:  url("../img/hero-carousel/2.jpg")
+    background-image:  url("/frontend/assets/img/hero-carousel/2.jpg")
 }
 #hero .carousel-3{
-    background-image:  url("../img/hero-carousel/3.jpg");
+    background-image:  url("/frontend/assets/img/hero-carousel/3.jpg");
 }
 
 #hero h2 {
@@ -1248,7 +1248,7 @@ padding-bottom: 15px;
   start find advisor inner page
   ----------------------------------------------------------------*/
   .connect-inner{
-    background-image: url(../img/background/slider-bg.jpg);
+    background-image: url(/frontend/assets/img/background/slider-bg.jpg);
     position: relative;
     z-index: -50;
   }

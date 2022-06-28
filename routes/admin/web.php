@@ -19,8 +19,8 @@ Route::group([
         'localeSessionRedirect',
         'localizationRedirect',
         'localeViewPath',
-        // 'auth',
-        // 'role:admin|super_admin',
+        'auth',
+        'role:admin|super_admin',
     ]
 ], function () {
 

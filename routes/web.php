@@ -5,6 +5,12 @@ use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Frontend\GetPreimiumController;
 use App\Http\Controllers\Frontend\ChatController;
+use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\AboutUsController;
+use App\Http\Controllers\Frontend\ServicesController;
+use App\Http\Controllers\Frontend\ConnectController;
+use App\Http\Controllers\Frontend\RaisController;
+use App\Http\Controllers\Frontend\BlogController;
 Route::prefix(LaravelLocalization::setLocale())
     ->middleware([
         'localeSessionRedirect',
@@ -14,29 +20,14 @@ Route::prefix(LaravelLocalization::setLocale())
     ->group(function () {
         Route::middleware('guest')->group(function () {
             Route::get('/', 'HomeController@index')->name('home');
-
-
-            Route::get('/about', function () {
-                return view('frontend.about');
-            });
-            Route::get('/blog', function () {
-                return view('frontend.blogs.blog');
-            });
-            Route::get('/blog-single', function () {
-                return view('frontend.blogs.blog-single');
-            });
-            Route::get('/contact', function () {
-                return view('frontend.contact');
-            });
-            Route::get('/services', function () {
-                return view('frontend.services');
-            });
-            Route::get('/connect', function () {
-                return view('frontend.connect');
-            });
-            Route::get('/raise', function () {
-                return view('frontend.raise');
-            });
+            Route::get('/contacts', [ContactController::class , 'index'])->name('contacts.index');
+            Route::get('/about_us', [AboutUsController::class , 'index'])->name('about_us.index');
+            Route::get('/services', [ServicesController::class , 'index'])->name('services.index');
+            Route::get('/connects', [ConnectController::class , 'index'])->name('connect.index');
+            Route::get('/rais', [RaisController::class , 'index'])->name('rais.index');
+            Route::get('/blogs', [BlogController::class , 'index'])->name('blogs.index');
+           
+          
             Route::get('/discuss', function () {
                 return view('frontend.discuss');
             });
@@ -56,18 +47,15 @@ Route::prefix(LaravelLocalization::setLocale())
 
 
 
-            Route::get('/home', 'HomeController@index')->name('home');
-            Route::get('/raise', function(){
-                return view('frontend.coming_soon');
-            })->name('rasie');
+           
         });
 
         Auth::routes(['verify' => true]);
 
         // UnAuthentication routes.
         Route::name('frontend.')->group(function () {
-            Route::get('blogs', 'HomeController@blogs')->name('blogs');
-            Route::get('blogs/{slug}', 'HomeController@showBlog')->name('blogs.show');
+            // Route::get('blogs', 'HomeController@blogs')->name('blogs');
+            // Route::get('blogs/{slug}', 'HomeController@showBlog')->name('blogs.show');
         });
 
         // Auth with provider routes.
@@ -114,10 +102,7 @@ Route::prefix(LaravelLocalization::setLocale())
                     //Chat
                     Route::get('chat' , [ChatController::class , 'index'])->name('chat.index');
 
-                    ///raise
-                    Route::get('/raise', function(){
-                        return view('frontend.coming_soon');
-                    })->name('rasie');
+                   
                 });
             });
         });
