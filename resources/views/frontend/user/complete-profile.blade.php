@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('frontend.layouts.auth')
 @section('pageTitle', __('site.complete_profile'))
 @section('content')
 

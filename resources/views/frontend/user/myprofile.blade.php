@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 @section('pageTitle', auth()->user()->first_name)
 @section('content')
    <!-- main content -->
