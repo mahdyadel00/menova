@@ -19,6 +19,8 @@ class CreateAboutUsTranslationsTable extends Migration
             $table->string('locale')->index();
             $table->string('title');
             $table->longText('description');
+            $table->string('about_title');
+            $table->longText('about_description');
 
             $table->unique(['about_us_id', 'locale']);
             $table->foreign('about_us_id')->references('id')->on('about_us')->onDelete('cascade');

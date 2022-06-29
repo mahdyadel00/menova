@@ -16,7 +16,7 @@ class AboutUs extends Model implements TranslatableContract
 {
     use HasFactory, Translatable, UploadImage;
 
-    public $translatedAttributes = ['name', 'description'];
+    public $translatedAttributes = ['title', 'description' , 'about_title', 'about_description'];
     protected $fillable = ['published', 'image' , 'icon'];
     protected $appends = ['image_path'];
 

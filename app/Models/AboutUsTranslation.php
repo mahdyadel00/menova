@@ -10,5 +10,5 @@ class AboutUsTranslation extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'description' , 'about_title', 'about_description'];
 }

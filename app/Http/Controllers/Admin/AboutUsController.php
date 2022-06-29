@@ -42,6 +42,14 @@ class AboutUsController extends Controller
                
                 return $about_us->data->isNotEmpty()? $about_us->data->first()->description : '';
             })
+            ->addColumn('about_title', function($about_us){
+               
+                return $about_us->data->isNotEmpty()? $about_us->data->first()->about_title : '';
+            })
+            ->addColumn('about_description', function($about_us){
+               
+                return $about_us->data->isNotEmpty()? $about_us->data->first()->about_description : '';
+            })
                 ->addColumn('image', function ($about_us) {
                    
                     $url = asset(rawurlencode($about_us->image));
@@ -68,8 +76,9 @@ class AboutUsController extends Controller
         return view('admin.about_us.create');
     } // end of create
 
-    protected function store(AboutUsRequest $request)
+    protected function store(Request $request)
     {
+        
         $data = [];
         foreach (config('translatable.locales') as $locale) {
             $data[$locale] = [
@@ -90,8 +99,22 @@ class AboutUsController extends Controller
         if ($request->image) {
             $data['image'] = $this->uploadImage($request->image, 'about_us');
         }
+      
+       $about =  AboutUs::create([
 
-        AboutUs::create($data);
+            'published'  => $request->published , 
+            'image'  => $request->image,
+        ]);
+        AboutUsTranslation::create([
+
+            'about_is_id'  => $about->id,
+            'title'  => $request->title,
+            'description'  => $request->description,
+            'about_title'  => $request->about_title,
+            'about_description'  => $request->about_description,
+            'locale'  => 'ar',
+           
+        ]);
 
         session()->flash('success', __('site.added_successfully'));
         return redirect()->route('admin.about_us.index');

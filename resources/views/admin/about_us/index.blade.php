@@ -63,6 +63,8 @@
                                     </th>
                                     <th>@lang('about_us.title')</th>
                                     <th>@lang('about_us.description')</th>
+                                    <th>@lang('about_us.about_title')</th>
+                                    <th>@lang('about_us.about_description')</th>
                                     <th>@lang('about_us.image')</th>
                                     <th>@lang('about_us.status')</th>
                                     <th>@lang('site.created_at')</th>
@@ -103,6 +105,8 @@
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
                 {data: 'title', name: 'title'},
                 {data: 'description', name: 'description'},
+                {data: 'about_title', name: 'about_title'},
+                {data: 'about_description', name: 'about_description'},
                 {data: 'image', name: 'image'},
                 {data: 'published', name: 'published'},
                 {data: 'created_at', name: 'created_at', searchable: false},

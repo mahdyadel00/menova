@@ -30,6 +30,8 @@ class AboutUsRequest extends FormRequest
             $rules += [
                 $locale . '_title' =>  ['required', 'string'],
                 $locale . '_description' =>  ['required'],
+                $locale . '_about_title' =>  ['required', 'string'],
+                $locale . '_about_description' =>  ['required'],
             ];
         }
 
@@ -42,6 +44,8 @@ class AboutUsRequest extends FormRequest
                 $rules += [
                     $locale . '_title' =>  ['required', 'string'],
                     $locale . '_description' =>  ['required'],
+                    $locale . '_about_title' =>  ['required', 'string'],
+                    $locale . '_about_description' =>  ['required'],
                 ];
             }
 

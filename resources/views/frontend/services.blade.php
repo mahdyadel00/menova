@@ -19,16 +19,17 @@ Menovahub-Services
       </header>
 
       <div class="row gy-4 mt-3">
-
+      @foreach($services as $service)
         <div class="col-lg-6 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
           <div class="service-box blue">
-            <i class="ri-discuss-line icon"></i>
-            <h3>Nesciunt Mete</h3>
-            <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
+            <i class="{{ $service->icon }}"></i>
+            <h3>{{  $service->data->isNotEmpty() ? $service->data->first()->name : '' }}</h3>
+            <p>{!! $service->data->isNotEmpty() ? $service->data->first()->description : '' !!}</p>
           </div>
         </div>
+        @endforeach
 
-        <div class="col-lg-6 col-md-6 col-12" data-aos="fade-up" data-aos-delay="300">
+        <!-- <div class="col-lg-6 col-md-6 col-12" data-aos="fade-up" data-aos-delay="300">
           <div class="service-box orange">
             <i class="ri-discuss-line icon"></i>
             <h3>Eosle Commodi</h3>
@@ -50,7 +51,7 @@ Menovahub-Services
             <h3>Asperiores Commodi</h3>
             <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
           </div>
-        </div>
+        </div> -->
 
 
 

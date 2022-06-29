@@ -14,8 +14,8 @@ Menovahub - Blog
       <div class="container">
 
         <ol>
-          <li><a href="/">Home</a></li>
-          <li><a href="/blog">Blog</a></li>
+          <li><a href="{{ route('home') }}">Home</a></li>
+          <li><a href="{{ route('blogs.index') }}">Blog</a></li>
           <li>Blog Single</li>
         </ol>
         <h2>Blog Single</h2>
@@ -30,7 +30,7 @@ Menovahub - Blog
         <div class="row">
 
           <div class="col-lg-8 entries">
-
+          
             <article class="entry entry-single">
 
               <div class="entry-img">
@@ -38,7 +38,7 @@ Menovahub - Blog
               </div>
 
               <h2 class="entry-title">
-                <a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+                <a href="blog-single.html">{{  $blog->data->isNotEmpty() ? $blog->data->first()->title: ' ' }}</a>
               </h2>
 
               <div class="entry-meta">
@@ -50,10 +50,7 @@ Menovahub - Blog
               </div>
 
               <div class="entry-content">
-                <p>
-                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                  Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-                </p>
+                <p>{!!  $blog->data->isNotEmpty() ? $blog->data->first()->body: ' ' !!}</p>
 
                 <p>
                   Sit repellat hic cupiditate hic ut nemo. Quis nihil sunt non reiciendis. Sequi in accusamus harum vel aspernatur. Excepturi numquam nihil cumque odio. Et voluptate cupiditate.

@@ -24,8 +24,10 @@ Route::prefix(LaravelLocalization::setLocale())
             Route::get('/about_us', [AboutUsController::class , 'index'])->name('about_us.index');
             Route::get('/services', [ServicesController::class , 'index'])->name('services.index');
             Route::get('/connects', [ConnectController::class , 'index'])->name('connect.index');
+            Route::post('/connects/store', [ConnectController::class , 'store'])->name('connect.store');
             Route::get('/rais', [RaisController::class , 'index'])->name('rais.index');
             Route::get('/blogs', [BlogController::class , 'index'])->name('blogs.index');
+            Route::get('/blogs/{id}', [BlogController::class , 'show'])->name('blogs.show');
            
           
             Route::get('/discuss', function () {

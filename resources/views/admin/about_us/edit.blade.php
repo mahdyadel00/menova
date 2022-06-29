@@ -57,6 +57,25 @@
                                     <textarea name="{{$locale.'_'.$input}}" class="form-control" id="editor_{{$locale}}"  autofocus>{!! old($locale.'_'.$input, $about_us->translate($locale)->{$input}) !!}</textarea>
                                     @error($locale.'_'.$input) <div class="text-danger">{{$message}}</div>@enderror
                                 </div>
+                                {{--About Title--}}
+                                <div class="form-group">
+                                    @php
+                                        $input = 'about_title';
+                                    @endphp
+                                    <label>@lang('about_us.'.$locale.'.'.$input)<span class="text-danger">*</span></label>
+                                    <input type="text" name="{{$locale.'_'.$input}}" class="form-control" value="{{ old($locale.'_'.$input, $about_us->translate($locale)->{$input}) }}"  autofocus>
+                                    @error($locale.'_'.$input) <div class="text-danger">{{$message}}</div>@enderror
+                                </div>
+
+                                {{--About Description--}}
+                                <div class="form-group">
+                                    @php
+                                        $input = 'about_description';
+                                    @endphp
+                                    <label>@lang('about_us.'.$locale.'.'.$input)<span class="text-danger">*</span></label>
+                                    <textarea name="{{$locale.'_'.$input}}" class="form-control" id="editor_{{$locale}}"  autofocus>{!! old($locale.'_'.$input, $about_us->translate($locale)->{$input}) !!}</textarea>
+                                    @error($locale.'_'.$input) <div class="text-danger">{{$message}}</div>@enderror
+                                </div>
 
                             </div> <!-- end of tab-pane-->
 
