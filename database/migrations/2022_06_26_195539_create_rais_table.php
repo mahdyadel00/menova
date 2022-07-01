@@ -15,11 +15,8 @@ class CreateRaisTable extends Migration
     {
         Schema::create('rais', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email');
-            $table->string('stage_of_business');
-            $table->string('describe');
             $table->string('icon');
+            $table->boolean('published')->default(0);
             $table->timestamps();
         });
     }

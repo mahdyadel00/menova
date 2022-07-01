@@ -12,7 +12,7 @@
       <a href="/login" class="btn-sign sign-in ">@lang('site.sign_in')</a>
       <a href="#" class="btn-sign sign-up">@lang('site.sign_up')</a>
       @if(auth()->check())
-       <a href="/user-profile"><img src="{{ auth()->user()->image }}" alt="@lang('site.profile')"></a>
+       <a href="{{ route('get') }}"><img src="{{ auth()->user()->image }}" alt="@lang('site.profile')"></a>
       @endif
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>

@@ -62,10 +62,8 @@
                                             </label>
                                         </div>
                                     </th>
-                                    <th>@lang('rais.name')</th>
-                                    <th>@lang('rais.email')</th>
-                                    <th>@lang('rais.stage_ofBusiness')</th>
-                                    <th>@lang('rais.describe')</th>
+                                    <th>@lang('rais.title')</th>
+                                    <th>@lang('rais.icon')</th>
                                     <th>@lang('site.created_at')</th>
                                     <th>@lang('site.action')</th>
                                 </tr>
@@ -102,10 +100,8 @@
             },
             columns: [
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
-                {data: 'name', name: 'name'},
-                {data: 'email', name: 'email'},
-                {data: 'stage_of_business', name: 'stage_of_business'},
-                {data: 'describe', name: 'describe'},
+                {data: 'title', name: 'title'},
+                {data: 'icon', name: 'icon'},
                 {data: 'created_at', name: 'created_at', searchable: false},
                 {data: 'actions', name: 'actions', searchable: false, sortable: false, width: '25%'},
             ],

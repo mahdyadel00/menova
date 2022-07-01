@@ -30,21 +30,22 @@ class RaisController extends Controller
         $rais = Rais::with('data')->orderBy('id' , 'desc')->get();
         return DataTables::of($rais)
             ->addColumn('record_select', 'admin.rais.data_table.record_select')
-            ->addColumn('name', function($rais){
+           
+            ->addColumn('title', function($rais){
                
-                return $rais->name ;
+                return $rais->data->isNotEmpty() ?  $rais->data->first()->title : '';
             })
-            ->addColumn('email', function($rais){
-               
-                return $rais->email;
+            ->editColumn('published', function ($rais) {
+                if ($rais->published == '0') {
+
+                    return `<div class="badge badge-warning">` . __('rais.not_published') . `</div>`;
+                } else {
+                    return `<div class="badge badge-info">` . __('Published') . `</div>`;
+                }
             })
-            ->addColumn('stage_of_business', function($rais){
-               
-                return $rais->stage_of_business;
-            })
-            ->addColumn('describe', function($rais){
-               
-                return $rais->describe;
+            ->editColumn('icon', function ($rais) {
+              
+                    return `<div class="badge badge-info">` .$rais->icon . `</div>`;
             })
             ->editColumn('created_at', function (Connect $rais) {
                 return $rais->created_at->format('Y-m-d');
@@ -69,11 +70,18 @@ class RaisController extends Controller
             ];
         }
         if($request->icon){
-
+            
             $data['icon']   = $request['icon'];
-        }      
+        }     
+        if($request->published == 'on'){
 
+            $data['published'] = '1' ;
 
+        }else{
+            $data['published'] = '0' ;
+        }
+        // dd($data);
+        // Rais::create($data);
         Rais::create($data);
 
         session()->flash('success', __('site.added_successfully'));

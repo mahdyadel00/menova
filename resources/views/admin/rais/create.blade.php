@@ -66,6 +66,7 @@
                     </div> <!-- end of tab-content-->
                     {{--Icon--}}
                     <div class="form-group">
+                        <label>@lang('rais.icon')</label>
                       
                         <input type="text" class="form-control iconpicker"  name="icon" value="{{ old('icon') }}">    
                         
