@@ -76,7 +76,7 @@ class AboutUsController extends Controller
         return view('admin.about_us.create');
     } // end of create
 
-    protected function store(Request $request)
+    protected function store(AboutUsRequest $request)
     {
         
         $data = [];
@@ -84,6 +84,8 @@ class AboutUsController extends Controller
             $data[$locale] = [
                 'title' => $request->input($locale . '_title'),
                 'description' => $request->input($locale . '_description'),
+                'about_title' => $request->input($locale . '_about_title'),
+                'about_description' => $request->input($locale . '_about_description'),
             ];
         }
      
@@ -99,22 +101,18 @@ class AboutUsController extends Controller
         if ($request->image) {
             $data['image'] = $this->uploadImage($request->image, 'about_us');
         }
-      
-       $about =  AboutUs::create([
+    //   dd($request->all());
+       $about =  AboutUs::create($data);
+        // AboutUsTranslation::create([
 
-            'published'  => $request->published , 
-            'image'  => $request->image,
-        ]);
-        AboutUsTranslation::create([
-
-            'about_is_id'  => $about->id,
-            'title'  => $request->title,
-            'description'  => $request->description,
-            'about_title'  => $request->about_title,
-            'about_description'  => $request->about_description,
-            'locale'  => 'ar',
+        //     'about_is_id'  => $about->id,
+        //     'title'  => $request->title,
+        //     'description'  => $request->description,
+        //     'about_title'  => $request->about_title,
+        //     'about_description'  => $request->about_description,
+        //     'locale'  => 'ar',
            
-        ]);
+        // ]);
 
         session()->flash('success', __('site.added_successfully'));
         return redirect()->route('admin.about_us.index');

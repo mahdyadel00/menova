@@ -12,10 +12,10 @@
       <div class="container">
 
         <ol>
-          <li><a href="/">Home</a></li>
-          <li>about</li>
+          <li><a href="/">@lang('site.home')</a></li>
+          <li>@lang('site.about_us')</li>
         </ol>
-        <h2>about</h2>
+        <h2>@lang('site.about_us')</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -26,7 +26,7 @@
 <div class="container" data-aos="fade-up">
 
   <header class="section-header">
-    <h2> about us </h2>
+    <h2> @lang('site.about_us') </h2>
     <p> about menova hub </p>
   </header>
 
@@ -38,49 +38,14 @@
 
     <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
       <div class="row align-self-center gy-4">
-
+      
         <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
           <div class="feature-box d-flex align-items-center">
             <i class="bi bi-check"></i>
-            <h3>Eos aspernatur rem</h3>
+            <h3>{{ $about_us->data->isNotEmpty() ? $about_us->data->first()->title : '' }}</h3>
           </div>
-        </div>
-
-        <div class="col-md-6" data-aos="zoom-out" data-aos-delay="300">
-          <div class="feature-box d-flex align-items-center">
-            <i class="bi bi-check"></i>
-            <h3>Facilis neque ipsa</h3>
-          </div>
-        </div>
-
-        <div class="col-md-6" data-aos="zoom-out" data-aos-delay="400">
-          <div class="feature-box d-flex align-items-center">
-            <i class="bi bi-check"></i>
-            <h3>Volup amet voluptas</h3>
-          </div>
-        </div>
-
-        <div class="col-md-6" data-aos="zoom-out" data-aos-delay="500">
-          <div class="feature-box d-flex align-items-center">
-            <i class="bi bi-check"></i>
-            <h3>Rerum omnis sint</h3>
-          </div>
-        </div>
-
-        <div class="col-md-6" data-aos="zoom-out" data-aos-delay="600">
-          <div class="feature-box d-flex align-items-center">
-            <i class="bi bi-check"></i>
-            <h3>Alias possimus</h3>
-          </div>
-        </div>
-
-        <div class="col-md-6" data-aos="zoom-out" data-aos-delay="700">
-          <div class="feature-box d-flex align-items-center">
-            <i class="bi bi-check"></i>
-            <h3>Repellendus mollitia</h3>
-          </div>
-        </div>
-
+      </div>
+   
       </div>
     </div>
 
@@ -89,7 +54,7 @@
   <!-- Feature Tabs -->
   <div class="row feture-tabs" data-aos="fade-up">
     <div class="col-lg-6">
-      <h3>Neque officiis dolore maiores et exercitationem quae est seda lidera pat claero</h3>
+      <h3>{{ $about_us->data->isNotEmpty() ? $about_us->data->first()->title : '' }}</h3>
 
       <!-- Tabs -->
       <ul class="nav nav-pills mb-3">
@@ -108,45 +73,33 @@
       <div class="tab-content">
 
         <div class="tab-pane fade show active" id="tab1">
-          <p>Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+          @foreach($about_us1 as $about1)
+          <p>{!! $about1->data->isNotEmpty() ? $about1->data->first()->description : '' !!}</p>
           <div class="d-flex align-items-center mb-2">
             <i class="bi bi-check2"></i>
-            <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+            <h4>{{ $about1->data->isNotEmpty() ? $about1->data->first()->title : '' }}</h4>
           </div>
-          <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-          <div class="d-flex align-items-center mb-2">
-            <i class="bi bi-check2"></i>
-            <h4>Incidunt non veritatis illum ea ut nisi</h4>
-          </div>
-          <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
+          @endforeach
         </div><!-- End Tab 1 Content -->
 
         <div class="tab-pane fade show" id="tab2">
-          <p>Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+        @foreach($about_us2 as $about2)
+        <p>{!! $about2->data->isNotEmpty() ? $about2->data->first()->description : '' !!}</p>
           <div class="d-flex align-items-center mb-2">
             <i class="bi bi-check2"></i>
-            <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+            <h4>{{ $about2->data->isNotEmpty() ? $about2->data->first()->title : '' }}</h4>
           </div>
-          <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-          <div class="d-flex align-items-center mb-2">
-            <i class="bi bi-check2"></i>
-            <h4>Incidunt non veritatis illum ea ut nisi</h4>
-          </div>
-          <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
+          @endforeach
         </div><!-- End Tab 2 Content -->
 
         <div class="tab-pane fade show" id="tab3">
-          <p>Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+        @foreach($about_us3 as $about3)
+        <p>{!! $about3->data->isNotEmpty() ? $about3->data->first()->description : '' !!}</p>
           <div class="d-flex align-items-center mb-2">
             <i class="bi bi-check2"></i>
-            <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+            <h4>{{ $about3->data->isNotEmpty() ? $about3->data->first()->title : '' }}</h4>
           </div>
-          <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-          <div class="d-flex align-items-center mb-2">
-            <i class="bi bi-check2"></i>
-            <h4>Incidunt non veritatis illum ea ut nisi</h4>
-          </div>
-          <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
+          @endforeach
         </div><!-- End Tab 3 Content -->
 
       </div>
@@ -171,55 +124,15 @@
 
       <div class="col-xl-8 d-flex content">
         <div class="row align-self-center gy-4">
-
+          @foreach($abouts as $about)
           <div class="col-md-6 icon-box" data-aos="fade-up">
             <i class="ri-line-chart-line"></i>
             <div>
-              <h4>Corporis voluptates sit</h4>
-              <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+              <h4>{{ $about->data->isNotEmpty() ? $about->data->first()->title : '' }}</h4>
+              <p>{!! $about->data->isNotEmpty() ? $about->data->first()->description : '' !!}</p>
             </div>
           </div>
-
-          <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <i class="ri-stack-line"></i>
-            <div>
-              <h4>Ullamco laboris nisi</h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-            <i class="ri-brush-4-line"></i>
-            <div>
-              <h4>Labore consequatur</h4>
-              <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-            <i class="ri-magic-line"></i>
-            <div>
-              <h4>Beatae veritatis</h4>
-              <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-            <i class="ri-command-line"></i>
-            <div>
-              <h4>Molestiae dolor</h4>
-              <p>Et fuga et deserunt et enim. Dolorem architecto ratione tensa raptor marte</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-            <i class="ri-radar-line"></i>
-            <div>
-              <h4>Explicabo consectetur</h4>
-              <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
-            </div>
-          </div>
-
+          @endforeach
         </div>
       </div>
 

@@ -21,7 +21,7 @@
 
                     <div class="col-md-12">
 
-                            <a href="#" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.create')</a>
+                            <a href="{{ route('admin.rais.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.create')</a>
 
                             <form method="post" action="#" style="display: inline-block;">
                                 @csrf

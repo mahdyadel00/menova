@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-12 text-center">
-            <h4>Our Newsletter</h4>
+            <h4>@lang('site.our_newsletter')</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
           </div>
           <div class="col-lg-6">
@@ -35,11 +35,11 @@
           <div class="col-lg-2 col-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">blog</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{{ route('about_us.index') }}">@lang('site.about_us')</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{{ route('services.index') }}">@lang('site.services')</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{{ route('blogs.index') }}">@lang('site.blog')</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">@lang('site.terms_of_service')</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">@lang('site.privacy_policy')</a></li>
             </ul>
           </div>
 

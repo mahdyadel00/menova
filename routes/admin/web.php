@@ -167,6 +167,9 @@ Route::group([
 
         Route::get('rais' , [RaisController::class , 'index'])->name('rais.index');
         Route::get('rais/data' , [RaisController::class , 'data'])->name('rais.data');
+        Route::delete('rais/bulk_delete' , [RaisController::class , 'bulkDelete'])->name('rais.bulk_delete');
+        Route::resource('rais', 'RaisController'); 
+        Route::post('rais/store' , [RaisController::class , 'store'])->name('rais.store');
 
 
     });

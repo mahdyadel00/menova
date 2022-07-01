@@ -4,11 +4,11 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <div>
-        <h2>@lang('connects.connects')</h2>
+        <h2>@lang('rais.rais')</h2>
     </div>
     <ul class="breadcrumb mt-2">
         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">@lang('site.home')</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('admin.connects.index') }}">@lang('connects.connects')</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.rais.index') }}">@lang('rais.rais')</a></li>
         <li class="breadcrumb-item">@lang('site.create')</li>
     </ul>
 
@@ -18,7 +18,7 @@
 
             <div class="tile shadow">
 
-                <h3>{{__('connects.connects')}}</h3>
+                <h3>{{__('rais.rais')}}</h3>
 
                 <ul class="nav nav-tabs">
                     @foreach (config('translatable.locales') as $index=>$locale)
@@ -26,7 +26,7 @@
                     @endforeach
                 </ul>
 
-                <form method="post" action="{{ route('admin.connects.store') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('admin.rais.store') }}" enctype="multipart/form-data">
                     @csrf
                     @method('post')
 
@@ -44,7 +44,7 @@
                                     @php
                                         $input = 'title';
                                     @endphp
-                                    <label>@lang('connects.'.$locale.'.'.$input)<span class="text-danger">*</span></label>
+                                    <label>@lang('rais.'.$locale.'.'.$input)<span class="text-danger">*</span></label>
                                     <input type="text" name="{{$locale.'_'.$input}}" class="form-control" value="{{ old($locale.'_'.$input) }}"  autofocus>
                                     @error($locale.'_'.$input) <div class="text-danger">{{$message}}</div>@enderror
                                 </div>
@@ -54,7 +54,7 @@
                                     @php
                                         $input = 'description';
                                     @endphp
-                                    <label>@lang('connects.'.$locale.'.'.$input)<span class="text-danger">*</span></label>
+                                    <label>@lang('rais.'.$locale.'.'.$input)<span class="text-danger">*</span></label>
                                     <textarea name="{{$locale.'_'.$input}}" class="form-control" id="editor_{{$locale}}"  autofocus>{!! old($locale.'_'.$input) !!}</textarea>
                                     @error($locale.'_'.$input) <div class="text-danger">{{$message}}</div>@enderror
                                 </div>
@@ -64,24 +64,17 @@
                         @endforeach
 
                     </div> <!-- end of tab-content-->
-
-                   
-
-                    {{--Image--}}
+                    {{--Icon--}}
                     <div class="form-group">
-                        @php
-                            $input = 'image';
-                        @endphp
-                        <label>@lang('connects.'.$input)</label>
-                        <input type="file" name="{{$input}}" class="form-control load-image">
-                        <img src="{{ Storage::url('uploads/images/connects/default.jpg') }}" class="loaded-image" alt="" style="width: 100px; margin: 10px 0;">
-                        @error($input) <div class="text-danger">{{$message}}</div>@enderror
+                      
+                        <input type="text" class="form-control iconpicker"  name="icon" value="{{ old('icon') }}">    
+                        
                     </div>
-
+                  
                     {{--Published--}}
                     <div class="form-group">
                       
-                        <label>@lang('connects.published')</label>
+                        <label>@lang('rais.published')</label>
                        <input type="checkbox" name="published" class="form-control"   autofocus>
                         @error('published') <div class="text-danger">{{$message}}</div>@enderror
                     </div>

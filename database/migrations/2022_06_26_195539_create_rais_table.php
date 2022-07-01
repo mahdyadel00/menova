@@ -14,11 +14,12 @@ class CreateRaisTable extends Migration
     public function up()
     {
         Schema::create('rais', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
             $table->string('email');
             $table->string('stage_of_business');
             $table->string('describe');
+            $table->string('icon');
             $table->timestamps();
         });
     }

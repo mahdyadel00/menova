@@ -28,6 +28,7 @@ Route::prefix(LaravelLocalization::setLocale())
             Route::get('/rais', [RaisController::class , 'index'])->name('rais.index');
             Route::get('/blogs', [BlogController::class , 'index'])->name('blogs.index');
             Route::get('/blogs/{id}', [BlogController::class , 'show'])->name('blogs.show');
+            Route::get('/user/profile', [BlogController::class , 'index'])->name('profile.index');
            
           
             Route::get('/discuss', function () {

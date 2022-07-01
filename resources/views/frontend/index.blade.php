@@ -61,16 +61,14 @@ Menovahub - Home
 <section id="about" class="about sec-padding ">
     <div class="container " data-aos="fade-up">
         <header class="sec-heading ">
-            <h2>about us</h2>
+            <h2>@lang('site.about_us')</h2>
         </header>
         <div class="row gx-0">
             <div class="col-sm-12 d-flex flex-column justify-content-center " data-aos="fade-up" data-aos-delay="200">
                 <div class="content">
-                    <h3>Who We Are</h3>
+                    <h3>@lang('site.who_are_you')</h3>
                     <p>
-                        Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor
-                        consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam
-                        et est corrupti.
+                       {!! $abouts->data->isNotEmpty() ? $abouts->data->first()->description : '' !!}
                     </p>
                 </div>
             </div>
@@ -91,7 +89,7 @@ Menovahub - Home
 
                 <div class="text-center sec-padding ">
                     
-                    <a href="#" class="btn-read-more"><span> Read More </span> <i class="bi bi-arrow-right"></i> </a>
+                    <a href="#" class="btn-read-more"><span> @lang('site.read_more') </span> <i class="bi bi-arrow-right"></i> </a>
                 </div>
             </div>
         </div><!-- End Values  -->
@@ -103,8 +101,8 @@ Menovahub - Home
     <div class="container">
         <div class="services-area">
             <div class="sec-heading" data-aos="fade-up">
-                <h2>Services</h2>
-                <p>how can we help you </p>
+                <h2>@lang('site.services')</h2>
+                <p>@lang('site.how_can_we_help_you') </p>
             </div>
             <div class="row">
                 @foreach($services as $service)
@@ -158,7 +156,7 @@ Menovahub - Home
     <div class="container">
         <div class="connect-area">
             <div class="sec-heading ">
-                <h2> connect</h2>
+                <h2>@lang('site.connects')</h2>
             </div>
             <div class="row">
                 @foreach($connects as $connect)
@@ -189,16 +187,14 @@ Menovahub - Home
     <div class="container">
         <div class="advisor-area">
             <div class="sec-heading text-center ">
-                <h2> advisor</h2>
+                <h2>@lang('site.advisor')</h2>
             </div>
             <div class="row">
                 <div class="col-md-6  col-xs-12">
                     <div class="">
-                        <h4 class="sec-head">Find Your Advisors</h4>
+                        <h4 class="sec-head">@lang('site.find_your_advisors')</h4>
                         <p class="sec-text">
-                            menova hub is startup community on the Internet. take your startup to the next level
-                            . find your cofounder , business advisors and fund your business.
-                        </p>
+                           {!! $advisor_first->data->isNotEmpty() ? $advisor_first->data->first()->description : '' !!}
                     </div>
                 </div>
 
@@ -216,7 +212,7 @@ Menovahub - Home
                     
                             </div class="col-md-12 d-md-flex ">
                             <div class="advisor-join sec-padding">
-                                <a href="#" class="btn-join"> join now</a>
+                                <a href="#" class="btn-join">@lang('site.join_now')</a>
 
                             </div>
 
@@ -236,7 +232,7 @@ Menovahub - Home
     <div class="container">
         <div class="raise-area">
             <div class="sec-heading text-center ">
-                <h2>Raise</h2>
+                <h2>@lang('site.rais')</h2>
             </div>
             <div class="row">
                 @foreach($rais as $rais)
@@ -247,7 +243,7 @@ Menovahub - Home
                     </div>
 
                     <div>
-                        <a href="#" class="btn-join"> join now</a>
+                        <a href="#" class="btn-join">@lang('site.join_now')</a>
                     </div>
                 </div>
                 @endforeach
@@ -267,8 +263,8 @@ Menovahub - Home
 <section id="recent-blog-posts" class="recent-blog-posts sec-padding">
     <div class="container" data-aos="fade-up">
         <header class="sec-heading">
-            <h2>Blog</h2>
-            <p>Recent posts form our Blog</p>
+            <h2>@lang('site.blog')</h2>
+            <p>@lang('site.recent_posts_form_our_blog')</p>
         </header>
         <div class="row">
             @foreach($blogs as $blog)
@@ -277,7 +273,7 @@ Menovahub - Home
                     <div class="post-img"><img src="{{ $blog->image_path  }}" class="img-fluid" alt=""></div>
                     <span class="post-date">{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }}</span>
                     <h3 class="post-title">{!! $blog->data->isNotEmpty() ? $blog->data->first()->body : '' !!}</h3>
-                    <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                    <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>@lang('site.read_more')</span><i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
             @endforeach

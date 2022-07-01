@@ -1,18 +1,19 @@
 <nav id="navbar" class="navbar" >
     <ul>
-      <li><a class="nav-link scrollto active" href="{{ route('home') }}">Home</a></li>
-      <li><a class="nav-link scrollto" href="{{ route('about_us.index') }}">About</a></li>
-      <li><a class="nav-link scrollto" href="{{ route('services.index') }}">Services</a></li>
-      <li><a class="nav-link scrollto" href="{{ route('connect.index') }}">Connect</a></li>
-      <li><a class="nav-link scrollto" href="{{ route('rais.index') }}">Raise</a></li>
-      <li><a class="nav-link scrollto" href="{{ route('blogs.index') }}">Blog</a></li>
-      <li><a class="nav-link scrollto" href="/discuss">Discuss</a></li>
-      <li><a class="nav-link scrollto" href="{{ route('contacts.index') }}">Contact</a></li>
+      <li><a class="nav-link scrollto active" href="{{ route('home') }}">@lang('site.home')</a></li>
+      <li><a class="nav-link scrollto" href="{{ route('about_us.index') }}">@lang('site.about_us')</a></li>
+      <li><a class="nav-link scrollto" href="{{ route('services.index') }}">@lang('site.services')</a></li>
+      <li><a class="nav-link scrollto" href="{{ route('connect.index') }}">@lang('site.connects')</a></li>
+      <li><a class="nav-link scrollto" href="{{ route('rais.index') }}">@lang('site.rais')</a></li>
+      <li><a class="nav-link scrollto" href="{{ route('blogs.index') }}">@lang('site.blog')</a></li>
+      <li><a class="nav-link scrollto" href="/discuss">@lang('site.discuss')</a></li>
+      <li><a class="nav-link scrollto" href="{{ route('contacts.index') }}">@lang('site.contacts')</a></li>
 
-      <a href="/login" class="btn-sign sign-in ">sign in</a>
-      <a href="#" class="btn-sign sign-up">sign up</a>
-       <a href="/user-profile"><img src="" alt="profile"></a>
-
+      <a href="/login" class="btn-sign sign-in ">@lang('site.sign_in')</a>
+      <a href="#" class="btn-sign sign-up">@lang('site.sign_up')</a>
+      @if(auth()->check())
+       <a href="/user-profile"><img src="{{ auth()->user()->image }}" alt="@lang('site.profile')"></a>
+      @endif
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
   </nav>
