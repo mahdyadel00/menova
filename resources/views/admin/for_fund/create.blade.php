@@ -3,7 +3,6 @@
 @section('content')
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-
     <div>
         <h2>@lang('rais.rais')</h2>
     </div>
@@ -13,7 +12,7 @@
         <li class="breadcrumb-item">@lang('site.create')</li>
     </ul>
 
-    <div class="row" id="edit">
+    <div class="row">
 
         <div class="col-md-12">
 
@@ -27,9 +26,10 @@
                     @endforeach
                 </ul>
 
-                <form method="post" action="{{ route('admin.rais.update', $rais->id) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('admin.rais.store') }}" enctype="multipart/form-data">
                     @csrf
-                    @method('patch')
+                    @method('post')
+
                     @include('admin.partials._errors')
 
                     <div class="tab-content" id="myTabContent">
@@ -39,12 +39,13 @@
                             <div class="tab-pane fade show {{$index == 0 ? 'active' : ''}} pt-2" id="{{$locale}}">
 
                                 {{--Title--}}
+
                                 <div class="form-group">
                                     @php
                                         $input = 'title';
                                     @endphp
                                     <label>@lang('rais.'.$locale.'.'.$input)<span class="text-danger">*</span></label>
-                                    <input type="text" name="{{$locale.'_'.$input}}" class="form-control" value="{{ old($locale.'_'.$input, $rais->translate($locale)->{$input}) }}"  autofocus>
+                                    <input type="text" name="{{$locale.'_'.$input}}" class="form-control" value="{{ old($locale.'_'.$input) }}"  autofocus>
                                     @error($locale.'_'.$input) <div class="text-danger">{{$message}}</div>@enderror
                                 </div>
 
@@ -54,7 +55,7 @@
                                         $input = 'description';
                                     @endphp
                                     <label>@lang('rais.'.$locale.'.'.$input)<span class="text-danger">*</span></label>
-                                    <textarea name="{{$locale.'_'.$input}}" class="form-control" id="editor_{{$locale}}"  autofocus>{!! old($locale.'_'.$input, $rais->translate($locale)->{$input}) !!}</textarea>
+                                    <textarea name="{{$locale.'_'.$input}}" class="form-control" id="editor_{{$locale}}"  autofocus>{!! old($locale.'_'.$input) !!}</textarea>
                                     @error($locale.'_'.$input) <div class="text-danger">{{$message}}</div>@enderror
                                 </div>
 
@@ -63,26 +64,24 @@
                         @endforeach
 
                     </div> <!-- end of tab-content-->
-
-
-                  {{--Icon--}}
-                  <div class="form-group">
-
-                    <label>@lang('rais.icon')</label>
-                    <input type="text" name="icon" class="form-control iconpicker"  value="{{ $rais->icon  }}"  autofocus>
-                    @error($input) <div class="text-danger">{{$message}}</div>@enderror
-                </div>
-
-                    {{--؛Published--}}
+                    {{--Icon--}}
                     <div class="form-group">
-
+                        <label>@lang('rais.icon')</label>
+                      
+                        <input type="text" class="form-control iconpicker"  name="icon" value="{{ old('icon') }}">    
+                        
+                    </div>
+                  
+                    {{--Published--}}
+                    <div class="form-group">
+                      
                         <label>@lang('rais.published')</label>
-                        <input type="checkbox" name="published"{{ $rais->published == 1 ? 'checked' : "" }} class="form-control" id="checkboxx" value="1"  autofocus>
-                        @error($input) <div class="text-danger">{{$message}}</div>@enderror
+                       <input type="checkbox" name="published" class="form-control"   autofocus>
+                        @error('published') <div class="text-danger">{{$message}}</div>@enderror
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i>@lang('site.update')</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>@lang('site.create')</button>
                     </div>
 
                 </form><!-- end of form -->
@@ -96,22 +95,25 @@
 @endsection
 
 @push('scripts')
-    <script src="{{asset('admin_assets/js/plugins/ckeditor/ckeditor.js')}}"></script>
-    <script>
-        $(document).ready(function(){
-            // Ckeditor config
-            CKEDITOR.config.language="{{ app()->getLocale() }}";
-            if ($('#editor_en').length) {
-                CKEDITOR.replace('editor_en');
-            }
-            if ($('#editor_ar').length) {
-                CKEDITOR.replace('editor_ar');
-            }
+<script src="https://unpkg.com/codethereal-iconpicker@1.2.1/dist/iconpicker.js"></script>
 
-        });
-
-    </script>
+<script src="{{asset('admin_assets/js/plugins/ckeditor/ckeditor.js')}}"></script>
     <script>
+
+    $(document).ready(function(){
+        // Ckeditor config
+        CKEDITOR.config.language="{{ app()->getLocale() }}";
+        if ($('#editor_en').length) {
+            CKEDITOR.replace('editor_en');
+        }
+        if ($('#editor_ar').length) {
+            CKEDITOR.replace('editor_ar');
+        }
+    });
+        </script>
+
+
+<script>
   (async () => {
     const response = await fetch('https://unpkg.com/codethereal-iconpicker@1.2.1/dist/iconsets/bootstrap5.json')
     const result = await response.json()
@@ -124,7 +126,7 @@
         hideOnSelect: true,
         fade: true,
     });
-
+    
 })()
     </script>
 @endpush

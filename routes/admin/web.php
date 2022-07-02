@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\AdvisorController;
 use App\Http\Controllers\Admin\EmailSubscribeController;
 use App\Http\Controllers\Admin\RaisController;
+use App\Http\Controllers\Admin\ForFundController;
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
@@ -107,7 +108,7 @@ Route::group([
         Route::get('sliders' , [SliderController::class , 'index'])->name('sliders.index');
         Route::get('sliders/data' , [SliderController::class , 'data'])->name('sliders.data');
         Route::delete('sliders/bulk_delete' , [SliderController::class , 'bulkDelete'])->name('sliders.bulk_delete');
-        Route::resource('sliders', 'SliderController'); 
+        Route::resource('sliders', 'SliderController');
         Route::post('sliders/store' , [SliderController::class , 'store'])->name('sliders.store');
 
         //---------------------------------------------**  Services Route  **--------------------------------------------------------------------------------
@@ -115,7 +116,7 @@ Route::group([
         Route::get('services' , [ServicesController::class , 'index'])->name('services.index');
         Route::get('services/data' , [ServicesController::class , 'data'])->name('services.data');
         Route::delete('services/bulk_delete' , [ServicesController::class , 'bulkDelete'])->name('services.bulk_delete');
-        Route::resource('services', 'ServicesController'); 
+        Route::resource('services', 'ServicesController');
         Route::post('services/store' , [ServicesController::class , 'store'])->name('services.store');
 
         //---------------------------------------------**  Our Client Route  **--------------------------------------------------------------------------------
@@ -123,7 +124,7 @@ Route::group([
         Route::get('our_clients' , [OurClientController::class , 'index'])->name('our_clients.index');
         Route::get('our_clients/data' , [OurClientController::class , 'data'])->name('our_clients.data');
         Route::delete('our_clients/bulk_delete' , [OurClientController::class , 'bulkDelete'])->name('our_clients.bulk_delete');
-        Route::resource('our_clients', 'OurClientController'); 
+        Route::resource('our_clients', 'OurClientController');
         Route::post('our_clients/store' , [OurClientController::class , 'store'])->name('our_clients.store');
 
         //---------------------------------------------**  About Us Route  **--------------------------------------------------------------------------------
@@ -131,7 +132,7 @@ Route::group([
         Route::get('about_us' , [AboutUsController::class , 'index'])->name('about_us.index');
         Route::get('about_us/data' , [AboutUsController::class , 'data'])->name('about_us.data');
         Route::delete('about_us/bulk_delete' , [AboutUsController::class , 'bulkDelete'])->name('about_us.bulk_delete');
-        Route::resource('about_us', 'AboutUsController'); 
+        Route::resource('about_us', 'AboutUsController');
         Route::post('about_us/store' , [AboutUsController::class , 'store'])->name('about_us.store');
 
         //---------------------------------------------**  Connects Route  **--------------------------------------------------------------------------------
@@ -139,7 +140,7 @@ Route::group([
         Route::get('connects' , [ConnectController::class , 'index'])->name('connects.index');
         Route::get('connects/data' , [ConnectController::class , 'data'])->name('connects.data');
         Route::delete('connects/bulk_delete' , [ConnectController::class , 'bulkDelete'])->name('connects.bulk_delete');
-        Route::resource('connects', 'ConnectController'); 
+        Route::resource('connects', 'ConnectController');
         Route::post('connects/store' , [ConnectController::class , 'store'])->name('connects.store');
 
         //---------------------------------------------**  Counter Route  **--------------------------------------------------------------------------------
@@ -147,7 +148,7 @@ Route::group([
         Route::get('counters' , [CounterController::class , 'index'])->name('counters.index');
         Route::get('counters/data' , [CounterController::class , 'data'])->name('counters.data');
         Route::delete('counters/bulk_delete' , [CounterController::class , 'bulkDelete'])->name('counters.bulk_delete');
-        Route::resource('counters', 'CounterController'); 
+        Route::resource('counters', 'CounterController');
         Route::post('counters/store' , [CounterController::class , 'store'])->name('counters.store');
 
         //---------------------------------------------**  Advisors Route  **--------------------------------------------------------------------------------
@@ -155,7 +156,7 @@ Route::group([
         Route::get('advisors' , [AdvisorController::class , 'index'])->name('advisors.index');
         Route::get('advisors/data' , [AdvisorController::class , 'data'])->name('advisors.data');
         Route::delete('advisors/bulk_delete' , [AdvisorController::class , 'bulkDelete'])->name('advisors.bulk_delete');
-        Route::resource('advisors', 'AdvisorController'); 
+        Route::resource('advisors', 'AdvisorController');
         Route::post('advisors/store' , [AdvisorController::class , 'store'])->name('advisors.store');
 
         //---------------------------------------------**  EmailSubscribe Route  **--------------------------------------------------------------------------------
@@ -168,8 +169,16 @@ Route::group([
         Route::get('rais' , [RaisController::class , 'index'])->name('rais.index');
         Route::get('rais/data' , [RaisController::class , 'data'])->name('rais.data');
         Route::delete('rais/bulk_delete' , [RaisController::class , 'bulkDelete'])->name('rais.bulk_delete');
-        Route::resource('rais', 'RaisController'); 
+        Route::resource('rais', 'RaisController');
         Route::post('rais/store' , [RaisController::class , 'store'])->name('rais.store');
+
+        //---------------------------------------------**  For Fund Route  **--------------------------------------------------------------------------------
+
+        Route::get('for_fund' , [ForFundController::class , 'index'])->name('for_fund.index');
+        Route::get('for_fund/data' , [ForFundController::class , 'data'])->name('for_fund.data');
+        // Route::delete('rais/bulk_delete' , [RaisController::class , 'bulkDelete'])->name('rais.bulk_delete');
+        // Route::resource('rais', 'RaisController');
+        // Route::post('rais/store' , [RaisController::class , 'store'])->name('rais.store');
 
 
     });

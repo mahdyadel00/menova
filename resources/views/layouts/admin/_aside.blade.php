@@ -10,7 +10,7 @@
             <p class="app-sidebar__user-designation">{{ auth()->user()->first()->name }}</p>
         </div>
     </div>
-    
+
 
     <ul class="app-menu">
 
@@ -62,6 +62,8 @@
             <li><a class="app-menu__item {{ request()->is('*email/subscribe*') ? 'active' : '' }}" href="{{ route('admin.email_subscribe.index') }}"><i class="app-menu__icon fas fa-envelope-open-text"></i><span class="app-menu__label">@lang('email_subscribe.email_subscribe')</span></a></li>
         {{--Rais--}}
             <li><a class="app-menu__item {{ request()->is('*rais*') ? 'active' : '' }}" href="{{ route('admin.rais.index') }}"><i class="app-menu__icon fas fa-envelope-open-text"></i><span class="app-menu__label">@lang('rais.rais')</span></a></li>
+        {{--For Fund--}}
+            <li><a class="app-menu__item {{ request()->is('*for_fund*') ? 'active' : '' }}" href="{{ route('admin.for_fund.index') }}"><i class="app-menu__icon fas fa-envelope-open-text"></i><span class="app-menu__label">@lang('for_fund.for_fund')</span></a></li>
 
 
         {{--projects--}}

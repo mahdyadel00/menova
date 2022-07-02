@@ -29,8 +29,9 @@ Route::prefix(LaravelLocalization::setLocale())
             Route::get('/blogs', [BlogController::class , 'index'])->name('blogs.index');
             Route::get('/blogs/{id}', [BlogController::class , 'show'])->name('blogs.show');
             Route::get('/user/profile', [BlogController::class , 'index'])->name('profile.index');
-           
-          
+            Route::post('/rais/create', [RaisController::class , 'store'])->name('rais.store');
+
+
             Route::get('/discuss', function () {
                 return view('frontend.discuss');
             });
@@ -50,7 +51,7 @@ Route::prefix(LaravelLocalization::setLocale())
 
 
 
-           
+
         });
 
         Auth::routes(['verify' => true]);
@@ -105,7 +106,7 @@ Route::prefix(LaravelLocalization::setLocale())
                     //Chat
                     Route::get('chat' , [ChatController::class , 'index'])->name('chat.index');
 
-                   
+
                 });
             });
         });

@@ -27,12 +27,12 @@ class RaisController extends Controller
 
     protected function data()
     {
-        $rais = Rais::with('data')->orderBy('id' , 'desc')->get();
+        $rais = Rais::with('data')->orderBy('id', 'desc')->get();
         return DataTables::of($rais)
             ->addColumn('record_select', 'admin.rais.data_table.record_select')
-           
-            ->addColumn('title', function($rais){
-               
+
+            ->addColumn('title', function ($rais) {
+
                 return $rais->data->isNotEmpty() ?  $rais->data->first()->title : '';
             })
             ->editColumn('published', function ($rais) {
@@ -44,14 +44,14 @@ class RaisController extends Controller
                 }
             })
             ->editColumn('icon', function ($rais) {
-              
-                    return `<div class="badge badge-info">` .$rais->icon . `</div>`;
+
+                return `<div class="badge badge-info"><i class = `. $rais->icon .`></i></div>`;
             })
-            ->editColumn('created_at', function (Connect $rais) {
+            ->editColumn('created_at', function (Rais $rais) {
                 return $rais->created_at->format('Y-m-d');
             })
             ->addColumn('actions', 'admin.rais.data_table.actions')
-            ->rawColumns(['record_select', 'actions', 'title' , 'email' , 'stage_of_business' , 'describe'])
+            ->rawColumns(['record_select', 'actions', 'title', 'email', 'stage_of_business', 'describe'])
             ->toJson();
     } // end of data
 
@@ -69,16 +69,15 @@ class RaisController extends Controller
                 'description' => $request->input($locale . '_description'),
             ];
         }
-        if($request->icon){
-            
+        if ($request->icon) {
+
             $data['icon']   = $request['icon'];
-        }     
-        if($request->published == 'on'){
+        }
+        if ($request->published == 'on') {
 
-            $data['published'] = '1' ;
-
-        }else{
-            $data['published'] = '0' ;
+            $data['published'] = '1';
+        } else {
+            $data['published'] = '0';
         }
         // dd($data);
         // Rais::create($data);
@@ -88,31 +87,25 @@ class RaisController extends Controller
         return redirect()->route('admin.rais.index');
     } // end of store
 
-    protected function edit( $id)
+    protected function edit($id)
     {
         $rais = Rais::findOrFail($id);
-            return view('admin.rias$rais.edit', compact('rias$rais'));
+        return view('admin.rais.edit', compact('rais'));
     } // end of edit
 
-    protected function update(RaisRequest $request,$id)
+    protected function update(RaisRequest $request, $id)
     {
-        $rais = Rais::where('id' , $id)->first();
+        $rais = Rais::where('id', $id)->first();
         $data = [];
         foreach (config('translatable.locales') as $locale) {
             $data[$locale] = [
-                'name' => $request->input($locale . '_name'),
+                'title' => $request->input($locale . '_title'),
                 'description' => $request->input($locale . '_description'),
             ];
         }
-            $data['published'] = $request->published ?? 0 ;
-            $data['icon'] = $request->icon ;
+        $data['published'] = $request->published ?? 0;
+        $data['icon'] = $request->icon;
 
-        if ($request->image) {
-            if ($rais->image) {
-                $this->deleteImage($rais->image, 'rais');
-            }
-            $data['image'] = $this->uploadImage($request->image, 'rais');
-        }
         $rais->update($data);
 
         session()->flash('success', __('site.updated_successfully'));
@@ -121,7 +114,7 @@ class RaisController extends Controller
 
     protected function destroy($id)
     {
-        $rais = Rais::where('id' , $id)->first();
+        $rais = Rais::where('id', $id)->first();
         $this->delete($rais);
         session()->flash('success', __('site.deleted_successfully'));
         return response(__('site.deleted_successfully'));

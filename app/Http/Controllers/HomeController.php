@@ -35,7 +35,7 @@ class HomeController extends Controller
         $connects = Connect::with('data')->take(1)->get();
         $advisor = Advisor::with('data')->take(4)->get();
         $advisor_first = Advisor::with('data')->skip(1)->take(4)->first();
-        $rais = Rais::get();
+        $rais = Rais::with('data')->get();
         $blogs = Blog::with('data')->get();
         return view('frontend.index' , compact('sliders' , 'about_us' , 'abouts' , 'services' , 'counters' , 'connects' , 'advisor' , 'advisor_first' , 'rais' , 'blogs' ));
     } //end of index
