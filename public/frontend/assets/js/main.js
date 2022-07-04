@@ -93,6 +93,7 @@
 /**
    * Hero carousel indicators
    */
+  /*
  let heroCarouselIndicators = select("#hero-carousel-indicators")
  let heroCarouselItems = select('#heroCarousel .carousel-item', true)
 
@@ -101,7 +102,53 @@
    heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
      heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
  });
+*/
+jQuery(document).ready(function ($) {
 
+    $('#checkbox').change(function(){
+      setInterval(function () {
+          moveRight();
+      }, 3000);
+    });
+
+      var slideCount = $('#slider ul li').length;
+      var slideWidth = $('#slider ul li').width();
+      var slideHeight = $('#slider ul li').height();
+      var sliderUlWidth = slideCount * slideWidth;
+
+      $('#slider').css({ width: slideWidth, height: slideHeight });
+
+      $('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+
+      $('#slider ul li:last-child').prependTo('#slider ul');
+
+      function moveLeft() {
+          $('#slider ul').animate({
+              left: + slideWidth
+          }, 200, function () {
+              $('#slider ul li:last-child').prependTo('#slider ul');
+              $('#slider ul').css('left', '');
+          });
+      };
+
+      function moveRight() {
+          $('#slider ul').animate({
+              left: - slideWidth
+          }, 200, function () {
+              $('#slider ul li:first-child').appendTo('#slider ul');
+              $('#slider ul').css('left', '');
+          });
+      };
+
+      $('a.control_prev').click(function () {
+          moveLeft();
+      });
+
+      $('a.control_next').click(function () {
+          moveRight();
+      });
+
+  });
   /**
    * Back to top button
    */
@@ -287,4 +334,54 @@
    */
 
 
-})();
+// Get the modal ask question
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var Mybtn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+Mybtn.onclick = () => {
+ modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+/*projects filter */
+$(document).ready(function() {
+    function hide_nav() {
+        $('#nav').addClass('d-sm-block');
+        $('#nav').addClass('d-none');
+        $('#nav').removeClass('col-9 px-4');
+    }
+    $("#toggle").click(function() {
+        $('#nav').removeClass('d-sm-block');
+        $('#nav').removeClass('d-none');
+        $('#nav').addClass('col-9 px-4');
+    });
+    $('#info').click(function() {
+        hide_nav();
+    });
+    $('#myTab li button').click(function(e) {
+        hide_nav();
+    });
+
+});
+
+
+ })();
+
+
+

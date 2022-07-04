@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use anlutro\LaravelSettings\Facades\Setting;
+// use anlutro\LaravelSettings\Facades\Setting;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Setting;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
@@ -14,14 +15,14 @@ class ContactController extends Controller
     protected function index()
     {
 
-        $setting = Setting::all();
+        // $setting = Setting::first();
+        // dd($setting);
 
-        return view('frontend.contact', compact('setting'));
+        return view('frontend.contact');
     }
 
     protected function store(Request $request)
     {
-        // dd($request->all());
 
         $request->validate([
 
@@ -38,9 +39,8 @@ class ContactController extends Controller
             'subject'  => $request->subject,
             'message'  => $request->message,
         ]);
-
+        // dd($contact);
         Session()->flash('success', 'site.added_successfully');
-
-        return redirect()->route('contacts.index');
+        return redirect()->back();
     }
 }

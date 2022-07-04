@@ -31,20 +31,15 @@ class EmailSubscribeController extends Controller
         return DataTables::of($email)
             ->addColumn('record_select', 'admin.services.data_table.record_select')
             ->addColumn('email', function($email){
-               
-                return $email;
-            })
-            // ->addColumn('description', function($email){
-               
-            //     return $email->data->isNotEmpty()? $email->data->first()->description : '';
-            // })
-             
-            ->editColumn('created_at', function (EmailSubscribe $email) {
+
+                return $email->email;
+
+            })->editColumn('created_at', function (EmailSubscribe $email) {
                 return $email->created_at->format('Y-m-d');
             })
             ->addColumn('actions', 'admin.email_subscribe.data_table.actions')
             ->rawColumns(['record_select', 'actions', 'email' ])
             ->toJson();
     } // end of data
-   
+
 }//end of controller

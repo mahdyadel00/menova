@@ -13,7 +13,9 @@
   --color-secondary-light:#8f8bfc;
   --color-sec: #f6f9ff;
 }
-
+sub-color{
+    color:var(--color-secondary);
+}
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -183,9 +185,34 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
   color: #fff;
 }
 /* end join now button*/
-.btn-secondary{
+.btn-sub{
+    text-transform: capitalize;
+    font-size: 16px;
+    letter-spacing: 2.5px;
+    color: #fff;
     background-color: var(--color-secondary);
+    padding: 10px 15px;
+    border:none;
 }
+.btn-sub:hover {
+    background-image: linear-gradient(to left, var(--color-primary), var(--color-secondary));
+    color: #fff;
+
+}
+.btn-sub2{
+    text-transform: capitalize;
+    font-size: 16px;
+    letter-spacing: 2.5px;
+    padding: 10px 15px;
+    color:var(--color-secondary);
+    background-color:#ffffff;
+    border-color: var(--color-secondary);
+}
+.btn-sub2:hover{
+    color:#fff;
+    background-color:var(--color-secondary);
+}
+
 /*----------------------------------------------------------------------------*/
 /* section style*/
 .sec-bg{
@@ -296,7 +323,7 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
 .navbar li {
   position: relative;
 }
-.navbar a, .navbar a:focus {
+.navbar a , .navbar a:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -337,13 +364,18 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
   padding: 10px 20px;
   font-size: 14px;
   text-transform: none;
-  color: #000000;
+  color: var(--color-secondary);
 }
-.navbar .dropdown ul a i {
-  font-size: 12px;
-}
-.navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
+
+.navbar .dropdown ul a:hover,
+.navbar .dropdown ul a:focus,
+ .navbar .dropdown ul .active:hover,
+ .navbar .dropdown ul li:hover > a {
   color:var(--color-primary);
+}
+.dropdown-item:active{
+    background-color: #f5f5f5;
+    color: var(--color-primary);
 }
 .navbar .dropdown:hover > ul {
   opacity: 1;
@@ -355,6 +387,7 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
   left: calc(100% - 30px);
   visibility: hidden;
 }
+
 .navbar .dropdown .dropdown:hover > ul {
   opacity: 1;
   top: 0;
@@ -496,6 +529,7 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+/*
 #hero {
   width: 100%;
   height: 100vh;
@@ -1014,7 +1048,6 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
     max-width: 100%;
   }
 }
-
 /*end count.................*/
 /*--------------------------------------------------------------
 #connect
@@ -1073,7 +1106,7 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
        list-style: none;
        padding: 0 0 10px 0;
        margin: 0;
-       font-size: 20px;
+       font-size: 16px;
 
      }
      .breadcrumbs-connect ol a {
@@ -1099,21 +1132,9 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
      start connect inner page
      ----------------------------------------------------------------*/
     .connect-inner{
-
        background-size: cover;
        background-repeat: no-repeat;
-       position: relative;
-       z-index: -50;
-     }
-     .connect-inner::before{
-       content: "";
-       position: absolute;
-       left: 0;
-       right: 0;
-       top: 0;
-       bottom: 0;
-       background: #0000002c;
-       z-index: -5 ;
+
      }
 
      .connect-inner-area{
@@ -1211,7 +1232,7 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
      }
      .connect-inner .connect-inner-form button[type=submit]:hover {
        background:#fff ;
-       color: #5969f3;
+       color: #6370e4;
 
      }
      @-webkit-keyframes animate-loading {
@@ -1236,89 +1257,91 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
     /*--------------------------------------------------------------
 #start  projects  inner page
 --------------------------------------------------------------*/
-.team {
+.projects {
     background: #fff;
   }
-  .team .member {
+  .project .project-box {
     overflow: hidden;
     text-align: center;
     border-radius: 5px;
     background: #fff;
     box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
     transition: 0.3s;
+    margin-bottom:50px;
   }
-  .team .member .member-img {
+  .projects .project-box .project-img {
     position: relative;
     overflow: hidden;
   }
-  .team .member .member-img:after {
+  .projects .project-box .project-img:after {
     position: absolute;
     content: "";
     left: 0;
     bottom: 0;
     height: 100%;
     width: 100%;
-    background: url(../img/team-shape.svg) no-repeat center bottom;
+    background: url(../img/projects/shape.svg) no-repeat center bottom;
     background-size: contain;
     z-index: 1;
   }
-  .team .member .social {
-    position: absolute;
-    right: -100%;
-    top: 30px;
-    opacity: 0;
-    border-radius: 4px;
-    transition: 0.5s;
-    background: rgba(255, 255, 255, 0.3);
-    z-index: 2;
-  }
-  .team .member .social a {
+  .projects .project-box .social a {
     transition: color 0.3s;
-    color: rgba(1, 41, 112, 0.5);
-    margin: 15px 12px;
+    margin: 10px 12px;
     display: block;
     line-height: 0;
     text-align: center;
+    color:var(--color-secondary);
+    text-transform: capitalize;
+    font-size: 16px;
+
   }
-  .team .member .social a:hover {
-    color: rgba(1, 41, 112, 0.8);
+  .projects  .project-box .social a:hover {
+    color:var(--color-primary);
+
   }
-  .team .member .social i {
-    font-size: 18px;
+  .projects .project-box  .social i {
+    font-size: 20px;
+    padding-right: 5px;
   }
-  .team .member .member-info {
-    padding: 10px 15px 20px 15px;
+  .projects .project-box  .project-info {
+    padding: 10px 15px 0px 15px;
   }
-  .team .member .member-info h4 {
+  .projects .project-box  .project-info h4 {
     font-weight: 700;
     margin-bottom: 5px;
     font-size: 20px;
     color: #012970;
   }
-  .team .member .member-info span {
+  .projects .project-box .project-info span {
     display: block;
     font-size: 14px;
     font-weight: 400;
     color: #aaaaaa;
   }
-  .team .member .member-info p {
+  .projects .project-box  .project-info p {
     font-style: italic;
     font-size: 14px;
     padding-top: 15px;
     line-height: 26px;
     color: #5e5e5e;
   }
-  .team .member:hover {
-    transform: scale(1.08);
+  .projects .project-box:hover {
+    transform: scale(1.04);
     box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
   }
-  .team .member:hover .social {
+  .projects .project-box:hover .social {
     right: 8px;
     opacity: 1;
   }
  /*--------------------------------------------------------------
 # end  projects inner page
 --------------------------------------------------------------*/
+/*--------------------------------------------------
+MY PROJECTS add
+--------------------------------------*/
+
+
+/*end my projects */
 /*--------------------------------------------------------------
 # Recent Blog Posts
 --------------------------------------------------------------*/
@@ -1793,271 +1816,24 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
   /*-----------------------------------------------------
   start discuss
   ---------------------------------*/
-  .discuss {
-    padding: 40px 0 20px 0;
-  }
+  .discuss .card-body a{
+    color:var(--color-primary);
+    }
+    .discuss .card-body{
+        box-shadow: 2px 1px 0px 1px rgb(87 87 87 / 28%);
+    }
 
-  .discuss-heading {
-    margin:30px 0;
-    padding:15px 40px;
-    font-size: 22px;
-    font-weight: 700;
-    color:rgb(255, 255, 255);
-    background-color: var(--color-secondary);
-    text-transform: capitalize;
-    opacity:0.9;
-    transition:  ease-in 0.3s;
-    cursor: pointer;
-  }
-  .discuss-heading i{
-    font-size: 30px;
-    padding:0 10px;
-  }
-  .discuss-heading:hover ,
-  .discuss-heading:focus ,
-  .discuss-heading:active{
-    transform: scale(1.5);
-    color:#fff;
-    text-transform: uppercase;
-    opacity:1;
+    .side-bar a{
+        font-size: 16px;
+        color:var(--color-secondary);
+    }
+    .side-bar a:hover{
+        color:var(--color-primary);
+    }
+    .side-bar span{
+       background-color: var(--color-secondary);
+    }
 
-  }
-  .entries{
-    padding:50px 0;
-
-  }
-  .discuss  .ask-box  {
-    padding: 25px;
-    margin-bottom:20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    background-color:#ffffff;
-  }
-  .asker-profile{
-    display: flex;
-    margin-bottom: 20px;
-
-  }
-  .discuss .ask-box .ask-img{
-    width: 80px;
-    max-height: 80px;
-    margin:10px;
-    padding:0;
-  }
-  .discuss .entry .question {
-    font-size: 16px;
-    line-height: 24px;
-    font-weight:500;
-    padding: 0;
-    margin: 10px 0 20px 0;
-    color:rgb(5, 5, 5);
-  }
-  .discuss .asker-profile{
-    display:flex;
-    flex-direction: column;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  }
-  .profile-det{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .comments-count{
-    font-size: 14;
-    padding:20px 0;
-  }
-  .comment-icon{
-    padding:15px 40px;
-    font-size: 18px;
-    font-weight: 700;
-    color:var(--color-secondary);
-    text-transform: capitalize;
-
-    transition:  ease-in 0.3s;
-    cursor: pointer;
-  }
-
-  .comment-icon i{
-    font-size: 26px;
-    padding-right: 10px;
-   }
-  .discuss .comment-icon :hover ,
-  .discuss .comment-icon:focus ,
-  .discuss .comment-icon:active{
-     color:var(--color-secondary);
-   }
-
-   .discuss .comment-details{
-     align-items: center;
-   }
-   .discuss  .profile-img{
-     width:60px;
-     height: 60px;
-     border-radius: 50%;
-   }
-   .discuss  .profile-name{
-     font-size: 16px;
-     font-weight:500;
-     color:#000;
-     padding-left: 15px;
-
-   }
-   .discuss .comment-text{
-     padding:20px 40px;
-   }
-   .discuss  .reply-form {
-    margin-top: 30px;
-    padding: 30px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  }
-
-  .discuss .reply-form textarea {
-    max-width: 50%;
-    border-radius: 4px;
-    padding: 10px 10px;
-    font-size: 14px;
-  }
-  .discuss  .reply-form textarea:focus {
-    box-shadow: none;
-    border-color: #a0aaf8;
-  }
-  .discuss .reply-form .btn-post-comment {
-    border-radius: 4px;
-    padding: 10px 20px;
-    border: 0;
-    color:#fff;
-    background-color:var(--color-secondary);
-    margin-top: 30px;
-  }
-  .discuss .reply-form .btn-post-comment:hover {
-    background-color:var(--color-secondary);
-  }
-  /* start side bar*/
-  .discuss .sidebar {
-    padding: 30px;
-    margin: 0 0 60px 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  }
-  .discuss .sidebar .sidebar-title {
-    font-size: 20px;
-    font-weight: 700;
-    padding: 0 0 0 0;
-    margin: 0 0 15px 0;
-    color: #012970;
-    position: relative;
-  }
-  .discuss.sidebar .sidebar-item {
-    margin-bottom: 30px;
-  }
-  .discuss .sidebar .search-form form {
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 3px 10px;
-    position: relative;
-  }
-  .discuss .sidebar .search-form form input[type=text] {
-    border: 0;
-    padding: 4px;
-    border-radius: 4px;
-    width: calc(100% - 40px);
-  }
-  .discuss .sidebar .search-form form button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    border: 0;
-    background: none;
-    font-size: 16px;
-    padding: 0 15px;
-    margin: -1px;
-    background: #4154f1;
-    color: #fff;
-    transition: 0.3s;
-    border-radius: 0 4px 4px 0;
-    line-height: 0;
-  }
-  .discuss .sidebar .search-form form button i {
-    line-height: 0;
-  }
-  .discuss .sidebar .search-form form button:hover {
-    background: #5465f2;
-  }
-  .discuss .sidebar .categories ul {
-    list-style: none;
-    padding: 0;
-  }
-  .discuss .sidebar .categories ul li + li {
-    padding-top: 10px;
-  }
-  .discuss .sidebar .categories ul a {
-    color: #012970;
-    transition: 0.3s;
-  }
-  .discuss .sidebar .categories ul a:hover {
-    color: #4154f1;
-  }
-  .discuss .sidebar .categories ul a span {
-    padding-left: 5px;
-    color: #aaaaaa;
-    font-size: 14px;
-  }
-  .discuss .sidebar .recent-posts .post-item + .post-item {
-    margin-top: 15px;
-  }
-  .discuss .sidebar .recent-posts img {
-    width: 80px;
-    float: left;
-  }
-  .discuss .sidebar .recent-posts h4 {
-    font-size: 15px;
-    margin-left: 95px;
-    font-weight: bold;
-  }
-  .discuss .sidebar .recent-posts h4 a {
-    color: #012970;
-    transition: 0.3s;
-  }
-  .discuss .sidebar .recent-posts h4 a:hover {
-    color: #4154f1;
-  }
-  .discuss .sidebar .recent-posts time {
-    display: block;
-    margin-left: 95px;
-    font-style: italic;
-    font-size: 14px;
-    color: #aaaaaa;
-  }
-  .discuss .sidebar .tags {
-    margin-bottom: -10px;
-  }
-  .discuss .sidebar .tags ul {
-    list-style: none;
-    padding: 0;
-  }
-  .discuss .sidebar .tags ul li {
-    display: inline-block;
-  }
-  .discuss .sidebar .tags ul a {
-    color: #0257ee;
-    font-size: 14px;
-    padding: 6px 14px;
-    margin: 0 6px 8px 0;
-    border: 1px solid #d7e6ff;
-    display: inline-block;
-    transition: 0.3s;
-  }
-  .discuss .sidebar .tags ul a:hover {
-    color: #fff;
-    border: 1px solid #4154f1;
-    background: #4154f1;
-  }
-  .discuss .sidebar .tags ul a span {
-    padding-left: 5px;
-    color: #a5c5fe;
-    font-size: 14px;
-  }
 /*-----------------------------------------------------
   end discuss
   ---------------------------------*/
@@ -2065,7 +1841,9 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
   .discuss-single .card{
    box-shadow: -4px 3px 7px 3px rgba(87, 87, 87, 0.55);
   }
-
+  .discuss-single .card-body a{
+    color:var(--color-primary);
+    }
   /*--------------------------------------------------------------
 # start raise
 --------------------------------------------------------------*/
@@ -2818,7 +2596,7 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
     width: 40%;
   }
 
-  .team-content.text-center > h4 {
+  .projects-content.text-center > h4 {
     font-size: 20px;
   }
 
@@ -2981,7 +2759,7 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
     display: none;
   }
 
-  .single-team-member {
+  .single-projects-project  {
     margin-bottom: 30px;
   }
 
@@ -3024,7 +2802,7 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
     margin-top: 30px;
   }
 
-  .head-team h5 {
+  .head-projects h5 {
     font-size: 22px;
   }
 
@@ -3091,7 +2869,118 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
     padding: 0;
   }
 }
+*/
+/* -------------------------- */
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    position:relative;
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top:10px;
+    right:10px;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.m-left{
+    margin-left: 20px;
+}
 
 
+#slider {
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto 0 auto;
+    border-radius: 4px;
+   
+  }
 
+  #slider ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 200px;
+    list-style: none;
+  }
 
+  #slider ul li {
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 500px;
+    height: 300px;
+    background: #ccc;
+    text-align: center;
+    line-height: 300px;
+  }
+
+  a.control_prev, a.control_next {
+    position: absolute;
+    top: 40%;
+    z-index: 999;
+    display: block;
+    padding: 4% 3%;
+    width: auto;
+    height: auto;
+    background: #2a2a2a;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  a.control_prev:hover, a.control_next:hover {
+    opacity: 1;
+    -webkit-transition: all 0.2s ease;
+    transition:all 0.2s ease;
+  }
+
+  a.control_prev {
+    border-radius: 0 2px 2px 0;
+  }
+
+  a.control_next {
+    right: 0;
+    border-radius: 2px 0 0 2px;
+  }
+
+  .slider_option {
+    position: relative;
+    margin: 10px auto;
+    width: 160px;
+    font-size: 18px;
+  }

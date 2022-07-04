@@ -10,35 +10,10 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
-class AboutUs extends Model
+class Setting extends Model
 {
-    use HasFactory, UploadImage;
-    // public $translatedAttributes = ['title', 'description' , 'about_title', 'about_description'];
+    use HasFactory;
     protected $guarded = [];
-    protected $appends = ['image_path'];
-
-
-    #-------------------------------- Attributes -----------------------------------#
-    public function getImagePathAttribute()
-    {
-        if ($this->image) {
-            return Storage::url($this->getStorageImagePath() . '/settings/' . $this->image);
-        }
-
-        return null;
-    } // end of getImagePathAttribute
-
-    public function getImageAttribute($value)
-	{
-		if(\request()->is('api/*')){
-			return url( $value);
-		}
-		return $value;
-	}
-
-        public function getImageNameEncoded(){
-            return dirname($this->image).'/'.rawurlencode(basename($this->image));
-        }
 
 
 }

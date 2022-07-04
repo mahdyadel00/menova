@@ -8,7 +8,8 @@
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
           </div>
           <div class="col-lg-6">
-            <form action="" method="post">
+            <form action="{{ route('email_sub.store') }}" method="post">
+                @csrf
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
           </div>
@@ -25,10 +26,10 @@
             </a>
             <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="{{ setting('twitter') }}" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="{{ setting('facebook') }}" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="{{ setting('instagram') }}" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="{{ setting('linkedin') }}" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
           </div>
 
@@ -57,15 +58,15 @@
           <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
             <h4>Contact Us</h4>
             <div class="contact-info">
-              <p><i class="ri-map-pin-line"></i>A108 Adam Street<br>New York, NY 535022</p>
+              <p><i class="ri-map-pin-line"></i>{{ setting('address1_en') }}<br>{{ setting('address2_en') }}</p>
             </div>
 
             <div class="contact-info">
-              <p><i class="ri-mail-send-line"></i> info@example.com</p>
+              <p><i class="ri-mail-send-line"></i> {{ setting('email') }}</p>
             </div>
 
             <div class="contact-info">
-              <p><i class="ri-phone-line"></i> +1 5589 55488 55s</p>
+              <p><i class="ri-phone-line"></i> {{ setting('phone1') }}</p>
             </div>
           </div>
         </div>

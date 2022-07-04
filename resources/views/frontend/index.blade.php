@@ -239,7 +239,8 @@ Menovahub - Home
                 @foreach($rais as $rais)
                 <div class="col-md-6  col-xs-12">
                     <div class="sec-textbox">
-                        <h4 class="sec-head">{{ $rais->name }}</h4>
+
+                        <h4 class="sec-head">{{ $rais->data->isNotEmpty() ? $rais->data->first()->name : '' }}</h4>
                         <p class="sec-text">{{ $rais->describe  }} </p>
                     </div>
 

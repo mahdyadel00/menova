@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AdvisorController;
 use App\Http\Controllers\Admin\EmailSubscribeController;
 use App\Http\Controllers\Admin\RaisController;
 use App\Http\Controllers\Admin\ForFundController;
+use App\Http\Controllers\Admin\ConnectFounderController;
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
@@ -176,9 +177,11 @@ Route::group([
 
         Route::get('for_fund' , [ForFundController::class , 'index'])->name('for_fund.index');
         Route::get('for_fund/data' , [ForFundController::class , 'data'])->name('for_fund.data');
-        // Route::delete('rais/bulk_delete' , [RaisController::class , 'bulkDelete'])->name('rais.bulk_delete');
-        // Route::resource('rais', 'RaisController');
-        // Route::post('rais/store' , [RaisController::class , 'store'])->name('rais.store');
+
+        //---------------------------------------------**  For Fund Route  **--------------------------------------------------------------------------------
+
+        Route::get('connect/for_fund' , [ConnectFounderController::class , 'index'])->name('connect_for_fund.index');
+        Route::get('connect/connect_for_fund/data' , [ConnectFounderController::class , 'data'])->name('connect_for_fund.data');
 
 
     });

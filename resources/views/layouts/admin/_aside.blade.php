@@ -64,6 +64,8 @@
             <li><a class="app-menu__item {{ request()->is('*rais*') ? 'active' : '' }}" href="{{ route('admin.rais.index') }}"><i class="app-menu__icon fas fa-envelope-open-text"></i><span class="app-menu__label">@lang('rais.rais')</span></a></li>
         {{--For Fund--}}
             <li><a class="app-menu__item {{ request()->is('*for_fund*') ? 'active' : '' }}" href="{{ route('admin.for_fund.index') }}"><i class="app-menu__icon fas fa-envelope-open-text"></i><span class="app-menu__label">@lang('for_fund.for_fund')</span></a></li>
+        {{--Connect For Fund--}}
+            <li><a class="app-menu__item {{ request()->is('*connect_for_fund*') ? 'active' : '' }}" href="{{ route('admin.connect_for_fund.index') }}"><i class="app-menu__icon fas fa-envelope-open-text"></i><span class="app-menu__label">@lang('connect_for_fund.connect_for_fund')</span></a></li>
 
 
         {{--projects--}}

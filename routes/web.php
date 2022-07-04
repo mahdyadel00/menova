@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\ServicesController;
 use App\Http\Controllers\Frontend\ConnectController;
 use App\Http\Controllers\Frontend\RaisController;
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\EmailSubscribeController;
 Route::prefix(LaravelLocalization::setLocale())
     ->middleware([
         'localeSessionRedirect',
@@ -31,6 +32,7 @@ Route::prefix(LaravelLocalization::setLocale())
             Route::get('/blogs/{id}', [BlogController::class , 'show'])->name('blogs.show');
             Route::get('/user/profile', [BlogController::class , 'index'])->name('profile.index');
             Route::post('/rais/create', [RaisController::class , 'store'])->name('rais.store');
+            Route::post('/email_sub/create', [EmailSubscribeController::class , 'store'])->name('email_sub.store');
 
 
             Route::get('/discuss', function () {
