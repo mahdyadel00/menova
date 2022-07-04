@@ -33,19 +33,20 @@
   <div class="row">
 
     <div class="col-lg-6">
-      <img src="assets/img/features.png" class="img-fluid" alt="">
+        {{--  @dd($about_us)  --}}
+      <img src="{{ asset($about_us->image_path) }}" class="img-fluid" alt="">
     </div>
 
     <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
       <div class="row align-self-center gy-4">
-      
+
         <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
           <div class="feature-box d-flex align-items-center">
             <i class="bi bi-check"></i>
             <h3>{{ $about_us->data->isNotEmpty() ? $about_us->data->first()->title : '' }}</h3>
           </div>
       </div>
-   
+
       </div>
     </div>
 
@@ -107,7 +108,7 @@
     </div>
 
     <div class="col-lg-6">
-      <img src="assets/img/features-2.png" class="img-fluid" alt="">
+      <img src="{{ asset('frontend') }}/assets/img/features-2.png" class="img-fluid" alt="">
     </div>
 
   </div><!-- End Feature Tabs -->
@@ -156,14 +157,11 @@
 
   <div class="clients-slider swiper">
     <div class="swiper-wrapper align-items-center">
-      <div class="swiper-slide"><img src="assets/img/clients/client-1.png" class="img-fluid" alt=""></div>
-      <div class="swiper-slide"><img src="assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
-      <div class="swiper-slide"><img src="assets/img/clients/client-3.png" class="img-fluid" alt=""></div>
-      <div class="swiper-slide"><img src="assets/img/clients/client-4.png" class="img-fluid" alt=""></div>
-      <div class="swiper-slide"><img src="assets/img/clients/client-5.png" class="img-fluid" alt=""></div>
-      <div class="swiper-slide"><img src="assets/img/clients/client-6.png" class="img-fluid" alt=""></div>
-      <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
-      <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
+        @foreach ($our_clients as $o_client)
+
+        <div class="swiper-slide"><img src="{{ asset($o_client->image_path) }}" class="img-fluid" alt=""></div>
+        @endforeach
+
     </div>
     <div class="swiper-pagination"></div>
   </div>

@@ -31,7 +31,7 @@
   }
 
   /**
-   * Easy on scroll event listener 
+   * Easy on scroll event listener
    */
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
@@ -90,6 +90,17 @@
     window.addEventListener('load', headerScrolled)
     onscroll(document, headerScrolled)
   }
+/**
+   * Hero carousel indicators
+   */
+ let heroCarouselIndicators = select("#hero-carousel-indicators")
+ let heroCarouselItems = select('#heroCarousel .carousel-item', true)
+
+ heroCarouselItems.forEach((item, index) => {
+   (index === 0) ?
+   heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
+     heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
+ });
 
   /**
    * Back to top button
@@ -221,7 +232,7 @@
   });
 
   /**
-   * Initiate portfolio lightbox 
+   * Initiate portfolio lightbox
    */
   const portfolioLightbox = GLightbox({
     selector: '.portfokio-lightbox'
@@ -270,20 +281,10 @@
       }
     }
   });
-
+  AOS.init();
   /**
    * Animation on scroll
    */
-  function aos_init() {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: true,
-      mirror: false
-    });
-  }
-  window.addEventListener('load', () => {
-    aos_init();
-  });
+
 
 })();

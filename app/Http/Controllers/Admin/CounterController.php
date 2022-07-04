@@ -30,36 +30,37 @@ class CounterController extends Controller
 
     protected function data()
     {
-        $counters = Counter::orderBy('id' , 'desc')->get();
+        $counters = Counter::orderBy('id', 'desc')->get();
 
         return DataTables::of($counters)
             ->addColumn('record_select', 'admin.counters.data_table.record_select')
-            ->addColumn('title', function($counters){
-               
-                return $counters->data->isNotEmpty()? $counters->data->first()->title : '';
-            })
-            ->addColumn('description', function($counters){
-               
-                return $counters->data->isNotEmpty()? $counters->data->first()->description : '';
-            })
-                ->addColumn('image', function ($counters) {
-                   
-                    $url = asset(rawurlencode($counters->image));
-                    return '<img src=' . $counters->image_path . ' border="0" style=" width: 80px; height: 80px;" class="img-responsive img-rounded" align="center" />';
-                })
-                ->editColumn('published', function ($counters) {
-                    if ($counters->published == '0') {
+            ->addColumn('title', function ($counters) {
 
-                        return `<div class="badge badge-warning">` . __('counters.not_published') . `</div>`;
-                    } else {
-                        return `<div class="badge badge-info">` . __('Published') . `</div>`;
-                    }
-                })
+                return $counters->data->isNotEmpty() ? $counters->data->first()->title : '';
+            })
+            ->addColumn('description', function ($counters) {
+
+                return $counters->data->isNotEmpty() ? $counters->data->first()->description : '';
+            })->editColumn('icon', function ($counters) {
+
+                return `<div class="badge badge-info"><i class = ` . $counters->icon . `></i></div>`;
+
+            })->editColumn('published', function ($counters) {
+                if ($counters->published == '0') {
+
+                    return `<div class="badge badge-warning">` . __('counters.not_published') . `</div>`;
+                } else {
+                    return `<div class="badge badge-info">` . __('Published') . `</div>`;
+                }
+            })->editColumn('counter', function ($counters) {
+
+                return $counters->counter;
+            })
             ->editColumn('created_at', function (Counter $counters) {
                 return $counters->created_at->format('Y-m-d');
             })
             ->addColumn('actions', 'admin.counters.data_table.actions')
-            ->rawColumns(['record_select', 'actions', 'title' , 'description' , 'image'])
+            ->rawColumns(['record_select', 'actions', 'title', 'description', 'image'])
             ->toJson();
     } // end of data
 
@@ -77,18 +78,20 @@ class CounterController extends Controller
                 'description' => $request->input($locale . '_description'),
             ];
         }
-     
-        if($request->published == 'on'){
 
-            $data['published'] = '1' ;
+        if ($request->published == 'on') {
 
-        }else{
-            $data['published'] = '0' ;
+            $data['published'] = '1';
+        } else {
+            $data['published'] = '0';
         }
+        if ($request->counter) {
 
+            $data['counter']   = $request['counter'];
+        }
+        if ($request->icon) {
 
-        if ($request->image) {
-            $data['image'] = $this->uploadImage($request->image, 'counters');
+            $data['icon']   = $request['icon'];
         }
 
         Counter::create($data);
@@ -97,15 +100,15 @@ class CounterController extends Controller
         return redirect()->route('admin.counters.index');
     } // end of store
 
-    protected function edit( $id)
+    protected function edit($id)
     {
         $counter = Counter::findOrFail($id);
-            return view('admin.counters.edit', compact('counter'));
+        return view('admin.counters.edit', compact('counter'));
     } // end of edit
 
-    protected function update(CountersRequest $request,$id)
+    protected function update(CountersRequest $request, $id)
     {
-        $counters = Counter::where('id' , $id)->first();
+        $counters = Counter::where('id', $id)->first();
         $data = [];
         foreach (config('translatable.locales') as $locale) {
             $data[$locale] = [
@@ -113,14 +116,10 @@ class CounterController extends Controller
                 'description' => $request->input($locale . '_description'),
             ];
         }
-            $data['published'] = $request->published ?? 0 ;
+        $data['published'] = $request->published ?? 0;
+        $data['counter'] = $request->counter;
+        $data['icon'] = $request->icon;
 
-        if ($request->image) {
-            if ($counters->image) {
-                $this->deleteImage($counters->image, 'counters');
-            }
-            $data['image'] = $this->uploadImage($request->image, 'counters');
-        }
         $counters->update($data);
 
         session()->flash('success', __('site.updated_successfully'));
@@ -129,8 +128,8 @@ class CounterController extends Controller
 
     protected function destroy($id)
     {
-        $counters = Counter::where('id' , $id)->first();
-        
+        $counters = Counter::where('id', $id)->first();
+
         $counters->delete();
         session()->flash('success', __('site.deleted_successfully'));
         return response(__('site.deleted_successfully'));
@@ -139,17 +138,17 @@ class CounterController extends Controller
     protected function bulkDelete()
     {
         foreach (json_decode(request()->record_ids) as $recordId) {
-            $counters = Counter::FindOrFail($recordId);
-            $this->delete($counters);
+            $counter = Counter::FindOrFail($recordId);
+            $this->delete($counter);
         } //end of for each
 
         session()->flash('success', __('site.deleted_successfully'));
         return response(__('site.deleted_successfully'));
     } // end of bulkDelete
 
-    private function delete(Request $request , $id)
+    private function delete(Request $request, $id)
     {
-        $counters = Counter::where('id' , $id)->first();
+        $counters = Counter::where('id', $id)->first();
         if ($counters->image) {
             $this->deleteImage($counters->image, 'counters$counters');
         }

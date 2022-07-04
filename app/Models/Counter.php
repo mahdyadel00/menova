@@ -17,7 +17,7 @@ class Counter extends Model implements TranslatableContract
     use HasFactory, Translatable, UploadImage;
 
     public $translatedAttributes = ['name', 'description'];
-    protected $fillable = ['published', 'image'];
+    protected $fillable = ['published', 'icon' , 'counter'];
     protected $appends = ['image_path'];
 
 
@@ -28,10 +28,10 @@ class Counter extends Model implements TranslatableContract
          if ($this->image) {
              return Storage::url($this->getStorageImagePath() . '/counters/' . $this->image);
          }
- 
+
          return null;
      } // end of getImagePathAttribute
- 
+
      public function getImageAttribute($value)
      {
          if(\request()->is('api/*')){
@@ -39,13 +39,13 @@ class Counter extends Model implements TranslatableContract
          }
          return $value;
      }
- 
+
          public function getImageNameEncoded(){
              return dirname($this->image).'/'.rawurlencode(basename($this->image));
          }
- 
+
      public function data(){
- 
+
          return $this->hasMany(CounterTranslation::class , 'counter_id' , 'id');
      }
 }

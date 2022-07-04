@@ -12,6 +12,7 @@ use App\Models\Connect;
 use App\Models\Advisor;
 use App\Models\Rais;
 use App\Models\Contact;
+use App\Models\OurClient;
 use App\Providers\AppServiceProvider;
 
 class HomeController extends Controller

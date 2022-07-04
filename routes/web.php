@@ -21,6 +21,7 @@ Route::prefix(LaravelLocalization::setLocale())
         Route::middleware('guest')->group(function () {
             Route::get('/', 'HomeController@index')->name('home');
             Route::get('/contacts', [ContactController::class , 'index'])->name('contacts.index');
+            Route::post('/contacts/create', [ContactController::class , 'store'])->name('contacts.store');
             Route::get('/about_us', [AboutUsController::class , 'index'])->name('about_us.index');
             Route::get('/services', [ServicesController::class , 'index'])->name('services.index');
             Route::get('/connects', [ConnectController::class , 'index'])->name('connect.index');

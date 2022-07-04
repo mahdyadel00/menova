@@ -8,18 +8,21 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-  
+
     protected function index(){
 
-        $blogs = Blog::paginate(3);
-        
+        $blogs = Blog::with('user')->paginate(3);
+
         return view('frontend.blogs.blog' , compact('blogs'));
     }
-  
+
     protected function show($id){
 
-        $blog = Blog::findOrFail($id);
-        
+        $blog = Blog::with([
+            'user',
+            'data',
+        ])->findOrFail($id);
+
         return view('frontend.blogs.blog-single' , compact('blog'));
     }
 }

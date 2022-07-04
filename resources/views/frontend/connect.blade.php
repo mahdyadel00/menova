@@ -41,7 +41,7 @@
           <p></p>
         </div>
         @endforeach
-      
+
         </div>
 
         <div class="col-lg-6">
@@ -56,7 +56,7 @@
               <div class="col-md-12 ">
                 <input type="email" class="form-control" name="email" placeholder="Your Email" required>
               </div>
-<!-- 
+<!--
               <div class="col-md-12">
                 <textarea class="form-control" name="stage_of_busniess" rows="3" placeholder=" stage of business " required></textarea>
               </div> -->
@@ -64,7 +64,7 @@
               <div class="col-md-12">
                 <textarea class="form-control" name="describe " rows="3" placeholder="skills can help you " required></textarea>
               </div>
-<!-- 
+<!--
               <div class="col-md-12">
                 <textarea class="form-control" name="Briefly Describe Your Idea / Startup" rows="3" placeholder="Describe" required></textarea>
               </div> -->

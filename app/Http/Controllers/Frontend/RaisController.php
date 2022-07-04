@@ -10,14 +10,16 @@ use Illuminate\Http\Request;
 class RaisController extends Controller
 {
 
-    protected function index(){
+    protected function index()
+    {
 
         $rais = Rais::get();
 
-        return view('frontend.raise' , compact('rais'));
+        return view('frontend.raise', compact('rais'));
     }
 
-    protected function store(Request $request){
+    protected function store(Request $request)
+    {
 
         $for_fund = ForFund::query()->create([
             'name' => $request->name,
@@ -29,5 +31,6 @@ class RaisController extends Controller
 
 
         session()->flash('success', __('site.added_successfully'));
-        return redirect()->back();    }
+        return redirect()->back();
+    }
 }

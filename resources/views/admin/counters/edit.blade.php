@@ -63,24 +63,27 @@
                         @endforeach
 
                     </div> <!-- end of tab-content-->
-                
 
-                    {{--Image--}}
-                    <div class="form-group">
-                        @php
-                            $input = 'image';
-                        @endphp
-                        <label>@lang('counters.'.$input)</label>
-                        <input type="file" name="{{$input}}" class="form-control load-image">
-                        <img src="{{ $counter->image_path }}" class="loaded-image" alt="" style="width: 100px; margin: 10px 0;">
-                        @error($input) <div class="text-danger">{{$message}}</div>@enderror
-                    </div>
-                  
+
+                   {{--Icon--}}
+                   <div class="form-group">
+
+                    <label>@lang('rais.icon')</label>
+                    <input type="text" name="icon" class="form-control iconpicker"  value="{{ $counter->icon  }}"  autofocus>
+                    @error($input) <div class="text-danger">{{$message}}</div>@enderror
+                </div>
                     {{--؛Published--}}
                     <div class="form-group">
-                      
+
                         <label>@lang('counters.published')</label>
                         <input type="checkbox" name="published"{{ $counter->published == 1 ? 'checked' : "" }} class="form-control" id="checkboxx" value="1"  autofocus>
+                        @error($input) <div class="text-danger">{{$message}}</div>@enderror
+                    </div>
+                    {{--Counter--}}
+                    <div class="form-group">
+
+                        <label>@lang('counters.counter')</label>
+                        <input type="number" name="counter" class="form-control"  value="{{ $counter->counter }}">
                         @error($input) <div class="text-danger">{{$message}}</div>@enderror
                     </div>
 
@@ -112,7 +115,7 @@
             }
 
         });
-       
+
     </script>
     <script>
   (async () => {
@@ -127,7 +130,7 @@
         hideOnSelect: true,
         fade: true,
     });
-    
+
 })()
     </script>
 @endpush

@@ -17,6 +17,7 @@ Menovahub - Home
 
             <div class="carousel-inner" role="listbox">
             @foreach($sliders as $slider)
+
                 <div class="carousel-item active" ><img src="{{ $slider->image_path  }}">
                     <div class="carousel-container">
                         <div class="container">
@@ -88,7 +89,7 @@ Menovahub - Home
                 </div>
 
                 <div class="text-center sec-padding ">
-                    
+
                     <a href="#" class="btn-read-more"><span> @lang('site.read_more') </span> <i class="bi bi-arrow-right"></i> </a>
                 </div>
             </div>
@@ -134,9 +135,9 @@ Menovahub - Home
                         @foreach($counters as $counter)
                         <div class="col-md-6 d-md-flex align-items-md-stretch">
                             <div class="count-box">
-                                <i class="bi bi-emoji-smile"></i>
-                                <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="1" class="purecounter"></span>
-                              
+                                <i class="{{ $counter->icon }}"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="{{ $counter->counter }}" data-purecounter-duration="1" class="purecounter"></span>
+
                                 <p><strong>{{ $counter->data->isNotEmpty() ? $counter->data->first()->title : '' }}</strong>
                                 {!! $counter->data->isNotEmpty() ? $counter->data->first()->description : ''!!}</p>
                             </div>
@@ -209,7 +210,7 @@ Menovahub - Home
                             </div>
                         @endforeach
 
-                    
+
                             </div class="col-md-12 d-md-flex ">
                             <div class="advisor-join sec-padding">
                                 <a href="#" class="btn-join">@lang('site.join_now')</a>
@@ -277,7 +278,7 @@ Menovahub - Home
                 </div>
             </div>
             @endforeach
-        
+
         </div>
     </div>
 </section><!-- End Recent Blog Posts Section -->

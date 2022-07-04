@@ -25,6 +25,7 @@ class CountersRequest extends FormRequest
     public function rules()
     {
         $rules['published'] = ['nullable'];
+        $rules['counter'] = ['nullable'];
 
         foreach (config('translatable.locales') as $locale) {
             $rules += [
@@ -33,7 +34,7 @@ class CountersRequest extends FormRequest
             ];
         }
 
-      
+
 
         if (in_array($this->method(), ['PUT', 'PATCH'])) {
 
@@ -46,6 +47,7 @@ class CountersRequest extends FormRequest
             }
 
         $rules['published'] = ['nullable'];
+        $rules['counter'] = ['nullable'];
 
         } //end of if
 

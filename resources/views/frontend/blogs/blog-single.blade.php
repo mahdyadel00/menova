@@ -30,7 +30,7 @@ Menovahub - Blog
         <div class="row">
 
           <div class="col-lg-8 entries">
-          
+
             <article class="entry entry-single">
 
               <div class="entry-img">
@@ -43,7 +43,7 @@ Menovahub - Blog
 
               <div class="entry-meta">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{ $blog->user->first_name }}  {{ $blog->user->last_name }}</a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
                 </ul>
@@ -52,41 +52,19 @@ Menovahub - Blog
               <div class="entry-content">
                 <p>{!!  $blog->data->isNotEmpty() ? $blog->data->first()->body: ' ' !!}</p>
 
-                <p>
-                  Sit repellat hic cupiditate hic ut nemo. Quis nihil sunt non reiciendis. Sequi in accusamus harum vel aspernatur. Excepturi numquam nihil cumque odio. Et voluptate cupiditate.
-                </p>
 
-                <blockquote>
+                {{--  <blockquote>
                   <p>
-                    Et vero doloremque tempore voluptatem ratione vel aut. Deleniti sunt animi aut. Aut eos aliquam doloribus minus autem quos.
+                   {!! $blog->data->isNotEmpty() ? $blog->data->first()->body : '' !!}
                   </p>
-                </blockquote>
+                </blockquote>  --}}
 
-                <p>
-                  Sed quo laboriosam qui architecto. Occaecati repellendus omnis dicta inventore tempore provident voluptas mollitia aliquid. Id repellendus quia. Asperiores nihil magni dicta est suscipit perspiciatis. Voluptate ex rerum assumenda dolores nihil quaerat.
-                  Dolor porro tempora et quibusdam voluptas. Beatae aut at ad qui tempore corrupti velit quisquam rerum. Omnis dolorum exercitationem harum qui qui blanditiis neque.
-                  Iusto autem itaque. Repudiandae hic quae aspernatur ea neque qui. Architecto voluptatem magni. Vel magnam quod et tempora deleniti error rerum nihil tempora.
-                </p>
 
-                <h3>Et quae iure vel ut odit alias.</h3>
-                <p>
-                  Officiis animi maxime nulla quo et harum eum quis a. Sit hic in qui quos fugit ut rerum atque. Optio provident dolores atque voluptatem rem excepturi molestiae qui. Voluptatem laborum omnis ullam quibusdam perspiciatis nulla nostrum. Voluptatum est libero eum nesciunt aliquid qui.
-                  Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.
-                  Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.
-                </p>
                 <img src="assets/img/blog/blog-inside-post.jpg" class="img-fluid" alt="">
 
-                <h3>Ut repellat blanditiis est dolore sunt dolorum quae.</h3>
-                <p>
-                  Rerum ea est assumenda pariatur quasi et quam. Facilis nam porro amet nostrum. In assumenda quia quae a id praesentium. Quos deleniti libero sed occaecati aut porro autem. Consectetur sed excepturi sint non placeat quia repellat incidunt labore. Autem facilis hic dolorum dolores vel.
-                  Consectetur quasi id et optio praesentium aut asperiores eaque aut. Explicabo omnis quibusdam esse. Ex libero illum iusto totam et ut aut blanditiis. Veritatis numquam ut illum ut a quam vitae.
-                </p>
-                <p>
-                  Alias quia non aliquid. Eos et ea velit. Voluptatem maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque mollitia nisi asperiores est veniam.
-                </p>
 
               </div>
-
+{{--
               <div class="entry-footer">
                 <i class="bi bi-folder"></i>
                 <ul class="cats">
@@ -99,11 +77,11 @@ Menovahub - Blog
                   <li><a href="#">Tips</a></li>
                   <li><a href="#">Marketing</a></li>
                 </ul>
-              </div>
+              </div>  --}}
 
             </article><!-- End blog entry -->
 
-            <div class="blog-author d-flex align-items-center">
+            {{--  <div class="blog-author d-flex align-items-center">
               <img src="assets/img/blog/blog-author.jpg" class="rounded-circle float-left" alt="">
               <div>
                 <h4>Jane Smith</h4>
@@ -116,8 +94,8 @@ Menovahub - Blog
                   Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
                 </p>
               </div>
-            </div><!-- End blog author bio -->
-
+            </div><!-- End blog author bio -->  --}}
+{{--
             <div class="blog-comments">
 
               <h4 class="comments-count">8 Comments</h4>
@@ -239,7 +217,7 @@ Menovahub - Blog
 
               </div>
 
-            </div><!-- End blog comments -->
+            </div><!-- End blog comments -->  --}}
 
           </div><!-- End blog entries list -->
 

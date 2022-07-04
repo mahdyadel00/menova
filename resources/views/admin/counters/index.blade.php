@@ -63,8 +63,9 @@
                                     </th>
                                     <th>@lang('counters.title')</th>
                                     <th>@lang('counters.description')</th>
-                                    <th>@lang('counters.image')</th>
+                                    <th>@lang('counters.icon')</th>
                                     <th>@lang('counters.status')</th>
+                                    <th>@lang('counters.counter')</th>
                                     <th>@lang('site.created_at')</th>
                                     <th>@lang('site.action')</th>
                                 </tr>
@@ -103,8 +104,9 @@
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
                 {data: 'title', name: 'title'},
                 {data: 'description', name: 'description'},
-                {data: 'image', name: 'image'},
+                {data: 'icon', name: 'icon'},
                 {data: 'published', name: 'published'},
+                {data: 'counter', name: 'counter'},
                 {data: 'created_at', name: 'created_at', searchable: false},
                 {data: 'actions', name: 'actions', searchable: false, sortable: false, width: '25%'},
             ],
