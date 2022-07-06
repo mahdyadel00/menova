@@ -21,16 +21,20 @@ class RaisController extends Controller
     protected function store(Request $request)
     {
 
-        $for_fund = ForFund::query()->create([
+        $request->validate([
+
+            'name' => 'required',
+            'email' => 'required',
+            'stage_business' => 'required',
+            'description' => 'required',
+        ]);
+        $connect_for_fumd = ForFund::create([
             'name' => $request->name,
             'email' => $request->email,
             'stage_business' => $request->stage_business,
             'description' => $request->description,
         ]);
-
-
-
-        session()->flash('success', __('site.added_successfully'));
+        Session()->flash('success', trans('front.added_successfully'));
         return redirect()->back();
     }
 }

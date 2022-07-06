@@ -81,21 +81,21 @@ class HomeController extends Controller
 
         $request->validate([
 
-            'name'  => 'required',
-            'mobile'  => 'required',
+            'first_name'  => 'required',
+            'last_name'  => 'required',
+            'phone'  => 'required',
             'email'  => 'required',
             'password'  => 'required|confirmed',
         ]);
 
-            $users = User::create([
+        $request_data = $request->except(['password', 'password_confirmation']);
+        $request_data['password'] = bcrypt($request->password);
 
-                'first_name' => $request->name,
-                'phone'  => $request->mobile,
-                'email' > $request->email,
-                'password' => Hash::make(['password']),
-            ]);
 
-            return redirect()->url('/');
+        $users = User::create($request_data);
+
+            session()->flash('success', __('site.added_successfully'));
+            return redirect()->route('home');
     }
 
 }//end of controller

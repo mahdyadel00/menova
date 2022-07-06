@@ -34,9 +34,7 @@ class ConnectController extends Controller
             'stage_business' =>  $request->stage_business,
             'description' =>  $request->description,
         ]);
-        Session(
-
-        )->flash('success', 'site.added_successfully');
-        return redirect()->back();
+            Session()->flash('success', trans('front.added_successfully'));
+            return redirect()->back();
     }
 }

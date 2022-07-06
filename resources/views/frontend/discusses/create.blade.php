@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.layouts.master')
 @section('pageTitle', __('site.discusses'))
 @section('content')
 <div class=" mt-100 mb-70" style="background-color: #E8EAF6;">

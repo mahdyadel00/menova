@@ -8,14 +8,28 @@ Menovahub-Services
 @endsection
 
 @section('content')
+
+<!-- Breadcrumbs -->
+<section class="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumb-text">
+            <ol>
+                <li><a href="{{route('home')}}">@lang('site.home')</a></li>
+                <li>@lang('site.services')</li>
+            </ol>
+            <h2>@lang('site.services')</h2>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumbs -->
  <!-- ======= Services Section ======= -->
  <section id="services" class="services mt-5 mb-3">
 
     <div class="container" data-aos="fade-up">
 
       <header class="section-header">
-        <h2>Services</h2>
-        <p>Veritatis et dolores facere numquam et praesentium</p>
+        <h2>@lang('site.services')</h2>
+        <p>@lang('front.services_desc')</p>
       </header>
 
       <div class="row gy-4 mt-3">
