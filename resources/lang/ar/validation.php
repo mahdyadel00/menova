@@ -156,5 +156,6 @@ return [
         'on_load_time' => 'وقت التحميل',
         'shipping_date' => 'تاريخ الشحنة',
         'off_load_time' => 'وقت تنزيل الشحنة',
+        'stage_business' => 'مراحل العمل ',
     ],
 ];

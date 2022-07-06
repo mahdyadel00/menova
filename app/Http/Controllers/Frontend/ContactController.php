@@ -40,7 +40,7 @@ class ContactController extends Controller
             'message'  => $request->message,
         ]);
         // dd($contact);
-        Session()->flash('success', 'site.added_successfully');
+        Session()->flash('success', trans('front.added_successfully'));
         return redirect()->back();
     }
 }
