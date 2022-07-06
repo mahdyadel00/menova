@@ -14,12 +14,13 @@
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
                         class="img-fluid" alt="Sample image">
                 </div>
-                @if (session()->has('success'))
+
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    @if (session()->has('success'))
                     <div class="alert alert-success">
                         {{ session()->get('success') }}
                     </div>
                 @endif
-                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                     <form method="post" action="{{ route('sign_up') }}">
                         @csrf
                         <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
@@ -35,20 +36,26 @@
                         </div>
 
                         <div class="divider d-flex align-items-center my-4">
-                            <p class="text-center fw-bold mx-3 mb-0">Or</p>
+                            <p class="text-center fw-bold mx-3 mb-0">@lang('site.or')</p>
                         </div>
                         <!-- name input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form3Example3">@lang('site.first_name')</label>
 
                             <input type="text" name="first_name" id="form3Example3" class="form-control form-control-lg"
-                                placeholder="@lang('enter_your_first_name') " />
+                                placeholder="@lang('site.enter_your_first_name') " />
+                                @error('first_name')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form3Example3">@lang('site.last_name')</label>
 
                             <input type="text" name="last_name " id="form3Example3" class="form-control form-control-lg"
-                                placeholder="@lang('enter_your_last_name') " />
+                                placeholder="@lang('site.enter_your_last_name') " />
+                                @error('last_name')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                         <!-- phone input -->
                         <div class="form-outline mb-4">
@@ -56,6 +63,9 @@
 
                             <input type="number" name="phone" id="form3Example3" class="form-control form-control-lg"
                                 placeholder="@lang('site.phone')" />
+                                @error('phone')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                         </div>
 
                         <!-- Email input -->
@@ -64,6 +74,9 @@
 
                             <input type="email" name="email" id="form3Example3" class="form-control form-control-lg"
                                 placeholder="@lang('site.enter_a_valid_email_address')" />
+                                @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                         </div>
 
                         <!-- Password input -->
@@ -72,21 +85,27 @@
 
                             <input type="password" name="password" id="form3Example4" class="form-control form-control-lg"
                                 placeholder="@lang('site.enter_password')" />
+                                @error('password')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                         <!-- Password input -->
-                        <div class="form-outline mb-3">
+                        {{--  <div class="form-outline mb-3">
                             <label class="form-label" for="form3Example4">@lang('site.password_confirmation')</label>
 
                             <input type="password" name="password_confirmation" id="form3Example4"
                                 class="form-control form-control-lg" placeholder="@lang('site.enter_password_confirmation')" />
-                        </div>
+                                @error('password_confirmation')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                        </div>  --}}
 
                         <div class="d-flex justify-content-between align-items-center">
                             <!-- Checkbox -->
                             <div class="form-check mb-0">
                                 <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
                                 <label class="form-check-label" for="form2Example3">
-                                    Remember me
+                                    @lang('site.remmber_me')
                                 </label>
                             </div>
                         </div>

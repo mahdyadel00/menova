@@ -224,6 +224,8 @@ return [
     'enter_your_last_name' => ' Enter Your Last Name',
     'phone' => 'Phone ',
     'email_address' => 'Email ',
+    'remmber_me' => 'Remmber Me ',
+    'or' => 'OR',
     'enter_a_valid_email_address' => ' Enter Your Email',
     'password' => ' Password',
     'enter_password' => ' Enter Your Password',

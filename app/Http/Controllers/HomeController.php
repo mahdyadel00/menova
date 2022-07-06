@@ -82,13 +82,13 @@ class HomeController extends Controller
         $request->validate([
 
             'first_name'  => 'required',
-            'last_name'  => 'required',
+            'last_name'  => 'nullable',
             'phone'  => 'required',
             'email'  => 'required',
-            'password'  => 'required|confirmed',
+            'password'  => 'required',
         ]);
 
-        $request_data = $request->except(['password', 'password_confirmation']);
+        $request_data = $request->except(['password']);
         $request_data['password'] = bcrypt($request->password);
 
 
