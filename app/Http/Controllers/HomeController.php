@@ -11,8 +11,12 @@ use App\Models\Counter;
 use App\Models\Connect;
 use App\Models\Advisor;
 use App\Models\Rais;
+use App\Models\User;
 use App\Models\Contact;
 use App\Models\OurClient;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Providers\AppServiceProvider;
 
 class HomeController extends Controller
@@ -70,5 +74,28 @@ class HomeController extends Controller
         }
         return view('frontend.blog', compact('blog'));
     } //end of blogs
+
+    protected function register(Request $request){
+
+        // dd($request->all());
+
+        $request->validate([
+
+            'name'  => 'required',
+            'mobile'  => 'required',
+            'email'  => 'required',
+            'password'  => 'required|confirmed',
+        ]);
+
+            $users = User::create([
+
+                'first_name' => $request->name,
+                'phone'  => $request->mobile,
+                'email' > $request->email,
+                'password' => Hash::make(['password']),
+            ]);
+
+            return redirect()->url('/');
+    }
 
 }//end of controller

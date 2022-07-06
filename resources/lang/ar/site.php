@@ -109,5 +109,18 @@ return [
     'our_newsletter' => 'نشرتنا الإخبارية ',
     'privacy_policy' => 'سياسة الخصوصية',
     'terms_of_service' => 'شروط الخدمة السياسة',
+    'slider_image' => 'صور السلايدر',
+    'get_started' => 'أبدا الان ',
+    'sign_up_with' => 'سجل عن طريق',
+    'user_name' => 'الاسم بالكامل',
+    'enter_your_user_name' => 'ادحل اسمك  بالكامل',
+    'mobile' => 'رقم الهاتف ',
+    'email_address' => 'البريد الالكترونى',
+    'enter_a_valid_email_address' => 'ادخل البريد الالكترونى  ',
+    'password' => 'كلمة المرور',
+    'enter_password' => ' ادخل كلمة المرور',
+    'password_confirmation' => ' ادخل كلمة المرور',
+    'password_confirmation' => ' تاكيد كلمة المرور',
+    'enter_password_confirmation' => ' ادخل تاكيد كلمة المرور',
 
 ];

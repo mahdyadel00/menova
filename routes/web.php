@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\ConnectController;
 use App\Http\Controllers\Frontend\RaisController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\EmailSubscribeController;
+use App\Http\Controllers\HomeController;
 Route::prefix(LaravelLocalization::setLocale())
     ->middleware([
         'localeSessionRedirect',
@@ -50,6 +51,11 @@ Route::prefix(LaravelLocalization::setLocale())
             Route::get('/login', function () {
                 return view('frontend.login');
             });
+            Route::get('/sign_up', function () {
+                return view('frontend.sign_up');
+            });
+            Route::post('/sign_up', [HomeController::class , 'register'])->name('sign_up');
+
 
 
 

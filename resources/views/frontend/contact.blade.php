@@ -81,6 +81,11 @@ Menovahub-contact
 
             <!-- Start  contact -->
             <div class="col-md-6">
+                @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
               <div class="form contact-form">
                 <form action="{{ route('contacts.store') }}" method="post" role="form">
                     @csrf
