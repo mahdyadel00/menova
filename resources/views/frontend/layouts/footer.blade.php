@@ -37,7 +37,7 @@
           <ul>
             <li><i class="bi bi-chevron-right"></i> <a href="{{ route('about_us.index') }}">@lang('site.about_us')</a></li>
             <li><i class="bi bi-chevron-right"></i> <a href="{{ route('services.index') }}">@lang('site.services')</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('blogs.index') }}">@lang('site.blog')</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('blogs.index') }}">@lang('front.blog')</a></li>
             <li><i class="bi bi-chevron-right"></i> <a href="#">@lang('site.terms_of_service')</a></li>
             <li><i class="bi bi-chevron-right"></i> <a href="#">@lang('site.privacy_policy')</a></li>
           </ul>
