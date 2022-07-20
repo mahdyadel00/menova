@@ -5,16 +5,16 @@
   <div class="container">
     <div class="col-lg-6 offset-lg-3 text-center">
 
-      <div class="section-title">	
+      <div class="section-title">
         <br>
         <h3><span class="pink-text">@lang('site.discusses')</span> </h3>
       </div>
-    
+
     </div>
     <div class="row" >
       <div class="col-lg-3 col-md-2 " >
         <br>
-          @include('frontend.discusses.sidemenu') 
+          @include('frontend.discusses.sidemenu')
       </div>
       <div class="col-lg-6 col-md-6">
         <div class="single-product-item">
@@ -25,7 +25,7 @@
                   <div class="p-3 ">
                     <div class=" row pt-3 ">
                       <h4 class=" col-md-12 text-left profilepicname">
-                        <a href="{{route('frontend.discusses.show', $discuss->uuid)}}">{{$discuss->title}}</a>
+                        <a href="{{route('discusses.show', $discuss->uuid)}}">{{$discuss->title}}</a>
                       </h4>
                       <div class=" col-md-12 ">
                         <div class="d-flex flex-start align-items-center m-3">
@@ -43,7 +43,7 @@
                     </div>
                   </div>
                 </div>
-              </div>  
+              </div>
               <hr>
             @endforeach
           </div>

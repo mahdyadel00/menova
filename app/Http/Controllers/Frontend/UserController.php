@@ -67,7 +67,9 @@ class UserController extends Controller
 
     public function updateProfile(UpdateProfileRequest $request)
     {
+
         try {
+            dd('test');
             DB::beginTransaction();
             $validated = $request->validated();
             $user = auth()->user();
@@ -76,8 +78,9 @@ class UserController extends Controller
             $user->attachRoles($validated['roles']);
             DB::commit();
             session()->flash('success', __('site.welcome_to') . ' ' . config('app.name'));
-            return redirect()->route('frontend.profile');
+            return redirect()->back();
         } catch (Exception $ex) {
+            dd('test1');
             DB::rollback();
             session()->flash('error', __('messages.server_error'));
             return redirect()->back()->withInput();

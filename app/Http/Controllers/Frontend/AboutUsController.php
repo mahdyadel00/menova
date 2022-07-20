@@ -12,6 +12,7 @@ class AboutUsController extends Controller
 
     protected function index(){
 
+        
         $about_us = AboutUs::with('data')->first();
         $abouts = AboutUs::with('data')->get();
         $about_us1 = AboutUs::with('data')->skip(1)->take(1)->get();

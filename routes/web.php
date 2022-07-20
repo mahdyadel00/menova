@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\AboutUsController;
 use App\Http\Controllers\Frontend\ServicesController;
 use App\Http\Controllers\Frontend\ConnectController;
 use App\Http\Controllers\Frontend\RaisController;
+use App\Http\Controllers\Frontend\DiscussController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\EmailSubscribeController;
 use App\Http\Controllers\HomeController;
@@ -75,6 +76,10 @@ Route::prefix(LaravelLocalization::setLocale())
         Route::get('auth/{provider}/redirect', 'AuthSocialiteController@redirectToProvider')->name('login_with');
         Route::get('auth/{provider}/callback', 'AuthSocialiteController@handleProviderCallback');
 
+        Route::get('discuss/trending', [DiscussController::class , 'index'])->name('discusses.index');
+        Route::get('discuss/create', [DiscussController::class , 'create'])->name('discusses.create');
+        Route::post('discuss/store', [DiscussController::class , 'store'])->name('discusses.store');
+        Route::get('discuss/{uuid}', 'DiscussController@show')->name('discusses.show');
         Route::name('frontend.')->group(function () {
             Route::post('/contact-us', 'HomeController@contact')->name('contact');
             Route::namespace('Frontend')->group(function () {
@@ -100,10 +105,7 @@ Route::prefix(LaravelLocalization::setLocale())
                     Route::post('my-projects/{project}/update', 'ProjectController@update')->name('projects.update');
                     Route::delete('my-projects/{project}/delete', 'ProjectController@destroy')->name('projects.destroy');
                     // Discusses
-                    Route::get('discuss/trending', 'DiscussController@index')->name('discusses.index');
-                    Route::get('discuss', 'DiscussController@create')->name('discusses.create');
-                    Route::post('discuss', 'DiscussController@store')->name('discusses.store');
-                    Route::get('discuss/{uuid}', 'DiscussController@show')->name('discusses.show');
+                   
                     // Comments.
                     Route::post('/comment/store', 'CommentController@store')->name('comment.add');
                     Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');

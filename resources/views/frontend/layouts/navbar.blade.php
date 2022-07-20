@@ -16,7 +16,7 @@
                   <li>
                       <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item" href="/discuss">@lang('site.discuss')</a></li>
+                  <li><a class="dropdown-item" href="{{ route('discusses.create') }}">@lang('site.discuss')</a></li>
               </ul>
           </li>
           <li><a class="nav-link scrollto" href="{{ route('blogs.index') }}">@lang('site.blog')</a></li>
@@ -31,12 +31,15 @@
                   </img>
 
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="/user-profile">@lang('site.my_profile')</a></li>
+                      <li><a class="dropdown-item" href="{{ route('frontend.my_profile') }}">@lang('site.my_profile')</a></li>
                       <li><a class="dropdown-item" href="/myprojects">@lang('site.my_projects')</a></li>
                       <li>
                           <hr class="dropdown-divider">
                       </li>
-                      <li><a class="dropdown-item" href="/">@lang('site.sign_out')</a></li>
+                      <li><a class="dropdown-item" href="{{ route('logout') }}">@lang('site.sign_out')</a></li>
+                      <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
+                        @csrf
+                    </form>
                   </ul>
               </li>
           @endif

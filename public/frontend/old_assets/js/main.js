@@ -1,9 +1,4 @@
-/**
-* Template Name: FlexStart - v1.9.0
-* Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 (function() {
   "use strict";
 
@@ -93,14 +88,44 @@
 /**
    * Hero carousel indicators
    */
- let heroCarouselIndicators = select("#hero-carousel-indicators")
- let heroCarouselItems = select('#heroCarousel .carousel-item', true)
 
- heroCarouselItems.forEach((item, index) => {
-   (index === 0) ?
-   heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>":
-     heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
- });
+
+document.querySelectorAll(".carousel").forEach((carousel) => {
+    const items = carousel.querySelectorAll(".carousel--item");
+    const buttonsHtml = Array.from(items, () => {
+      return `<span class="carousel--button"></span>`;
+    });
+
+    carousel.insertAdjacentHTML(
+      "beforeend",
+      `
+          <div class="carousel--nav">
+              ${buttonsHtml.join("")}
+          </div>
+      `
+    );
+
+    const buttons = carousel.querySelectorAll(".carousel--button");
+
+    buttons.forEach((button, i) => {
+      button.addEventListener("click", () => {
+        // un-select all the items
+        items.forEach((item) =>
+          item.classList.remove("carousel--item--selected")
+        );
+        buttons.forEach((button) =>
+          button.classList.remove("carousel--button--selected")
+        );
+
+        items[i].classList.add("carousel--item--selected");
+        button.classList.add("carousel--button--selected");
+      });
+    });
+
+    // Select the first item on page load
+    items[0].classList.add("carousel--item--selected");
+    buttons[0].classList.add("carouse--button--selected");
+  });
 
   /**
    * Back to top button
@@ -287,4 +312,54 @@
    */
 
 
-})();
+// Get the modal ask question
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var Mybtn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+Mybtn.onclick = () => {
+ modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+/*projects filter */
+$(document).ready(function() {
+    function hide_nav() {
+        $('#nav').addClass('d-sm-block');
+        $('#nav').addClass('d-none');
+        $('#nav').removeClass('col-9 px-4');
+    }
+    $("#toggle").click(function() {
+        $('#nav').removeClass('d-sm-block');
+        $('#nav').removeClass('d-none');
+        $('#nav').addClass('col-9 px-4');
+    });
+    $('#info').click(function() {
+        hide_nav();
+    });
+    $('#myTab li button').click(function(e) {
+        hide_nav();
+    });
+
+});
+
+
+ })();
+
+
+

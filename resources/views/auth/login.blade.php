@@ -35,7 +35,7 @@ height: 100%;
                 <form method="Post" action="{{ route('login') }}">
                     @csrf
                     <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                        <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+                        <p class="lead fw-normal mb-0 me-3">@lang('site.sign_in_with')</p>
                         <button type="button" class="btn btn-primary btn-floating mx-1">
                             <i class='bx bxl-facebook-circle' ></i>
                         </button>
@@ -43,16 +43,16 @@ height: 100%;
                             <i class='bx bxl-google' ></i>
                         </button>
 
-                      
+
                     </div>
 
                     <div class="divider d-flex align-items-center my-4">
-                        <p class="text-center fw-bold mx-3 mb-0">Or</p>
+                        <p class="text-center fw-bold mx-3 mb-0">@lang('site.or')</p>
                     </div>
 
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="form3Example3">Email address</label>
+                        <label class="form-label" for="form3Example3">@lang('site.email')</label>
 
                         <input type="email" name="email" id="form3Example3" class="form-control form-control-lg"
                             placeholder="Enter a valid email address" />
@@ -60,7 +60,7 @@ height: 100%;
 
                     <!-- Password input -->
                     <div class="form-outline mb-3">
-                        <label class="form-label" for="form3Example4">Password</label>
+                        <label class="form-label" for="form3Example4">@lang('site.password')</label>
 
                         <input type="password" name="password" id="form3Example4" class="form-control form-control-lg"
                             placeholder="Enter password" />
@@ -71,24 +71,24 @@ height: 100%;
                         <div class="form-check mb-0">
                             <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
                             <label class="form-check-label" for="form2Example3">
-                                Remember me
+                                @lang('site.remmber_me')
                             </label>
                         </div>
-                        <a href="#!" class="text-body">Forgot password?</a>
+                        <a href="#!" class="text-body">@lang('site.forget_password')?</a>
                     </div>
 
                     <div class="text-center text-lg-start mt-4 pt-2">
                         <button type="submit" class="btn btn-primary btn-lg"
-                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-                        <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                                class="link-danger">Register</a></p>
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">@lang('site.login')</button>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">@lang('site.donot_have_account')? <a href="{{ route('sign_up') }}"
+                                class="link-danger">@lang('site.sign_up')</a></p>
                     </div>
 
                 </form>
             </div>
         </div>
     </div>
-  
+
 </section>
 @endsection
 

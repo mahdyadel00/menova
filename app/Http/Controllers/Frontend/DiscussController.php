@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\DiscussRequest;
 use App\Mail\PublishDiscussMail;
+use App\Models\Comment;
 use App\Models\Discuss;
 use App\Models\Topic;
 use Illuminate\Http\Request;
@@ -19,25 +20,32 @@ class DiscussController extends Controller
             ->orderBy('id', 'DESC')
             ->limit(10)
             ->get();
-
+        
         $trending_topics = $this->getTrendingList();
 
-        return view('frontend.discusses.index', compact('discusses', 'trending_topics'));
+        return view('frontend.discuss', compact('discusses', 'trending_topics'));
     }
 
     public function create()
     {
         $trending_topics = $this->getTrendingList();
         $topics = Topic::all();
+        $comments = Comment::with(['user' , 'replies'])->get();
+        $discusses = Discuss::published()->with(['user', 'topic'])
+        ->orderBy('id', 'DESC')
+        ->limit(10)
+        ->get();
 
-        return view('frontend.discusses.create', compact('trending_topics', 'topics'));
+        return view('frontend.discuss', compact('trending_topics', 'topics' , 'comments' , 'discusses'));
     }
 
     public function store(DiscussRequest $request)
     {
+        // dd($request->all());
         $data = $request->validated();
+
         $data['user_id'] = auth()->id();
-        
+
         $discuss = Discuss::create($data);
 
         // Send mail to admin for approval.

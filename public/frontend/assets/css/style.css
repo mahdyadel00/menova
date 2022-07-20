@@ -1087,7 +1087,7 @@ input, select, textarea, input[type=text], input[type=date], input[type=url], in
      .connect-inner .connect-inner-form {
        background: #2a46b4a6;
        padding:70px;
-       height: 100%;
+       height: 90%;
      }
     .connect-inner-form h2{
        color:#fff;
