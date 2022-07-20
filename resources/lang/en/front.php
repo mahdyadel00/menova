@@ -13,6 +13,7 @@ return [
     'describe' => 'Project description',
     'business' => ' stage of business',
     'Send_now' => 'Send now',
+    'blog' => 'Blog',
     'connect' => 'connect',
     'Useful' => 'Useful Links',
     'Services' => 'Our Services',
@@ -25,5 +26,11 @@ return [
     'services_desc' => 'Menova Services',
     'menovahub_network' => 'Menovahub network',
     'find_cofounder' => 'Find your cofounder , advisor and freelancers. connect with our team',
-
+    'sign'  => 'sign',
+    'password'  => 'password',
+    'Remember_me'  => 'Remember me',
+    'Forgot_password'  => 'Forgot_ assword',
+    'Login'  => 'Login',
+    'NO_account'  => "Don't have account",
+    'Register'  => 'Register',
 ];
