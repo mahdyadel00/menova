@@ -241,4 +241,9 @@ return [
     'enter_your_address' => ' Enter Your Address',
     'forget_password' => ' Forget Password',
     'donot_have_account' => ' Dont Have Account',
+    'please_enter_your_Contractor_name' => ' Please Enter Your Contractor Name',
+    'please_enter_your_title' => ' Please Enter Your Title',
+    'select_topic' => ' Select Topic',
+    'ask' => ' Ask',
+    'dicess' => ' Dicess',
 ];

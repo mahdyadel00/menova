@@ -29,9 +29,9 @@ class DiscussController extends Controller
     public function create()
     {
         $trending_topics = $this->getTrendingList();
-        $topics = Topic::all();
+        $topics = Topic::get();
         $comments = Comment::with(['user' , 'replies'])->get();
-        $discusses = Discuss::published()->with(['user', 'topic'])
+        $discusses = Discuss::where('published' , 1)->with(['user', 'topic'])
         ->orderBy('id', 'DESC')
         ->limit(10)
         ->get();
@@ -49,10 +49,10 @@ class DiscussController extends Controller
         $discuss = Discuss::create($data);
 
         // Send mail to admin for approval.
-        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new PublishDiscussMail(['discuss' => $discuss]));
+        // Mail::to(env('MAIL_FROM_ADDRESS'))->send(new PublishDiscussMail(['discuss' => $discuss]));
 
         session()->flash('success', __('site.sent_mail_for_reviewing'));
-        return redirect()->route('frontend.discusses.create');
+        return redirect()->route('discusses.create');
     }
 
     public function show($uuid)

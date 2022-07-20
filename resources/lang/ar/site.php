@@ -129,7 +129,6 @@ return [
     'ask' => 'اسال ',
     'close' => 'أغلاق',
     'ask_question' => 'أسال سؤالك',
-    'ask_question' => 'كل التعليقات ',
     'discuss' => 'المناقشه',
     'sign_out' => 'تسجيل خروج',
     'my_profile' => 'ملفى الشخصى',
@@ -144,4 +143,9 @@ return [
     'donot_have_account' => 'ليس لديك حساب',
     'forget_password' => 'هل نسيت كلمة المرور',
     'sign_in_with' => 'الدخول عن طرق',
+    'please_enter_your_title' => 'من فضلك ادخل العنوان',
+    'please_enter_your_Contractor_name' => 'من فضلك ادخل اسم السائل',
+    'select_topic' => 'اختر الموضوع ',
+    'topic' => 'الموضوع',
+    'ask' => 'أسال',
 ];

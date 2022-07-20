@@ -13,10 +13,10 @@
       <div class="container">
 
         <ol>
-          <li><a href="{{ route('home') }}">Home</a></li>
-          <li>Blog</li>
+          <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
+          <li>@lang('site.blog')</li>
         </ol>
-        <h2>Blog</h2>
+        <h2>@lang('site.blog')</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -30,9 +30,8 @@
           <div class="col-lg-8 entries">
           @foreach($blogs as $blog)
             <article class="entry">
-
               <div class="entry-img">
-                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                <img src="{{ $blog->image_path }}" alt="" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
@@ -43,7 +42,7 @@
                 <ul>
 
                   <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="/blog-single">{{ $blog->user->first_name }}  {{ $blog->user->last_name }}</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="/blog-single"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="/blog-single"><time datetime="2020-01-01">{{ date($blog->created_at) }}</time></a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="/blog-single">12 Comments</a></li>
                 </ul>
               </div>
@@ -77,7 +76,7 @@
                 </form>
               </div><!-- End sidebar search formn-->
 
-              <h3 class="sidebar-title">Categories</h3>
+              <h3 class="sidebar-title">@lang('site.category')</h3>
               <div class="sidebar-item categories">
                 <ul>
                   <li><a href="#">General <span>(25)</span></a></li>

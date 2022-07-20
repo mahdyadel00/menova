@@ -285,7 +285,7 @@
                 @foreach ($blogs as $blog)
                     <div class="col-lg-4">
                         <div class="post-box">
-                            <div class="post-img"><img src="{{ $blog->image_path }}" class="img-fluid"
+                            <div class="post-img"><img src="{{ asset($blog->image) }}" class="img-fluid"
                                     alt="{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }}"></div>
                             <span
                                 class="post-date">{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }}</span>
