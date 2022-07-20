@@ -286,10 +286,10 @@
                     <div class="col-lg-4">
                         <div class="post-box">
                             <div class="post-img"><img src="{{ $blog->image_path }}" class="img-fluid"
-                                    alt=""></div>
+                                    alt="{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }}"></div>
                             <span
                                 class="post-date">{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }}</span>
-                            <h3 class="post-title">{!! $blog->data->isNotEmpty() ? $blog->data->first()->body : '' !!}</h3>
+                            <h3 class="post-title">{!! $blog->data->isNotEmpty() ? mb_substr($blog->data->first()->body,0,200) : '' !!}</h3>
                             <a href="blog-single.html"
                                 class="readmore stretched-link mt-auto"><span>@lang('site.read_more')</span><i
                                     class="bi bi-arrow-right"></i></a>

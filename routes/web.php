@@ -14,6 +14,7 @@ use App\Http\Controllers\Frontend\DiscussController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\EmailSubscribeController;
 use App\Http\Controllers\HomeController;
+
 Route::prefix(LaravelLocalization::setLocale())
     ->middleware([
         'localeSessionRedirect',
@@ -21,48 +22,41 @@ Route::prefix(LaravelLocalization::setLocale())
         'localeViewPath',
     ])
     ->group(function () {
-        Route::middleware('guest')->group(function () {
-            Route::get('/', 'HomeController@index')->name('home');
-            Route::get('/contacts', [ContactController::class , 'index'])->name('contacts.index');
-            Route::post('/contacts/create', [ContactController::class , 'store'])->name('contacts.store');
-            Route::get('/about_us', [AboutUsController::class , 'index'])->name('about_us.index');
-            Route::get('/services', [ServicesController::class , 'index'])->name('services.index');
-            Route::get('/connects', [ConnectController::class , 'index'])->name('connect.index');
-            Route::post('/connects/store', [ConnectController::class , 'store'])->name('connect.store');
-            Route::get('/rais', [RaisController::class , 'index'])->name('rais.index');
-            Route::get('/blogs', [BlogController::class , 'index'])->name('blogs.index');
-            Route::get('/blogs/{id}', [BlogController::class , 'show'])->name('blogs.show');
-            Route::get('/user/profile', [BlogController::class , 'index'])->name('profile.index');
-            Route::post('/rais/create', [RaisController::class , 'store'])->name('rais.store');
-            Route::post('/email_sub/create', [EmailSubscribeController::class , 'store'])->name('email_sub.store');
+        Route::get('/', 'HomeController@index')->name('home');
+        Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+        Route::post('/contacts/create', [ContactController::class, 'store'])->name('contacts.store');
+        Route::get('/about_us', [AboutUsController::class, 'index'])->name('about_us.index');
+        Route::get('/services', [ServicesController::class, 'index'])->name('services.index');
+        Route::get('/connects', [ConnectController::class, 'index'])->name('connect.index');
+        Route::post('/connects/store', [ConnectController::class, 'store'])->name('connect.store');
+        Route::get('/rais', [RaisController::class, 'index'])->name('rais.index');
+        Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+        Route::get('/blogs/{id}', [BlogController::class, 'show'])->name('blogs.show');
+        Route::get('/user/profile', [BlogController::class, 'index'])->name('profile.index');
+        Route::post('/rais/create', [RaisController::class, 'store'])->name('rais.store');
+        Route::post('/email_sub/create', [EmailSubscribeController::class, 'store'])->name('email_sub.store');
 
 
-            Route::get('/discuss', function () {
-                return view('frontend.discuss');
-            });
-            Route::get('/discuss-single', function () {
-                return view('frontend.discuss-single');
-            });
-            Route::get('/find-cofounder', function () {
-                return view('frontend.find-cofounder');
-            });
-            Route::get('/user-profile', function () {
-                return view('frontend.user-profile');
-            });
-            Route::get('/login', function () {
-                return view('frontend.login');
-            });
-            Route::get('/sign_up', function () {
-                return view('frontend.sign_up');
-            });
-            Route::post('/sign_up', [HomeController::class , 'register'])->name('sign_up');
-
-
-
-
-
-
+        Route::get('/discuss', function () {
+            return view('frontend.discuss');
         });
+        Route::get('/discuss-single', function () {
+            return view('frontend.discuss-single');
+        });
+        Route::get('/find-cofounder', function () {
+            return view('frontend.find-cofounder');
+        });
+        Route::get('/user-profile', function () {
+            return view('frontend.user-profile');
+        });
+        Route::get('/login', function () {
+            return view('frontend.login');
+        });
+        Route::get('/sign_up', function () {
+            return view('frontend.sign_up');
+        });
+        Route::post('/sign_up', [HomeController::class, 'register'])->name('sign_up');
+
 
         Auth::routes(['verify' => true]);
 
@@ -112,12 +106,10 @@ Route::prefix(LaravelLocalization::setLocale())
                     Route::post('/like', 'LikeController@like')->name('likes.add');
 
                     //get preimium
-                    Route::get('get_preimmium' , [GetPreimiumController::class , 'index'])->name('get_premium.index');
+                    Route::get('get_preimmium', [GetPreimiumController::class, 'index'])->name('get_premium.index');
 
                     //Chat
-                    Route::get('chat' , [ChatController::class , 'index'])->name('chat.index');
-
-
+                    Route::get('chat', [ChatController::class, 'index'])->name('chat.index');
                 });
             });
         });

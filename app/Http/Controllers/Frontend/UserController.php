@@ -53,16 +53,16 @@ class UserController extends Controller
     {
         $roles = Role::whereNotIn('name', ['super_admin', 'admin'])->get();
         $domains = Domain::all();
-        $user = User::where('id' , Auth::user()->id)->first();
-        return view('frontend.user.profile', compact('roles', 'domains' , 'user'));
+        $user = User::where('id', Auth::user()->id)->first();
+        return view('frontend.user.profile', compact('roles', 'domains', 'user'));
     }
 
     protected function myProfile()
     {
         $roles = Role::whereNotIn('name', ['super_admin', 'admin'])->get();
         $domains = Domain::all();
-        $user = User::where('id' , Auth::user()->id)->first();
-        return view('frontend.user.myprofile', compact('roles', 'domains' , 'user'));
+        $user = User::where('id', Auth::user()->id)->first();
+        return view('frontend.user.myprofile', compact('roles', 'domains', 'user'));
     }
 
     public function updateProfile(UpdateProfileRequest $request)
