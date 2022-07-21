@@ -63,10 +63,10 @@
       <div class="col-md-6 pb-4 tab-content" id="pills-tabContent">
         @if(count($topics)>0)
         @foreach($topics as $key => $topic)
-        <div class="tab-pane fade show active" id="v-pills-{{ $key}}" role="tabpanel" aria-labelledby="v-pills-{{ $key}}-tab" tabindex="0">
-         
-        @foreach($topic->discusses as $discusses)
-        <div class="card mb-3 ">
+        <div class="tab-pane fade @if($key == 0 )show active @endif" id="v-pills-{{ $key}}" role="tabpanel" aria-labelledby="v-pills-{{ $key}}-tab" tabindex="0">
+
+          @foreach($topic->discusses as $discusses)
+          <div class="card mb-3 ">
             <div class="card-body">
               <h5 class="card-title">{{$discusses->title}}</h5>
               <ul class="list-inline m-3">
@@ -106,7 +106,15 @@
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <a class="nav-link " id="v-pills-{{$key}}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-{{$key}}" type="button" role="tab" aria-controls="v-pills-{{$key}}" aria-selected="true">
               {{$topic->slug}}</a>
-            <span class="badge  rounded-pill">2</span>
+            @php
+            $publish = 0;
+            foreach($topic->discusses as $discuss){
+            if($discuss->published == '1'){
+            $publish +=1;
+            }
+            }
+            @endphp
+            <span class="badge  rounded-pill">{{$publish}}</span>
           </li>
           @endforeach
           @endif
