@@ -65,8 +65,10 @@ Menovahub - Blog
 
           <h3 class="sidebar-title">@lang('site.search')</h3>
           <div class="sidebar-item search-form">
-            <form action="">
-              <input type="text">
+            <form action="{{ route('blog_search') }}" method="POST">
+              @csrf
+
+              <input type="text" name="slug">
               <button type="submit"><i class="bi bi-search"></i></button>
             </form>
           </div><!-- End sidebar search formn-->
@@ -81,26 +83,15 @@ Menovahub - Blog
             </ul>
           </div><!-- End sidebar categories-->
 
-          <h3 class="sidebar-title">Recent Posts</h3>
+          <h3 class="sidebar-title">@lang('recent_post')</h3>
           <div class="sidebar-item recent-posts">
+            @foreach($blogs as $blog)
             <div class="post-item clearfix">
-              <img src="assets/img/blog/blog-recent-1.jpg" alt="">
-              <h4><a href="/blog-single">Nihil blanditiis at in nihil autem</a></h4>
-              <time datetime="2020-01-01">Jan 1, 2020</time>
+              <img src="{{ asset($blog->image) }}" alt="">
+              <h4><a href="/blog-single">{{ $blog->title }}</a></h4>
+              <time datetime="2020-01-01">{{ date($blog->created_at) }}</time>
             </div>
-
-            <div class="post-item clearfix">
-              <img src="assets/img/blog/blog-recent-2.jpg" alt="">
-              <h4><a href="/blog-single">Quidem autem et impedit</a></h4>
-              <time datetime="2020-01-01">Jan 1, 2020</time>
-            </div>
-
-            <div class="post-item clearfix">
-              <img src="assets/img/blog/blog-recent-3.jpg" alt="">
-              <h4><a href="/blog-single">Id quia et et ut maxime similique occaecati ut</a></h4>
-              <time datetime="2020-01-01">Jan 1, 2020</time>
-            </div>
-
+            @endforeach
           </div><!-- End blog entries list -->
 
 

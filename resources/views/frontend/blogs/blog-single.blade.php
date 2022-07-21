@@ -1,5 +1,4 @@
 @extends('frontend.layouts.master')
-
 @section('title')
 Menovahub - Blog
 @endsection
@@ -14,8 +13,8 @@ Menovahub - Blog
       <div class="container">
 
         <ol>
-          <li><a href="{{ route('home') }}">Home</a></li>
-          <li><a href="{{ route('blogs.index') }}">Blog</a></li>
+          <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
+          <li><a href="{{ route('blogs.index') }}">@lang('site.blog')</a></li>
           <li>Blog Single</li>
         </ol>
         <h2>Blog Single</h2>

@@ -93,4 +93,13 @@ class DiscussController extends Controller
 
         return view('frontend.discuss01' , compact('discusses'));
     }
+
+    protected function search(Request $request){
+
+        // dd($request->all());
+
+        $topics = Topic::where('slug','LIKE','%'.$request->search."%")
+        ->get();
+        return redirect()->back();
+    }
 }

@@ -250,4 +250,5 @@ return [
     'connect_for_fund' => 'Conect For Fund',
     'for_fund' => 'For Fund',
     'blog' => 'Blog',
+    'recent_post' => 'Recent Post',
 ];

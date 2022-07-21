@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\RaisController;
 use App\Http\Controllers\Frontend\DiscussController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\EmailSubscribeController;
+use App\Http\Controllers\Frontend\ProjectController;
 use App\Http\Controllers\HomeController;
 
 Route::prefix(LaravelLocalization::setLocale())
@@ -71,6 +72,7 @@ Route::prefix(LaravelLocalization::setLocale())
         Route::get('discuss/create', [DiscussController::class , 'create'])->name('discusses.create');
         Route::post('discuss/store', [DiscussController::class , 'store'])->name('discusses.store');
         Route::get('/discuss-single',[DiscussController::class , 'single'])->name('discussee.single');
+        Route::post('/discuss/search',[DiscussController::class , 'search'])->name('blog_search');
         Route::get('discuss/{uuid}', 'DiscussController@show')->name('discusses.show');
         Route::name('frontend.')->group(function () {
             Route::post('/contact-us', 'HomeController@contact')->name('contact');
@@ -89,13 +91,13 @@ Route::prefix(LaravelLocalization::setLocale())
                     Route::post('/profile-change-image', 'UserController@changeImage')->name('user_change_image');
                     Route::post('/profile-change-privacy', 'UserController@changePrivacy')->name('user_change_privacy');
                     // User-projects
-                    Route::get('my-projects', 'ProjectController@index')->name('projects.index');
-                    Route::post('my-projects', 'ProjectController@store')->name('projects.store');
-                    Route::get('my-projects/{project}', 'ProjectController@show')->name('projects.show');
-                    Route::get('project/details/{project}', 'ProjectController@details')->name('projects.details');
-                    Route::get('project-data', 'ProjectController@getProjectData')->name('projects.get_data');
-                    Route::post('my-projects/{project}/update', 'ProjectController@update')->name('projects.update');
-                    Route::delete('my-projects/{project}/delete', 'ProjectController@destroy')->name('projects.destroy');
+                    Route::get('my-projects', [ProjectController::class , 'index'])->name('projects.index');
+                    Route::post('my-projects/store', [ProjectController::class , 'store'])->name('projects.store');
+                    Route::get('my-projects/{project}', [ProjectController::class , 'show'])->name('projects.show');
+                    Route::get('project/details/{project}', [ProjectController::class , 'details'])->name('projects.details');
+                    Route::get('project-data', [ProjectController::class , 'getProjectData'])->name('projects.get_data');
+                    Route::post('my-projects/{project}/update', [ProjectController::class , 'update'])->name('projects.update');
+                    Route::delete('my-projects/{project}/delete', [ProjectController::class , 'destroy'])->name('projects.destroy');
                     // Discusses
                    
                     // Comments.

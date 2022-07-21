@@ -1,128 +1,155 @@
 @extends('frontend.layouts.app')
-@section('pageTitle', __('site.my_projects'))
+
+@section('title')
+@endsection
+
+@section('style')
+@endsection
+
 @section('content')
+<section class=" inner-my-projects">
+  <div class="container">
 
-<div class="mysoftware mt-100  pb-80 ">
-		<div class="container">
-    
-            <div class="row">
-  
-                <div class="col-lg-8 offset-lg-2 text-center">
-                    <div class="section-title">	
-                        <br>
-						<h3><span class="pink-text">@lang('site.project_and_sevices') </span> </h3>
-					</div>
-               
-				</div>
-                <div class="col-md-12 text-center">
-                    
-                    <div class="container">
-                        <div class="row height d-flex justify-content-center align-items-center">
-                            <div class="col-md-5 ">
-                                <div class="formsearch "> <i class="fa fa-search"></i> <input type="text" class="form-control form-inputsearch searchback" placeholder="Search anything..."> <span class="left-pan"></span> </div>
-                            </div>
-                        </div>
+    <header class="sec-inner-heading  sec-padding">
+        <div class = "title col-md-12 ">
+        <h2> @lang('site.my_project')</h2>
+
+   <button id="myBtn" class="btn btn-sub m-left">@lang('site.create_project')</button>
+
+        <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <form class='' action = "{{ route('projects.store') }}" method='POST' enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title </label>
+                        <input type="text" class="form-control" id="title" name='title' required
+                            placeholder='Please Enter Your Title'>
                     </div>
-                </div>
-               
-
-            </div>
-            <div class="row mt-50">
-                <div class="col-md-12 text-center ">
-                    
-                    <div class="container ">
-                        <div class="row height d-flex justify-content-center align-items-center ">
-                            <div class="col-sm-1 mt-10">
-                                <div class="" >
-                                    <img src="{{ asset('frontend') }}/assets/img/filter.svg">
-                                </div>
-                               
-                            </div>
-                            <div class="col-sm-2 mt-10">
-                                <select class="form-select form-control form-inputsearch searchback" aria-label="Default select example">
-                                    <option selected disabled>Country</option>
-                                    <option value="1">Egypt</option>
-                                    <option value="2">America</option>
-                                    <option value="3">Egypt</option>
-                                  </select>
-                                  
-                            </div>
-                            <div class="col-sm-2 mt-10">
-                                <select class="form-select form-control form-inputsearch searchback" aria-label="Default select example">
-                                    <option selected disabled>City</option>
-                                    <option value="1">Alexandria</option>
-                                    <option value="2">Cairo</option>
-                                    <option value="3">El Mansourah</option>
-                                  </select>
-                                  
-                            </div>
-                            <div class="col-sm-2 mt-10">
-                                <select class="form-select form-control form-inputsearch searchback" aria-label="Default select example">
-                                    <option selected disabled>Roles</option>
-                                    <option value="1">Investor</option>
-                                    <option value="2">Founder</option>
-                                    <option value="3">Student</option>
-                                    <option value="4">Freelancer</option>
-
-                                  </select>
-                                  
-                            </div>
-                            <div class="col-sm-3 mt-10">
-                                <select class="form-select form-control form-inputsearch searchback" aria-label="Default select example">
-                                    <option selected disabled>Domain of interest</option>
-                                    <option value="1">Programming</option>
-                                    <option value="2">Agriculture</option>
-                                    <option value="3">Education</option>
-                                    <option value="4">Commerce</option>
-
-                                  </select>
-                                  
-                            </div>
-                          
-                        </div>
+                    <div class="mb-3">
+                        <label for="body" class="form-label">Discuss Now </label>
+                        <textarea class="form-control" id="body" name='body' required
+                            placeholder='Please Enter Your question'></textarea>
                     </div>
-                </div>
-            </div>
-       @php
-        $user = Auth::user();
-       
-       @endphp
-            <div class="row mt-5">
-                <div class="col-md-4">
-                    <div class="card  product-card1" >
-                      <div class="card-block m-5" >
-                        <div class="row">
-                            <div class="col-4">
-                                <img  src="{{ $user->image_path}}" width="75px" height="75px">
-                            </div>
-                            <div class="card-title col-7">
-                                <h5 class="mt-4 m-0 card-header11" > {{ $user->last_name }}  </h5>
-
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <p class="card-subtitle text-muted mt-2 col-12">test</p>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-6">
-                                <a class=" btn-pinkbg btn " href="{{ route('frontend.chat.index') }}" ><i class="fa fa-envelope m-1 "></i>@lang('site.message')</a>
-
-                            </div>
-                            <div class="col-6">
-                                <a class=" btn-pinkbg btn " href="{{ route('frontend.projects.show' , $user->id) }}" ><i class="fa fa-eye  m-1  "></i>@lang('site.view')</a>
-        
-                            </div>
-                        </div>
-                      </div>
+                    <div class="input-group mb-5">
+                       <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                            <option selected>choose your city</option>
+                            <option value="1">one</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
                     </div>
+                    <div class="input-group mb-5">
+                        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                            <option selected>choose your category</option>
+                            <option value="1">one</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+
                 </div>
-            
-            </div>
-                
+                <div class="modal-footer">
+
+                <button type="submit" id ='upload' name = 'upload' class="btn btn-sub">
+                    <i class="bi bi-arrow-bar-up"></i> @lang('site.upload')</button>
+                </div>
+            </form>
         </div>
-   
+
     </div>
-    @if(count($projects))
-        {!! $projects->links() !!}
-    @endif
+
+</div>
+
+    </header>
+
+    <div class="row">
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+          <div class="card mb-5" >
+            <img src="assets/img/projects/2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="card-body d-flex justify-content-center align-items-center ">
+                <a href="#" class="card-link btn btn-sub2">delete</a>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-xs-12">
+          <div class="card mb-5">
+            <img src="assets/img/projects/2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="card-body d-flex justify-content-center align-items-center">
+                <a href="#" class="card-link btn btn-sub2">delete</a>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-xs-12">
+          <div class="card mb-5">
+            <img src="assets/img/projects/2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="card-body d-flex justify-content-center align-items-center">
+                <a href="#" class="card-link btn btn-sub2">delete</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4  col-sm-6 col-xs-12">
+          <div class="card mb-5">
+            <img src="assets/img/projects/2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="card-body d-flex justify-content-center align-items-center">
+                <a href="#" class="card-link btn btn-sub2">delete</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4  col-sm-6 col-xs-12">
+          <div class="card mb-5">
+            <img src="assets/img/projects/2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="card-body d-flex justify-content-center align-items-center">
+                <a href="#" class="card-link btn btn-sub2">delete</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4  col-sm-6 col-xs-12">
+          <div class="card mb-5">
+            <img src="assets/img/projects/2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="card-body d-flex justify-content-center align-items-center">
+                <a href="#" class="card-link btn btn-sub2">delete</a>
+            </div>
+            </div>
+        </div>
+
+   </div>
+
+  </div>
+
+</section>
+@endsection
+
+@section('script')
 @endsection
