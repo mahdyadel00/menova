@@ -148,4 +148,8 @@ return [
     'select_topic' => 'اختر الموضوع ',
     'topic' => 'الموضوع',
     'ask' => 'أسال',
+    'email_subscribe' => 'أرسال البريد الالكترونى ',
+    'for_fund' => 'للصندوق ',
+    'connect_for_fund' => 'أتصل بالصندوق ',
+    'blog' => 'المدونات',
 ];

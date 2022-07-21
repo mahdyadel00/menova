@@ -40,9 +40,6 @@ Route::prefix(LaravelLocalization::setLocale())
         Route::get('/discuss', function () {
             return view('frontend.discuss');
         });
-        Route::get('/discuss-single', function () {
-            return view('frontend.discuss-single');
-        });
         Route::get('/find-cofounder', function () {
             return view('frontend.find-cofounder');
         });
@@ -56,23 +53,24 @@ Route::prefix(LaravelLocalization::setLocale())
             return view('frontend.sign_up');
         });
         Route::post('/sign_up', [HomeController::class, 'register'])->name('sign_up');
-
-
+        
+        
         Auth::routes(['verify' => true]);
-
+        
         // UnAuthentication routes.
         Route::name('frontend.')->group(function () {
             // Route::get('blogs', 'HomeController@blogs')->name('blogs');
             // Route::get('blogs/{slug}', 'HomeController@showBlog')->name('blogs.show');
         });
-
+        
         // Auth with provider routes.
         Route::get('auth/{provider}/redirect', 'AuthSocialiteController@redirectToProvider')->name('login_with');
         Route::get('auth/{provider}/callback', 'AuthSocialiteController@handleProviderCallback');
-
+        
         Route::get('discuss/trending', [DiscussController::class , 'index'])->name('discusses.index');
         Route::get('discuss/create', [DiscussController::class , 'create'])->name('discusses.create');
         Route::post('discuss/store', [DiscussController::class , 'store'])->name('discusses.store');
+        Route::get('/discuss-single',[DiscussController::class , 'single'])->name('discussee.single');
         Route::get('discuss/{uuid}', 'DiscussController@show')->name('discusses.show');
         Route::name('frontend.')->group(function () {
             Route::post('/contact-us', 'HomeController@contact')->name('contact');

@@ -246,4 +246,8 @@ return [
     'select_topic' => ' Select Topic',
     'ask' => ' Ask',
     'dicess' => ' Dicess',
+    'email_subscribe' => 'Email SubScribe',
+    'connect_for_fund' => 'Conect For Fund',
+    'for_fund' => 'For Fund',
+    'blog' => 'Blog',
 ];

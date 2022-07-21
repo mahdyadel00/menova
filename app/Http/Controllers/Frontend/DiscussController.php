@@ -60,7 +60,7 @@ class DiscussController extends Controller
         $discuss = Discuss::with(['topic', 'user', 'comments.user', 'likes'])
             ->published()
             ->whereUuid($uuid)
-            ->first();
+            ->get();
         if (!$discuss)
             abort(404);
         $trending_topics = $this->getTrendingList();
@@ -79,5 +79,18 @@ class DiscussController extends Controller
             ->orderBy('discusses_count', 'desc')
             ->limit(10)
             ->get();
+    }
+
+    protected function single(Request $request){
+
+        $trending_topics = $this->getTrendingList();
+        $topics = Topic::get();
+        $comments = Comment::with(['user' , 'replies'])->get();
+        $discusses = Discuss::where('published' , 1)->with(['user', 'topic'])
+        ->orderBy('id', 'DESC')
+        ->limit(10)
+        ->get();
+
+        return view('frontend.discuss01' , compact('discusses'));
     }
 }
