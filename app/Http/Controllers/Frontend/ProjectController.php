@@ -28,6 +28,7 @@ class ProjectController extends Controller
     public function index()
     {
       
+        dd('test');
         $currentUser = auth()->user();
         $projects = Project::where('user_id', $currentUser->id)
             ->with('user')

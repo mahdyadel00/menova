@@ -1,4 +1,4 @@
-  <nav id="navbar" class="navbar">
+<nav id="navbar" class="navbar">
       <ul>
           <li><a class="nav-link scrollto active" href="{{ route('home') }}">@lang('site.home')</a></li>
           <li><a class="nav-link scrollto" href="{{ route('about_us.index') }}">@lang('site.about_us')</a></li>
@@ -14,7 +14,7 @@
                   <li>
                       <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item" href="{{ route('discusses.create') }}">@lang('site.discuss')</a></li>
+                  <li><a class="dropdown-item" href="/discuss">@lang('site.discuss')</a></li>
               </ul>
           </li>
           <li><a class="nav-link scrollto" href="{{ route('blogs.index') }}">@lang('site.blog')</a></li>
@@ -28,25 +28,6 @@
               <img class="nav-link dropdown-toggle img-profile" src="{{ auth()->user()->image_path }}" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               </img>
 
-          @if (auth()->check())
-              <li class="nav-item dropdown">
-                  <img class="nav-link dropdown-toggle img-profile" src="{{ auth()->user()->image_path }}"
-                      id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  </img>
-
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="{{ route('frontend.my_profile') }}">@lang('site.my_profile')</a></li>
-                      <li><a class="dropdown-item" href="/my-projects/store">@lang('site.my_projects')</a></li>
-                      <li>
-                          <hr class="dropdown-divider">
-                      </li>
-                      <li><a class="dropdown-item" href="{{ route('logout') }}">@lang('site.sign_out')</a></li>
-                      <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
-                        @csrf
-                    </form>
-                  </ul>
-              </li>
-          @endif
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="/user-profile">@lang('site.my_profile')</a></li>
                   <li><a class="dropdown-item" href="/my-projects/store">@lang('site.my_projects')</a></li>

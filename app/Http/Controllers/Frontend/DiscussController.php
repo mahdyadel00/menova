@@ -20,10 +20,10 @@ class DiscussController extends Controller
             ->orderBy('id', 'DESC')
             ->limit(10)
             ->get();
-        
         $trending_topics = $this->getTrendingList();
 
-        return view('frontend.discuss', compact('discusses', 'trending_topics'));
+        $topics = Topic::with('discusses')->get();
+        return view('frontend.discuss', compact('discusses', 'trending_topics','topics'));
     }
 
     public function create()
