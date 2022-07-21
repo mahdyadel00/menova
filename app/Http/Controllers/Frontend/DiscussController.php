@@ -21,7 +21,6 @@ class DiscussController extends Controller
             ->limit(10)
             ->get();
         $trending_topics = $this->getTrendingList();
-
         $topics = Topic::with('discusses')->get();
         return view('frontend.discuss', compact('discusses', 'trending_topics','topics'));
     }
