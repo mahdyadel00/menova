@@ -262,6 +262,5 @@ return [
     'comment' => 'Comment',
     'please_enter_your_reply' => 'Please Enter Your Reply',
     'post' => 'Post',
-    'reply' =>  'اعاده توجيبه',
-    'recent_post' =>  'المنشورات الاخيره',
+    'please_enter_your_question' => 'Please Enter Your Question',
 ];

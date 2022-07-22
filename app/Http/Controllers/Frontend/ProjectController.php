@@ -25,9 +25,8 @@ class ProjectController extends Controller
         // $this->middleware('permission:update_projects')->only(['edit', 'update']);
     } // end of __construct
 
-    public function index()
+    public function index(Request $request)
     {
-        
         $currentUser = auth()->user();
         $domains = Domain::get();
         $project_type = ProjectType::get();
