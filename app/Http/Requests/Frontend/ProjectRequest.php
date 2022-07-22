@@ -25,7 +25,7 @@ class ProjectRequest extends FormRequest
     {
         $rules = [
             'title' => ['required', 'string', 'min:3'],
-            'description' => ['required'],
+            'body' => ['required'],
             'project_type_id' => ['required', 'exists:project_types,id'],
             'domain_id' => ['required', 'exists:domains,id'],
         ];
