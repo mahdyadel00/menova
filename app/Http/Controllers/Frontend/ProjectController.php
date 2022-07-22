@@ -27,18 +27,20 @@ class ProjectController extends Controller
 
     public function index()
     {
-      
-        dd('test');
+        
         $currentUser = auth()->user();
+        $domains = Domain::get();
+        $project_type = ProjectType::get();
         $projects = Project::where('user_id', $currentUser->id)
             ->with('user')
             ->paginate(AppServiceProvider::PAGINATION_LIMIT);
 
-        return view('frontend.projects.my-projects', compact('projects'));
+        return view('frontend.projects.my-projects', compact('projects' , 'domains' , 'project_type'));
     } //end of index
 
     protected function store(ProjectRequest $request)
     {
+        dd($request->all());
         $validate = $request->validated();
         if ($request->file) {
             $type = explode('/', $request->file->getMimeType())[0];
@@ -60,16 +62,14 @@ class ProjectController extends Controller
     } //end of store
 
     protected function show(Request $request , $id)
-    {
-        // $project_types = ProjectType::all();
-        // $domains = Domain::all();
-        // $currentUser = auth()->user();
+    {   
+        $domains = Domain::get();
+        $project_type = ProjectType::get();
         $projects = Project::where('user_id', $id)
             ->with('user')
             ->paginate(AppServiceProvider::PAGINATION_LIMIT);
-           
 
-        return view('frontend.projects.show', compact('projects'));
+        return view('frontend.projects.show', compact('projects' , 'domains' , 'project_type'));
     }
 
     protected function details(Request $request , $id){

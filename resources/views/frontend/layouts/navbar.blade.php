@@ -30,7 +30,7 @@
 
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="/user-profile">@lang('site.my_profile')</a></li>
-                  <li><a class="dropdown-item" href="/my-projects/store">@lang('site.my_projects')</a></li>
+                  <li><a class="dropdown-item" href="{{ route('frontend.projects.index') }}">@lang('site.my_projects')</a></li>
                   <li>
                       <hr class="dropdown-divider">
                   </li>

@@ -1,9 +1,7 @@
 @extends('frontend.layouts.master')
 @section('pageTitle', __('site.my_projects'))
 @section('content')
-@php
-    $user = auth()->user();
-@endphp
+
 @section('style')
 @endsection
 
@@ -15,7 +13,7 @@
         <div class = "title col-md-12 ">
         <h2> @lang('site.my_project') </h2>
 
-   <button id="myBtn" class="btn btn-sub m-left"> @lang('site.create_project')</button>
+   <button id="myBtn" class="btn btn-sub m-left"> @lang('site.create_project') +</button>
 
         <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -23,41 +21,42 @@
         <div class="modal-content">
             <span class="close">&times;</span>
 
-            <form class='' action = "{{ route('projects.store') }}" method='POST' enctype="multipart/form-data">
-                @xsrf
+            <form class='' action ="{{ route('frontend.projects.store') }}" method='POST'>
+                @csrf
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title </label>
-                        <input type="text" class="form-control" id="title" name='title' required
-                            placeholder='Please Enter Your Title'>
+                        <label for="title" class="form-label">@lang('site.title') </label>
+                        <input type="text" class="form-control" id="title" name='title' 
+                            placeholder="@lang('site.please_enter_your_name')">
                     </div>
                     <div class="mb-3">
-                        <label for="body" class="form-label">Discuss Now </label>
-                        <textarea class="form-control" id="body" name='body' required
-                            placeholder='Please Enter Your question'></textarea>
+                        <label for="body" class="form-label">@lang('site.discuss_now')</label>
+                        <textarea class="form-control" id="body" name='body' 
+                            placeholder="@lang('site.please_enter_your_question')"></textarea>
                     </div>
                     <div class="input-group mb-5">
-                       <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                            <option selected>choose your city</option>
-                            <option value="1">one</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                       <select name="project_type_id" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                            <option selected>@lang('site.choose_your_domain')</option>
+                            @foreach($domains as $domain)                            
+                            <option value="{{ $domain->id }}">{{ $domain->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="input-group mb-5">
-                        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                            <option selected>choose your category</option>
-                            <option value="1">one</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select name="domain_id" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                            <option selected>@lang('site.choose_your_project_type')</option>
+                            @foreach($project_type as $project)
+                            <option value="{{ $project->id }}">{{ $project->name }}</option>
+                            @endforeach
                         </select>
                     </div>
 
                 </div>
                 <div class="modal-footer">
 
-                <button type="submit" id ='upload' name = 'upload' class="btn btn-sub">
-                    <i class="bi bi-arrow-bar-up"></i> upload</button>
+                <!-- <button type="submit" id ='upload' name = 'upload' class="btn btn-sub">
+                    <i class="bi bi-arrow-bar-up"></i> @lang('site.upload')</button> -->
+                    <button type="submit">test</button>
                 </div>
             </form>
         </div>
@@ -69,81 +68,24 @@
     </header>
 
     <div class="row">
+        @foreach($projects as $project)
+        @dd($project)
     <div class="col-lg-4 col-sm-6 col-xs-12">
-          <div class="card mb-5" >
-            <img src="assets/img/projects/2.jpg" class="card-img-top" alt="...">
+        <div class="card mb-5" >
+            <img src="{{ asset($project->image) }}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title">{{ $project->title }}</h5>
+                <p class="card-text">{{ $project->description }}</p>
             </div>
             <div class="card-body d-flex justify-content-center align-items-center ">
-                <a href="#" class="card-link btn btn-sub2">delete</a>
-            </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-xs-12">
-          <div class="card mb-5">
-            <img src="assets/img/projects/2.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-body d-flex justify-content-center align-items-center">
-                <a href="#" class="card-link btn btn-sub2">delete</a>
-            </div>
+                <a href="#" class="card-link btn btn-sub2">@lang('site.delete')</a>
             </div>
         </div>
-        <div class="col-lg-4 col-sm-6 col-xs-12">
-          <div class="card mb-5">
-            <img src="assets/img/projects/2.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-body d-flex justify-content-center align-items-center">
-                <a href="#" class="card-link btn btn-sub2">delete</a>
-            </div>
-            </div>
-        </div>
+    </div>
 
-        <div class="col-lg-4  col-sm-6 col-xs-12">
-          <div class="card mb-5">
-            <img src="assets/img/projects/2.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-body d-flex justify-content-center align-items-center">
-                <a href="#" class="card-link btn btn-sub2">delete</a>
-            </div>
-            </div>
-        </div>
+    @endforeach
 
-        <div class="col-lg-4  col-sm-6 col-xs-12">
-          <div class="card mb-5">
-            <img src="assets/img/projects/2.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-body d-flex justify-content-center align-items-center">
-                <a href="#" class="card-link btn btn-sub2">delete</a>
-            </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4  col-sm-6 col-xs-12">
-          <div class="card mb-5">
-            <img src="assets/img/projects/2.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-body d-flex justify-content-center align-items-center">
-                <a href="#" class="card-link btn btn-sub2">delete</a>
-            </div>
-            </div>
-        </div>
+       
 
    </div>
 

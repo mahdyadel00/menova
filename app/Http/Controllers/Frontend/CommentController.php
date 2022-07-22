@@ -36,6 +36,7 @@ class CommentController extends Controller
         $reply->parent_id = $request->get('comment_id');
 
         $discuss = Discuss::find($request->get('discuss_id'));
+        // dd($discuss);
 
         $discuss->comments()->save($reply);
 

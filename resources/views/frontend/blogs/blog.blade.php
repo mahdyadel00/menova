@@ -83,7 +83,7 @@ Menovahub - Blog
             </ul>
           </div><!-- End sidebar categories-->
 
-          <h3 class="sidebar-title">@lang('recent_post')</h3>
+          <h3 class="sidebar-title">@lang('site.recent_post')</h3>
           <div class="sidebar-item recent-posts">
             @foreach($blogs as $blog)
             <div class="post-item clearfix">

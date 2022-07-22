@@ -14,13 +14,13 @@
   <div class="container">
     <div class="breadcrumbs-text ">
       <ol>
-        <li><a href="/" class="breadcrumbs-link"></a>Home</li>
-        <li><a href="/about" class="breadcrumbs-link">about</a></li>
-        <li><a href="/services" class="breadcrumbs-link">services</a></li>
-        <li><a href="/connect" class="breadcrumbs-link">connect</a></li>
-        <li><a href="/raise" class="breadcrumbs-link">raise</a></li>
+        <li><a href="{{ route('home') }}" class="breadcrumbs-link"></a>@lang('site.home')</li>
+        <li><a href="{{ route('about_us.index') }}" class="breadcrumbs-link">@lang('site.about_us')</a></li>
+        <li><a href="{{ route('services.index') }}" class="breadcrumbs-link">@lang('site.services')</a></li>
+        <li><a href="{{ route('connect.index') }}" class="breadcrumbs-link">@lang('site.connects')</a></li>
+        <li><a href="{{ route('rais.index') }}" class="breadcrumbs-link">@lang('site.rais')</a></li>
       </ol>
-      <h1>Disucss</h1>
+      <h1>@lang('site.discussess')</h1>
     </div>
   </div>
 </section>
@@ -31,7 +31,7 @@
     <div class="row ">
       <div class="col-md-3 ">
 
-        <button id="myBtn" class="btn btn-sub m-left">Ask Question</button>
+        <button id="myBtn" class="btn btn-sub m-left">@lang('site.ask_question')</button>
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
@@ -42,17 +42,17 @@
             <form class='' action="" method='POST' enctype="multipart/form-data">
               <div class="modal-body">
                 <div class="mb-3">
-                  <label for="title" class="form-label">Title </label>
+                  <label for="title" class="form-label">@lang('title') </label>
                   <input type="text" class="form-control" id="title" name='title' required placeholder='Please Enter Your Title'>
                 </div>
                 <div class="mb-3">
-                  <label for="body" class="form-label">Discuss Now </label>
+                  <label for="body" class="form-label">@lang('site.disscuss_now') </label>
                   <textarea class="form-control" id="body" name='body' required placeholder='Please Enter Your question'></textarea>
                 </div>
               </div>
               <div class="modal-footer">
 
-                <button type="submit" id='ask' name='ask' class="btn btn-sub">Ask</button>
+                <button type="submit" id='ask' name='ask' class="btn btn-sub">@lang('site.ask')</button>
               </div>
             </form>
           </div>
@@ -72,20 +72,20 @@
               <ul class="list-inline m-3">
                 <li class="list-inline-item">
                   <i class="bi bi-person"></i>
-                  <a href="/discuss-single"> John Doe</a>
+                  <a href="/discuss-single"> {{ $discusses->user->first_name }}</a>
                 </li>
                 <li class="list-inline-item">
                   <i class="bi bi-clock"></i>
                   <a href="/discuss-single">
-                    <time datetime="2020-01-01"> Jan 1, 2020</time>
+                    <time datetime="2020-01-01"> {{ date($discusses->created_at) }}</time>
                   </a>
                 </li>
               </ul>
-              <p class="card-text">With supporting text below as a natural lead-in to additional contentWith supporting text below as a natural lead-in to additional contentWith supporting text below as a natural lead-in to additional contentWith supporting text below as a natural lead-in to additional contentWith supporting text below as a natural lead-in to additional contentWith supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text">{{ $discusses->body }}</p>
               <div class="d-flex align-items-center">
-                <a href="/discuss-single">
+                <a href="{{ route('discusses.show' , $discusses->id) }}">
                   <i class="bi bi-chat-dots sub-color"></i>
-                  comment
+                  @lang('site.comment')
                 </a>
               </div>
             </div>

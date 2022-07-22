@@ -56,6 +56,7 @@ class DiscussController extends Controller
 
     public function show($uuid)
     {
+    
         $discuss = Discuss::with(['topic', 'user', 'comments.user', 'likes'])
             ->published()
             ->whereUuid($uuid)
@@ -63,7 +64,7 @@ class DiscussController extends Controller
         if (!$discuss)
             abort(404);
         $trending_topics = $this->getTrendingList();
-        return view('frontend.discusses.show', compact('trending_topics', 'discuss'));
+        return view('frontend.discuss01', compact('trending_topics', 'discuss'));
     }
 
     private function getTrendingList()

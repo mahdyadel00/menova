@@ -15,9 +15,9 @@ Menovahub - Blog
         <ol>
           <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
           <li><a href="{{ route('blogs.index') }}">@lang('site.blog')</a></li>
-          <li>Blog Single</li>
+          <!-- <li>Blog Single</li> -->
         </ol>
-        <h2>Blog Single</h2>
+        <h2>@lang('site.single_blog')</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -43,8 +43,8 @@ Menovahub - Blog
               <div class="entry-meta">
                 <ul>
                   <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{ $blog->user->first_name }}  {{ $blog->user->last_name }}</a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">{{ date($blog->created_at) }}</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html"></a></li>
                 </ul>
               </div>
 

@@ -73,7 +73,7 @@ Route::prefix(LaravelLocalization::setLocale())
         Route::post('discuss/store', [DiscussController::class , 'store'])->name('discusses.store');
         Route::get('/discuss-single',[DiscussController::class , 'single'])->name('discussee.single');
         Route::post('/discuss/search',[DiscussController::class , 'search'])->name('blog_search');
-        Route::get('discuss/{uuid}', 'DiscussController@show')->name('discusses.show');
+        Route::get('discuss/{uuid}', [DiscussController::class , 'show'])->name('discusses.show');
         Route::name('frontend.')->group(function () {
             Route::post('/contact-us', 'HomeController@contact')->name('contact');
             Route::namespace('Frontend')->group(function () {
@@ -92,7 +92,7 @@ Route::prefix(LaravelLocalization::setLocale())
                     Route::post('/profile-change-privacy', 'UserController@changePrivacy')->name('user_change_privacy');
                     // User-projects
                     Route::get('my-projects', [ProjectController::class , 'index'])->name('projects.index');
-                    Route::post('my-projects/store', [ProjectController::class , 'store'])->name('projects.store');
+                    Route::post('my-projects/create', [ProjectController::class , 'store'])->name('projects.store');
                     Route::get('my-projects/{project}', [ProjectController::class , 'show'])->name('projects.show');
                     Route::get('project/details/{project}', [ProjectController::class , 'details'])->name('projects.details');
                     Route::get('project-data', [ProjectController::class , 'getProjectData'])->name('projects.get_data');
