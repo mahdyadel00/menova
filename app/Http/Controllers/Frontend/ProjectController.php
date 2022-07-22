@@ -39,7 +39,6 @@ class ProjectController extends Controller
 
     protected function store(ProjectRequest $request)
     {
-        dd($request->all());
         $validate = $request->validated();
         if ($request->file) {
             $type = explode('/', $request->file->getMimeType())[0];
