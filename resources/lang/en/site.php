@@ -268,4 +268,7 @@ return [
     'state' => 'State',
     'save_profile' => 'Save Profile',
     'our_clients' => 'Our Clients',
+    'discussess' => 'Discussess',
+    'disscuss_now' => 'Discussess Now',
+    'collaborat' => 'Collaborat',
 ];

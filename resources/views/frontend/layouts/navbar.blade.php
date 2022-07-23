@@ -7,12 +7,12 @@
           <li><a class="nav-link scrollto" href="{{ route('rais.index') }}">@lang('site.rais')</a></li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="/collaborat" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  collaborat
+                  @lang('site.collaborat')
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/projects">@lang('site.projects')</a></li>
-                  <li>
-                      <hr class="dropdown-divider">
+                  <!-- <li><a class="dropdown-item" href="/projects">@lang('site.projects')</a></li>
+                  <li> -->
+                      <!-- <hr class="dropdown-divider"> -->
                   </li>
                   <li><a class="dropdown-item" href="/discuss">@lang('site.discuss')</a></li>
               </ul>

@@ -31,7 +31,6 @@ class EmailSubscribeController extends Controller
         return DataTables::of($email)
             ->addColumn('record_select', 'admin.services.data_table.record_select')
             ->addColumn('email', function($email){
-
                 return $email->email;
 
             })->editColumn('created_at', function (EmailSubscribe $email) {

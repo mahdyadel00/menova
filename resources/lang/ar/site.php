@@ -169,4 +169,9 @@ return [
     'save_profile' => 'حفظ الملف الشخصى ',
     'profile_settings' => 'اعدادت  الملف الشخصى ',
     'our_clients' => 'عملاؤنا',
+    'disscuss_now' => 'ناقشنا الان ',
+    'please_enter_your_title' => 'من فضلك ادخل العنوان',
+    'please_enter_your_question' => 'منفضلك ادخل نقاشك الان',
+    'discussess' => 'المناقشه',
+    'collaborat' => 'التعاون',
 ];
