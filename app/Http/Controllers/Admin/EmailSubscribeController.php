@@ -27,6 +27,7 @@ class EmailSubscribeController extends Controller
     protected function data()
     {
         $email = EmailSubscribe::orderBy('id' , 'desc')->get();
+        dd( $email );
 
         return DataTables::of($email)
             ->addColumn('record_select', 'admin.services.data_table.record_select')
