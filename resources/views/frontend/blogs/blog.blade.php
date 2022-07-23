@@ -87,7 +87,7 @@ Menovahub - Blog
           <div class="sidebar-item recent-posts">
             @foreach($blogs as $blog)
             <div class="post-item clearfix">
-              <img src="{{ asset($blog->image) }}" alt="">
+              <img src="{{ $blog->image_path }}" alt="">
               <h4><a href="/blog-single">{{ $blog->title }}</a></h4>
               <time datetime="2020-01-01">{{ date($blog->created_at) }}</time>
             </div>
