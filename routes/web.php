@@ -99,7 +99,7 @@ Route::prefix(LaravelLocalization::setLocale())
                     Route::get('project/details/{project}', [ProjectController::class , 'details'])->name('projects.details');
                     Route::get('project-data', [ProjectController::class , 'getProjectData'])->name('projects.get_data');
                     Route::post('my-projects/{project}/update', [ProjectController::class , 'update'])->name('projects.update');
-                    Route::delete('my-projects/{project}/delete', [ProjectController::class , 'destroy'])->name('projects.destroy');
+                    Route::get('my-projects/{project}/delete', [ProjectController::class , 'destroy'])->name('projects.destroy');
                     // Discusses
                    
                     // Comments.

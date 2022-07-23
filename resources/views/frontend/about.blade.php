@@ -34,7 +34,7 @@ Menovahub - About
 
       <div class="col-lg-6">
         {{-- @dd($about_us)  --}}
-        <img src="{{ asset($about_us->image_path) }}" class="img-fluid" alt="">
+        <img src="{{ $about_us->image_path }}" class="img-fluid" alt="">
       </div>
 
       <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
@@ -134,7 +134,7 @@ Menovahub - About
     <div class="clients-slider swiper">
       <div class="swiper-wrapper align-items-center">
         @foreach ($our_clients as $o_client)
-        <div class="swiper-slide"><img src="{{ asset($o_client->image) }}" class="img-fluid" alt=""></div>
+        <div class="swiper-slide"><img src="{{ $o_client->image_path }}" class="img-fluid" alt=""></div>
         @endforeach
 
       </div>
