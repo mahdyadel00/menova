@@ -162,5 +162,11 @@ return [
     'choose_your_project_type' => 'اختر نوع المشروع ',
     'discuss_now' => 'ضع استفسارك ',
     'comment' => 'تعليق',
+    'image' => 'صوره',
     'please_enter_your_reply' => 'من فضلك ضع الكومنت المناسب',
+    'mobile_number' => 'رقم الهاتف',
+    'state' => 'المكان',
+    'save_profile' => 'حفظ الملف الشخصى ',
+    'profile_settings' => 'اعدادت  الملف الشخصى ',
+    'our_clients' => 'عملاؤنا',
 ];

@@ -56,7 +56,8 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit">test</button>
+                          
+                                <button type="submit" class="btn btn-sub">@lang('site.save')</button>
                             </div>
                         </form>
                     </div>

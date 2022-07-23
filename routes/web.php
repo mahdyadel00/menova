@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\ConnectController;
 use App\Http\Controllers\Frontend\RaisController;
 use App\Http\Controllers\Frontend\DiscussController;
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\ProfileController;
 use App\Http\Controllers\Frontend\EmailSubscribeController;
 use App\Http\Controllers\Frontend\ProjectController;
 use App\Http\Controllers\HomeController;
@@ -33,7 +34,8 @@ Route::prefix(LaravelLocalization::setLocale())
         Route::get('/rais', [RaisController::class, 'index'])->name('rais.index');
         Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
         Route::get('/blogs/{id}', [BlogController::class, 'show'])->name('blogs.show');
-        Route::get('/user/profile', [BlogController::class, 'index'])->name('profile.index');
+        Route::get('/user-profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::post('/user-profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
         Route::post('/rais/create', [RaisController::class, 'store'])->name('rais.store');
         Route::post('/email_sub/create', [EmailSubscribeController::class, 'store'])->name('email_sub.store');
 
@@ -44,9 +46,9 @@ Route::prefix(LaravelLocalization::setLocale())
         Route::get('/find-cofounder', function () {
             return view('frontend.find-cofounder');
         });
-        Route::get('/user-profile', function () {
-            return view('frontend.user-profile');
-        });
+        // Route::get('/user-profile', function () {
+        //     return view('frontend.user-profile');
+        // });
         Route::get('/login', function () {
             return view('frontend.login');
         });

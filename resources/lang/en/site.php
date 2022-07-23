@@ -263,4 +263,9 @@ return [
     'please_enter_your_reply' => 'Please Enter Your Reply',
     'post' => 'Post',
     'please_enter_your_question' => 'Please Enter Your Question',
+    'image' => 'Image',
+    'mobile_number' => 'Mobile Number',
+    'state' => 'State',
+    'save_profile' => 'Save Profile',
+    'our_clients' => 'Our Clients',
 ];

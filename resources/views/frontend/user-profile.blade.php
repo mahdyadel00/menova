@@ -14,23 +14,27 @@ Menovahub-Profile
     <div class="row justify-content-md-center">
 
         <div class="col-md-8 border border-light">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle " width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle " width="150px" src="{{ asset(auth()->user()->image_path)  }}"><span class="font-weight-bold">{{ auth()->user()->first_name }}  {{ auth()->user()->last_name }} </span><span class="text-black-50">{{ auth()->user()->email }}</span><span> </span></div>
         </div>
         <div class="col-md-8 border border-light">
+            <form action="{{ route('profile.update' , auth()->user()->id) }}" method="POST">
+                @csrf
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
+                    <h4 class="text-right">@lang('site.profile_settings')</h4>
                 </div>
                 
                 <div class="row mt-3">
-                    <div class="col-md-12 mb-3"><label class="labels">Name</label><input type="text" id = 'name' name = 'name' class="form-control" placeholder="first name" ></div>
-                    <div class="col-md-12 mb-3"><label class="labels">Email </label><input type="text" id = 'email' name = 'email' class="form-control" placeholder="enter email" ></div>
-                    <div class="col-md-12 mb-3"><label class="labels">Mobile Number</label><input type="text" id = 'phone' name = 'phone' class="form-control" placeholder="enter phone number" ></div>
-                    <div class="col-md-12 mb-3"><label class="labels">State</label><input type="text" id = 'state' name = 'state' class="form-control" placeholder="enter address line 2" ></div>
+                    <div class="col-md-12 mb-3"><label class="labels">@lang('site.first_name')</label><input type="text" id = 'name' name = 'first_name' class="form-control" placeholder="@lang('site.first_name')" value="{{ auth()->user()->first_name }}"></div>
+                    <div class="col-md-12 mb-3"><label class="labels">@lang('site.last_name')</label><input type="text" id = 'name' name = 'last_name' class="form-control" placeholder="@lang('site.last_name')" value="{{ auth()->user()->last_name }}"></div>
+                    <div class="col-md-12 mb-3"><label class="labels">@lang('site.email') </label><input type="text" id = 'email' name = 'email' class="form-control" placeholder="@lang('site.email')" value="{{ auth()->user()->email }}"></div>
+                    <div class="col-md-12 mb-3"><label class="labels">@lang('site.mobile_number')</label><input type="text" id = 'phone' name = 'phone' class="form-control" placeholder="@lang('site.mobile_number')" value="{{ auth()->user()->phone }}"></div>
+                    <div class="col-md-12 mb-3"><label class="labels">@lang('site.state')</label><input type="text" id = 'state' name = 'location' class="form-control" placeholder="@lang('site.state')" value="{{ auth()->user()->location }}"></div>
                 </div>
                
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">@lang('site.save_profile')</button></div>
             </div>
+            </form>
     </div>
        
     </div>

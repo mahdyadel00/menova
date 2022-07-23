@@ -1,98 +1,225 @@
 @extends('frontend.layouts.master')
-@section('pageTitle', __('site.my_projects'))
-@section('content')
+@section('title')
+Menovahub-Find Cofounder
+@endsection
 
 @section('style')
 @endsection
 
 @section('content')
-<section class=" inner-my-projects">
-  <div class="container">
+<div class="container-fluid mt-3">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-3 px-sm-2 px-0 bg-slide d-none d-sm-block" id='nav'>
+            <div class="flex-column  align-items-sm-start px-1 pt-2 text-white min-vh-100">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start align-items-sm-start px-sm-2 px-0"
+                    id="myTab" role="tablist">
+                    <li class="nav-item mt-3 h5 w-100" role="presentation">
+                        <label class="mb-2">Roles</label>
+                        <div class='m-2'>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Default checkbox
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
 
-    <header class="sec-inner-heading  sec-padding">
-        <div class = "title col-md-12 ">
-        <h2> @lang('site.my_project') </h2>
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    Checked checkbox
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    Checked checkbox
+                                </label>
+                            </div>
+                        </div>
 
-   <button id="myBtn" class="btn btn-sub m-left"> @lang('site.create_project') +</button>
+                    </li>
+                    <li class="nav-item mt-3 h5 w-100 " role="presentation">
+                        <label class="mb-2">category</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
 
-        <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
+                    </li>
+                    <li class="nav-item mt-3 h5 w-100" role="presentation">
+                        <label class="mb-2">City</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
 
-            <form class='' action ="{{ route('frontend.projects.store') }}" method='POST'>
-                @csrf
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="title" class="form-label">@lang('site.title') </label>
-                        <input type="text" class="form-control" id="title" name='title' 
-                            placeholder="@lang('site.please_enter_your_name')">
-                    </div>
-                    <div class="mb-3">
-                        <label for="body" class="form-label">@lang('site.discuss_now')</label>
-                        <textarea class="form-control" id="body" name='body' 
-                            placeholder="@lang('site.please_enter_your_question')"></textarea>
-                    </div>
-                    <div class="input-group mb-5">
-                       <select name="project_type_id" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                            <option selected>@lang('site.choose_your_domain')</option>
-                            @foreach($domains as $domain)                            
-                            <option value="{{ $domain->id }}">{{ $domain->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="input-group mb-5">
-                        <select name="domain_id" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                            <option selected>@lang('site.choose_your_project_type')</option>
-                            @foreach($project_type as $project)
-                            <option value="{{ $project->id }}">{{ $project->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    </li>
 
-                </div>
-                <div class="modal-footer">
-
-                <!-- <button type="submit" id ='upload' name = 'upload' class="btn btn-sub">
-                    <i class="bi bi-arrow-bar-up"></i> @lang('site.upload')</button> -->
-                    <button type="submit">test</button>
-                </div>
-            </form>
+                </ul>
+            </div>
         </div>
+        <div class="col py-3 px-1  ">
+            <button type='button' id='toggle' class="btn btn-white mb-3 d-block d-sm-block d-md-none">
+                <i class='bx bx-list-ul bx-md'></i>
+            </button>
+            <div id='info' class='px-4'>
+                <!-- ======= projects Section ======= -->
+                <section id="projects" class="projects sec-padding">
+                    <div class="container" data-aos="fade-up">
+                    <header class="sec-inner-heading text-center mb-5">
+                        <h2> projects </h2>
+                    </header>
 
+                        <div class="row gy-3 mb-5">
+
+                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                                data-aos-delay="200">
+                                <div class="project-box">
+                                    <div class="project-img">
+                                        <img src="assets/img/projects/project-2.jpg" class="img-fluid" alt="">
+
+                                    </div>
+                                    <div class="project-info">
+                                        <h4>Sarah Jhonson</h4>
+                                        <span>Product Manager</span>
+                                        <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil
+                                            minima suscipit corporis. Voluptate sed quas reiciendis animi neque
+                                            sapiente.</p>
+                                    </div>
+                                    <div class="social d-flex justify-content-space-around align-item-center">
+                                            <a href=""><i class="bi bi-chat-left-dots-fill"></i>messege</a>
+                                            <a href=""><i class="bi bi-link"></i>project-link</a>
+                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                                data-aos-delay="300">
+                                <div class="project-box">
+                                    <div class="project-img">
+                                        <img src="assets/img/projects/project-3.jpg" class="img-fluid" alt="">
+
+                                    </div>
+                                    <div class="project-info">
+                                        <h4>William Anderson</h4>
+                                        <span>CTO</span>
+                                        <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae
+                                            deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.
+                                        </p>
+                                    </div>
+                                    <div class="social d-flex justify-content-space-around align-item-center">
+                                            <a href=""><i class="bi bi-chat-left-dots-fill"></i>messege</a>
+                                            <a href=""><i class="bi bi-link"></i>project-link</a>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                                data-aos-delay="400">
+                                <div class="project-box">
+                                    <div class="project-img">
+                                        <img src="assets/img/projects/project-4.jpg" class="img-fluid" alt="">
+
+                                    </div>
+                                    <div class="project-info">
+                                        <h4>Amanda Jepson</h4>
+                                        <span>Accountant</span>
+                                        <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia
+                                            aut aliquid doloremque ut possimus ipsum officia.</p>
+                                    </div>
+                                    <div class="social d-flex justify-content-space-around align-item-center">
+                                            <a href=""> <i class="bi bi-chat-left-dots-fill"></i>messege</a>
+                                            <a href=""><i class="bi bi-link"></i>project-link</a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+             </div>
+            <div class="row gy-3 mb-5">
+
+                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                            data-aos-delay="200">
+                            <div class="project-box">
+                                <div class="project-img">
+                                    <img src="assets/img/projects/project-2.jpg" class="img-fluid" alt="">
+
+                                </div>
+                                <div class="project-info">
+                                    <h4>Sarah Jhonson</h4>
+                                    <span>Product Manager</span>
+                                    <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil
+                                        minima suscipit corporis. Voluptate sed quas reiciendis animi neque
+                                        sapiente.</p>
+                                </div>
+                                <div class="social d-flex justify-content-space-around align-item-center">
+                                        <a href=""><i class="bi bi-chat-left-dots-fill"></i>messege</a>
+                                        <a href=""><i class="bi bi-link"></i>project-link</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                            data-aos-delay="300">
+                            <div class="project-box">
+                                <div class="project-img">
+                                    <img src="assets/img/projects/project-3.jpg" class="img-fluid" alt="">
+
+                                </div>
+                                <div class="project-info">
+                                    <h4>William Anderson</h4>
+                                    <span>CTO</span>
+                                    <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae
+                                        deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.
+                                    </p>
+                                </div>
+                                <div class="social d-flex justify-content-space-around align-item-center">
+                                        <a href=""><i class="bi bi-chat-left-dots-fill"></i>messege</a>
+                                        <a href=""><i class="bi bi-link"></i>project-link</a>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                            data-aos-delay="400">
+                            <div class="project-box">
+                                <div class="project-img">
+                                    <img src="assets/img/projects/project-4.jpg" class="img-fluid" alt="">
+
+                                </div>
+                                <div class="project-info">
+                                    <h4>Amanda Jepson</h4>
+                                    <span>Accountant</span>
+                                    <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia
+                                        aut aliquid doloremque ut possimus ipsum officia.</p>
+                                </div>
+                                <div class="social d-flex justify-content-space-around align-item-center">
+                                        <a href=""> <i class="bi bi-chat-left-dots-fill"></i>messege</a>
+                                        <a href=""><i class="bi bi-link"></i>project-link</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                 </div>
+             </div>
+         </section><!-- End projects Section -->
+      </div>
     </div>
-
+  </div>
 </div>
 
-    </header>
-
-    <div class="row">
-        @foreach($projects as $project)
-        @dd($project)
-    <div class="col-lg-4 col-sm-6 col-xs-12">
-        <div class="card mb-5" >
-            <img src="{{ asset($project->image) }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ $project->title }}</h5>
-                <p class="card-text">{{ $project->description }}</p>
-            </div>
-            <div class="card-body d-flex justify-content-center align-items-center ">
-                <a href="#" class="card-link btn btn-sub2">@lang('site.delete')</a>
-            </div>
-        </div>
-    </div>
-
-    @endforeach
-
-       
-
-   </div>
-
-  </div>
-
-</section>
 @endsection
 
 @section('script')
+
 @endsection
