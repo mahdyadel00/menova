@@ -175,6 +175,7 @@ return [
     'discussess' => 'المناقشه',
     'collaborat' => 'التعاون',
     'menovahub' => 'مينوفا هب',
+    'find_your_solutaion' => 'أبحث عن اجابتك',
     'advisor' => 'مستشارك',
     'find_your_advisors' => 'أبحث عن مستشاريك',
 ];

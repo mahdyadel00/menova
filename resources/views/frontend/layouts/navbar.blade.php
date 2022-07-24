@@ -11,9 +11,9 @@
                 @lang('site.collaborat')
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <!-- <li><a class="dropdown-item" href="/projects">@lang('site.projects')</a></li>
-                  <li> -->
-                <!-- <hr class="dropdown-divider"> -->
+                 <li><a class="dropdown-item" href="{{ route('frontend.projects') }}">@lang('site.projects')</a></li>
+                  <li>
+                <hr class="dropdown-divider">
         </li>
         <li><a class="dropdown-item" href="{{ route('discusses.index') }}">@lang('site.discuss')</a></li>
     </ul>

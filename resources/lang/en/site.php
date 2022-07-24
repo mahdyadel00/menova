@@ -272,4 +272,6 @@ return [
     'disscuss_now' => 'Discussess Now',
     'collaborat' => 'Collaborat',
     'menovahub' => 'MenovaHub',
+    'find_your_solutaion' => 'Find Your Soluation',
+    'roles' => 'Roles',
 ];

@@ -26,7 +26,13 @@ class ProjectController extends Controller
     } // end of __construct
 
     public function all_projects(){
-        return view('frontend.projects.all_projects');
+        $projects = Project::with([
+
+            'projectType' ,
+            'domain' ,
+            'user' ,
+        ])->get();
+        return view('frontend.projects.all_projects' , compact('projects'));
     }
     public function index(Request $request)
     {
