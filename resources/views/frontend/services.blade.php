@@ -36,6 +36,7 @@ Menovahub-Services
       @foreach($services as $service)
         <div class="col-lg-6 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
           <div class="service-box blue">
+            <img src="{{ $service->image_path }}" alt="{{  $service->data->isNotEmpty() ? $service->data->first()->name : '' }}">
             <i class="{{ $service->icon }}"></i>
             <h3>{{  $service->data->isNotEmpty() ? $service->data->first()->name : '' }}</h3>
             <p>{!! $service->data->isNotEmpty() ? $service->data->first()->description : '' !!}</p>
