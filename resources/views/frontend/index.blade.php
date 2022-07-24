@@ -51,7 +51,7 @@
 
     <div class="carousel">
         @foreach ($sliders as $slider)
-            <div class="carousel--item" style="background-image: url('{{ asset($slider->image_path) }}">
+            <div class="carousel--item" style="background-image: url('{{ $slider->image_path }}">
                 <div class="carousel--item-text">
                     <a href="{{ route('login') }}" class="btn btn-get-started">@lang('site.get_started')</a>
                 </div>
@@ -258,10 +258,10 @@
                             </div>
 
                             <div>
-                                <a href="#" class="btn-join">@lang('site.join_now')</a>
+                                <!-- <a href="#" class="btn-join">@lang('site.join_now')</a> -->
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                            @endforeach
 
                     <div class="col-md-6  col-xs-12">
                         <div class="connect-img">
@@ -285,7 +285,7 @@
                 @foreach ($blogs as $blog)
                     <div class="col-lg-4">
                         <div class="post-box">
-                            <div class="post-img"><img src="{{ asset($blog->image) }}" class="img-fluid"
+                            <div class="post-img"><img src="{{ $blog->image_path }}" class="img-fluid"
                                     alt="{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }}"></div>
                             <span
                                 class="post-date">{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }}</span>

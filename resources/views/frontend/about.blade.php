@@ -27,14 +27,14 @@ Menovahub - About
 
     <header class="section-header">
       <h2> @lang('site.about_us') </h2>
-      <p> about menova hub </p>
+      <!-- <p> about menova hub </p> -->
     </header>
 
     <div class="row">
 
       <div class="col-lg-6">
         {{-- @dd($about_us)  --}}
-        <img src="{{ asset($about_us->image_path) }}" class="img-fluid" alt="">
+        <img src="{{ $about_us->image_path }}" class="img-fluid" alt="">
       </div>
 
       <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
@@ -114,32 +114,7 @@ Menovahub - About
     </div><!-- End Feature Tabs -->
 
     <!-- Feature Icons -->
-    <div class="row feature-icons" data-aos="fade-up">
-      <h3>Ratione mollitia eos ab laudantium rerum beatae quo</h3>
 
-      <div class="row">
-
-        <div class="col-xl-4 text-center" data-aos="fade-right" data-aos-delay="100">
-          <img src="assets/img/features-3.png" class="img-fluid p-4" alt="">
-        </div>
-
-        <div class="col-xl-8 d-flex content">
-          <div class="row align-self-center gy-4">
-            @foreach($abouts as $about)
-            <div class="col-md-6 icon-box" data-aos="fade-up">
-              <i class="ri-line-chart-line"></i>
-              <div>
-                <h4>{{ $about->data->isNotEmpty() ? $about->data->first()->title : '' }}</h4>
-                <p>{!! $about->data->isNotEmpty() ? $about->data->first()->description : '' !!}</p>
-              </div>
-            </div>
-            @endforeach
-          </div>
-        </div>
-
-      </div>
-
-    </div><!-- End about Icons -->
 
   </div>
 
@@ -152,15 +127,14 @@ Menovahub - About
   <div class="container" data-aos="fade-up">
 
     <header class="section-header">
-      <h2>Our Clients</h2>
-      <p>Temporibus omnis officia</p>
+      <h2>@lang('site.our_clients')</h2>
+      <!-- <p>Temporibus omnis officia</p> -->
     </header>
 
     <div class="clients-slider swiper">
       <div class="swiper-wrapper align-items-center">
         @foreach ($our_clients as $o_client)
-
-        <div class="swiper-slide"><img src="{{ asset($o_client->image_path) }}" class="img-fluid" alt=""></div>
+        <div class="swiper-slide"><img src="{{ $o_client->image_path }}" class="img-fluid" alt=""></div>
         @endforeach
 
       </div>

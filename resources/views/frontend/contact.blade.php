@@ -51,7 +51,7 @@ Menovahub-contact
               <i class="bi bi-envelope"></i>
               <p>
               @lang('front.email'): {{ setting('email') }}<br>
-                <span>Web: {{ setting('dribbble') }}</span>
+                <span> {{ setting('dribbble') }}</span>
               </p>
             </div>
           </div>

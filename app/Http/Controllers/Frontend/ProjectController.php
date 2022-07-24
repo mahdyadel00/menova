@@ -28,9 +28,8 @@ class ProjectController extends Controller
     public function all_projects(){
         return view('frontend.projects.all_projects');
     }
-    public function index()
+    public function index(Request $request)
     {
-        
         $currentUser = auth()->user();
         $domains = Domain::get();
         $project_type = ProjectType::get();
@@ -43,7 +42,6 @@ class ProjectController extends Controller
 
     protected function store(ProjectRequest $request)
     {
-        dd($request->all());
         $validate = $request->validated();
         if ($request->file) {
             $type = explode('/', $request->file->getMimeType())[0];

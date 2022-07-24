@@ -49,10 +49,15 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">@lang('site.image') </label>
+                                    <input type="file" class="form-control" id="image" name='image'>
+                                </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit">test</button>
+                          
+                                <button type="submit" class="btn btn-sub">@lang('site.save')</button>
                             </div>
                         </form>
                     </div>
@@ -66,16 +71,15 @@
 
         <div class="row">
             @foreach($projects as $project)
-            @dd($project)
             <div class="col-lg-4 col-sm-6 col-xs-12">
                 <div class="card mb-5">
-                    <img src="{{ asset($project->image) }}" class="card-img-top" alt="...">
+                    <img src="{{ $project->image_path }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ $project->title }}</h5>
                         <p class="card-text">{{ $project->description }}</p>
                     </div>
                     <div class="card-body d-flex justify-content-center align-items-center ">
-                        <a href="#" class="card-link btn btn-sub2">@lang('site.delete')</a>
+                        <a href="{{ route('frontend.projects.destroy' , $project->id) }}" class="card-link btn btn-sub2">@lang('site.delete')</a>
                     </div>
                 </div>
             </div>

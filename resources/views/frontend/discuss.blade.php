@@ -39,20 +39,21 @@
           <div class="modal-content">
             <span class="close">&times;</span>
 
-            <form class='' action="" method='POST' enctype="multipart/form-data">
+            <form class="" action="{{ route('discusses.store') }}" method='POST' enctype="multipart/form-data">
+              @csrf
               <div class="modal-body">
                 <div class="mb-3">
-                  <label for="title" class="form-label">@lang('title') </label>
-                  <input type="text" class="form-control" id="title" name='title' required placeholder='Please Enter Your Title'>
+                  <label for="title" class="form-label">@lang('site.title') </label>
+                  <input type="text" class="form-control" id="title" name='title' required placeholder="@lang('site.please_enter_your_title')">
                 </div>
                 <div class="mb-3">
                   <label for="body" class="form-label">@lang('site.disscuss_now') </label>
-                  <textarea class="form-control" id="body" name='body' required placeholder='Please Enter Your question'></textarea>
+                  <textarea class="form-control" id="body" name='body' required placeholder="@lang('site.please_enter_your_question')"></textarea>
                 </div>
               </div>
               <div class="modal-footer">
 
-                <button type="submit" id='ask' name='ask' class="btn btn-sub">@lang('site.ask')</button>
+                <button type="submit" id='ask' class="btn btn-sub">@lang('site.ask')</button>
               </div>
             </form>
           </div>
