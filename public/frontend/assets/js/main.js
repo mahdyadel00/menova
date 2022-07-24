@@ -85,6 +85,13 @@
     window.addEventListener('load', headerScrolled)
     onscroll(document, headerScrolled)
   }
+/*  preloader.....................*/
+  let preloader = select('#preloader');
+  if (preloader) {
+    window.addEventListener('load', () => {
+      preloader.remove()
+    });
+  }
 /**
    * Hero carousel indicators
    */

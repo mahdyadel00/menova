@@ -61,10 +61,15 @@ class DiscussController extends Controller
             ->published()
             ->whereUuid($uuid)
             ->get();
+
+
         if (!$discuss)
             abort(404);
         $trending_topics = $this->getTrendingList();
-        return view('frontend.discuss01', compact('trending_topics', 'discuss'));
+        $dis = Discuss::where('id' , $uuid)->first();
+
+        $comments = Comment::with('user')->where('parent_id' ,$uuid )->get();
+        return view('frontend.discuss01', compact('trending_topics', 'discuss' , 'uuid' , 'comments' , 'dis'));
     }
 
     private function getTrendingList()
@@ -103,3 +108,4 @@ class DiscussController extends Controller
         return redirect()->back();
     }
 }
+

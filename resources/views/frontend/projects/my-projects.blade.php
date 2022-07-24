@@ -22,19 +22,19 @@
                     <div class="modal-content">
                         <span class="close">&times;</span>
 
-                        <form class='' action="{{ route('frontend.projects.store') }}" method='POST'>
+                        <form class='' action="{{ route('frontend.projects.store') }}" method='POST' enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body">
                                 <div class="mb-3">
                                     <label for="title" class="form-label">@lang('site.title') </label>
-                                    <input type="text" class="form-control" id="title" name='title' placeholder="@lang('site.please_enter_your_name')">
+                                    <input type="text" class="form-control" id="title" name='title' placeholder="@lang('site.please_enter_your_name')" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="body" class="form-label">@lang('site.discuss_now')</label>
-                                    <textarea class="form-control" id="body" name='body' placeholder="@lang('site.please_enter_your_question')"></textarea>
+                                    <textarea class="form-control" id="body" name='body' placeholder="@lang('site.please_enter_your_question')" required></textarea>
                                 </div>
                                 <div class="input-group mb-5">
-                                    <select name="project_type_id" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                    <select name="project_type_id" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon" required>
                                         <option selected>@lang('site.choose_your_domain')</option>
                                         @foreach($domains as $domain)
                                         <option value="{{ $domain->id }}">{{ $domain->name }}</option>
@@ -42,7 +42,7 @@
                                     </select>
                                 </div>
                                 <div class="input-group mb-5">
-                                    <select name="domain_id" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                    <select name="domain_id" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon" required>
                                         <option selected>@lang('site.choose_your_project_type')</option>
                                         @foreach($project_type as $project)
                                         <option value="{{ $project->id }}">{{ $project->name }}</option>
@@ -51,12 +51,12 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="image" class="form-label">@lang('site.image') </label>
-                                    <input type="file" class="form-control" id="image" name='image'>
+                                    <input type="file" class="form-control" id="image" name='image' required>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                          
+
                                 <button type="submit" class="btn btn-sub">@lang('site.save')</button>
                             </div>
                         </form>

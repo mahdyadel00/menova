@@ -42,17 +42,14 @@ class ProjectController extends Controller
 
     protected function store(ProjectRequest $request)
     {
-        // dd($request->all());
         $validate = $request->validated();
-        if ($request->file) {
-            $type = explode('/', $request->file->getMimeType())[0];
-            if ($type == 'image') {
-                $validate['image'] = $this->uploadImage($request->file, 'projects');
-            } else {
-                $validate['attachment'] = $this->uploadDocument($request->file, 'projects');
-            }
+
+        if ($request->image) {
+            $validate['image'] = $this->uploadImage($request->image, 'projects');
         }
+
         $validate['user_id'] = auth()->id();
+
         try {
             Project::create($validate);
             session()->flash('success', __('site.added_successfully'));
@@ -64,7 +61,7 @@ class ProjectController extends Controller
     } //end of store
 
     protected function show(Request $request , $id)
-    {   
+    {
         $domains = Domain::get();
         $project_type = ProjectType::get();
         $projects = Project::where('user_id', $id)
@@ -135,7 +132,7 @@ class ProjectController extends Controller
         if (auth()->user()->id == $project->user_id) {
             $project->delete();
             session()->flash('success', __('site.deleted_successfully'));
-            return response(__('site.deleted_successfully'));
+            return redirect()->back()->with(__('site.deleted_successfully'));
         } else {
             return __('site.not_allow');
         }

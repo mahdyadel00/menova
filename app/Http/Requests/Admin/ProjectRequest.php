@@ -28,7 +28,8 @@ class ProjectRequest extends FormRequest
             'description' => ['required'],
             'project_type_id' => ['required', 'exists:project_types,id'],
             'domain_id' => ['required', 'exists:domains,id'],
-            'user_id' => ['required', 'exists:users,id'],
+            'user_id' => ['required', 'exists:users,id|nullable'],
+            'image' => ['sometimes|nullable|image'],
         ];
 
         if (request()->image)
@@ -44,7 +45,9 @@ class ProjectRequest extends FormRequest
             $rules['description'] = ['required'];
             $rules['project_type_id'] = ['required', 'exists:project_types,id'];
             $rules['domain_id'] = ['required', 'exists:domains,id'];
-            $rules['user_id'] = ['required', 'exists:users,id'];
+            $rules['user_id'] = ['required', 'exists:users,id|nullable'];
+            $rules['image'] = ['sometimes|nullable|image'];
+
         } //end of if
 
         return $rules;

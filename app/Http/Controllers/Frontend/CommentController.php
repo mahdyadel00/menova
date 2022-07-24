@@ -27,19 +27,18 @@ class CommentController extends Controller
 
     public function replyStore(CommentRequest $request)
     {
-        $reply = new Comment();
 
-        $reply->comment = $request->get('comment');
+        $reply =  Comment::query()->create([
 
-        $reply->user()->associate($request->user());
+            'user_id'  => auth()->user()->id,
+            'parent_id'  => $request->discussess_id,
+            'comment'  =>   $request->comment,
+        ]);
 
-        $reply->parent_id = $request->get('comment_id');
-
-        $discuss = Discuss::find($request->get('discuss_id'));
-        // dd($discuss);
-
-        $discuss->comments()->save($reply);
-
-        return back();
+        session()->flash('success', __('site.sent_mail_for_reviewing'));
+        return redirect()->back();
     }
+
+
+
 }

@@ -44,16 +44,16 @@
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="title" class="form-label">@lang('site.title') </label>
-                                        <input type="text" class="form-control" id="title" name='title' required
-                                            placeholder="@lang('site.please_enter_your_title')">
+                                        <input type="text" class="form-control" id="title" name='title'
+                                            placeholder="@lang('site.please_enter_your_title')" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="body" class="form-label">@lang('site.disscuss_now') </label>
-                                        <textarea class="form-control" id="body" name='body' required placeholder="@lang('site.please_enter_your_question')"></textarea>
+                                        <textarea class="form-control" id="body" name='body'  placeholder="@lang('site.please_enter_your_question')" required></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="topic" class="form-label">@lang('site.disscuss_now') </label>
-                                        <select name="topic_id" id="topic_id" class="form-control">
+                                        <select name="topic_id" id="topic_id" class="form-control" required>
                                             <option value="0">@lang('site.select_topic')</option>
                                             @foreach ($topics as $topic)
                                                 <option value="{{ $topic->id }}">{{ $topic->name }}</option>
