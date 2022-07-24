@@ -174,4 +174,7 @@ return [
     'please_enter_your_question' => 'منفضلك ادخل نقاشك الان',
     'discussess' => 'المناقشه',
     'collaborat' => 'التعاون',
+    'menovahub' => 'مينوفا هب',
+    'advisor' => 'مستشارك',
+    'find_your_advisors' => 'أبحث عن مستشاريك',
 ];

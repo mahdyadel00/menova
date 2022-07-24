@@ -32,7 +32,7 @@ Menovahub - Blog
         <article class="entry">
 
           <div class="entry-img">
-            <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+            <img src="{{ $blog->image_path }}" alt="{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }}" class="img-fluid">
           </div>
 
           <h2 class="entry-title">
@@ -79,7 +79,7 @@ Menovahub - Blog
               @foreach($blogs as $blog)
               <li><a href="#">{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }} </a></li>
               @endforeach
-             
+
             </ul>
           </div><!-- End sidebar categories-->
 

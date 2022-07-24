@@ -86,7 +86,7 @@
                                 <div class="box">
                                     <img src="{{ $about->image_path }}" class="img-fluid" alt="">
                                     <h3>{{ $about->title }}</h3>
-                                    <p>{!! $about->description !!}</p>
+                                    <p>{!! Str::limit($about->description , 100) !!}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -94,7 +94,7 @@
 
                     <div class="text-center sec-padding ">
 
-                        <a href="#" class="btn-read-more"><span> @lang('site.read_more') </span> <i
+                        <a href="{{ route('login') }}" class="btn-read-more"><span> @lang('site.read_more') </span> <i
                                 class="bi bi-arrow-right"></i> </a>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                                 <div class="icon"><i class="{{ $service->icon }}"></i></div>
                                 <h4 class="title"><a href="{{ route('services.index') }}">{{ $service->name }} </a>
                                 </h4>
-                                <p class="description">{!! $service->description !!}</p>
+                                <p class="description">{!! Str::limit($service->description , 100) !!}</p>
                             </div>
                         </div>
                     @endforeach
@@ -148,7 +148,7 @@
                                             data-purecounter-duration="1" class="purecounter"></span>
 
                                         <p><strong>{{ $counter->data->isNotEmpty() ? $counter->data->first()->title : '' }}</strong>
-                                            {!! $counter->data->isNotEmpty() ? $counter->data->first()->description : '' !!}</p>
+                                            {!! Str::limit($counter->data->isNotEmpty() ? $counter->data->first()->description : '' , 100) !!}</p>
                                     </div>
                                 </div>
                             @endforeach
@@ -176,7 +176,7 @@
                                     {{ $connect->data->isNotEmpty() ? $connect->data->first()->title : '' }}</h4>
                                 <p class="sec-text">{!! $connect->data->isNotEmpty() ? mb_substr($connect->data->first()->description, 0, 100) : '' !!}</p>
                             </div>
-                            <a href="#" class="btn-join"> join now</a>
+                            <a href="#" class="btn-join"> @lang('site.join_now')</a>
                         </div>
                     @endforeach
 
@@ -216,7 +216,7 @@
                                     <div class="col-md-6 d-md-flex align-items-md-stretch">
                                         <div class="advisor-box">
                                             <p> <i class="ri-service-fill"></i>
-                                                {{ $advisor->data->isNotEmpty() ? $advisor->data->first()->title : '' }}
+                                                {{ Str::limit($advisor->data->isNotEmpty() ? $advisor->data->first()->title : ''  , 100)}}
                                             </p>
                                         </div>
                                     </div>
@@ -225,7 +225,7 @@
 
                             </div class="col-md-12 d-md-flex ">
                             <div class="advisor-join sec-padding">
-                                <a href="#" class="btn-join">@lang('site.join_now')</a>
+                                <a href="{{ route('login') }}" class="btn-join">@lang('site.join_now')</a>
 
                             </div>
 
@@ -252,16 +252,16 @@
                         <div class="col-md-6  col-xs-12">
                             <div class="sec-textbox">
 
-                                <h4 class="sec-head">{{ $rais->data->isNotEmpty() ? $rais->data->first()->name : '' }}
+                                <h4 class="sec-head">{{ $rais->data ? $rais->data->first()->name : '' }}
                                 </h4>
-                                <p class="sec-text">{{ $rais->describe }} </p>
+                                <p class="sec-text">{{ Str::limit($rais->describe  , 100)}} </p>
                             </div>
 
                             <div>
                                 <!-- <a href="#" class="btn-join">@lang('site.join_now')</a> -->
-                                </div>
                             </div>
-                            @endforeach
+                        </div>
+                    @endforeach
 
                     <div class="col-md-6  col-xs-12">
                         <div class="connect-img">
@@ -289,8 +289,8 @@
                                     alt="{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }}"></div>
                             <span
                                 class="post-date">{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }}</span>
-                            <h3 class="post-title">{!! $blog->data->isNotEmpty() ? mb_substr($blog->data->first()->body,0,200) : '' !!}</h3>
-                            <a href="blog-single.html"
+                            <h3 class="post-title">{!! $blog->data->isNotEmpty() ? mb_substr($blog->data->first()->body, 0, 100) : '' !!}</h3>
+                            <a href="{{ route('blogs.show' , $blog->id) }}"
                                 class="readmore stretched-link mt-auto"><span>@lang('site.read_more')</span><i
                                     class="bi bi-arrow-right"></i></a>
                         </div>

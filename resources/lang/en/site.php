@@ -271,4 +271,5 @@ return [
     'discussess' => 'Discussess',
     'disscuss_now' => 'Discussess Now',
     'collaborat' => 'Collaborat',
+    'menovahub' => 'MenovaHub',
 ];
