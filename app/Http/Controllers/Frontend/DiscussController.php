@@ -56,7 +56,7 @@ class DiscussController extends Controller
 
     public function show($uuid)
     {
-    
+
         $discuss = Discuss::with(['topic', 'user', 'comments.user', 'likes'])
             ->published()
             ->whereUuid($uuid)
