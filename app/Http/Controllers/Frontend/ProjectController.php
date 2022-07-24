@@ -25,6 +25,9 @@ class ProjectController extends Controller
         // $this->middleware('permission:update_projects')->only(['edit', 'update']);
     } // end of __construct
 
+    public function all_projects(){
+        return view('frontend.projects.all_projects');
+    }
     public function index()
     {
         

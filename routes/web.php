@@ -91,6 +91,7 @@ Route::prefix(LaravelLocalization::setLocale())
                     Route::post('/profile-change-image', 'UserController@changeImage')->name('user_change_image');
                     Route::post('/profile-change-privacy', 'UserController@changePrivacy')->name('user_change_privacy');
                     // User-projects
+                    Route::get('projects', [ProjectController::class , 'all_projects'])->name('projects');
                     Route::get('my-projects', [ProjectController::class , 'index'])->name('projects.index');
                     Route::post('my-projects/create', [ProjectController::class , 'store'])->name('projects.store');
                     Route::get('my-projects/{project}', [ProjectController::class , 'show'])->name('projects.show');

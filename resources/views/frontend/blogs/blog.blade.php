@@ -104,7 +104,7 @@ Menovahub - Blog
 
   </div>
 </section><!-- End Blog Section -->
-
+@endsection
 @section('script')
 
 @endsection
