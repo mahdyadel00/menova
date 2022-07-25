@@ -25,6 +25,7 @@ class ProjectRequest extends FormRequest
     {
         $rules = [
             'title' => ['required', 'string', 'min:3'],
+            'link' => ['required', 'string', 'min:3'],
             'body' => ['required'],
             'project_type_id' => ['required', 'exists:project_types,id'],
             'domain_id' => ['required', 'exists:domains,id'],
@@ -38,6 +39,7 @@ class ProjectRequest extends FormRequest
             $project = $this->route()->parameter('project');
 
             $rules['title'] = ['required', 'string', 'min:3'];
+            $rules['link'] = ['required', 'string', 'min:3'];
             $rules['description'] = ['required'];
             $rules['project_type_id'] = ['required', 'exists:project_types,id'];
             $rules['domain_id'] = ['required', 'exists:domains,id'];

@@ -177,5 +177,9 @@ return [
     'menovahub' => 'مينوفا هب',
     'find_your_solutaion' => 'أبحث عن اجابتك',
     'advisor' => 'مستشارك',
+    'single_blog' => 'المدونه',
     'find_your_advisors' => 'أبحث عن مستشاريك',
+    'leave_comment' => 'اترك تعليقك',
+    'your_name' => 'أدخل اسمك',
+    'link_project' => 'رابط الموقع',
 ];

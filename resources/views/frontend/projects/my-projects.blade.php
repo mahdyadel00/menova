@@ -30,6 +30,10 @@
                                     <input type="text" class="form-control" id="title" name='title' placeholder="@lang('site.please_enter_your_name')" required>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="title" class="form-label">@lang('site.link_project') </label>
+                                    <input type="text" class="form-control" id="link" name='link' placeholder="@lang('site.please_enter_your_name')" required>
+                                </div>
+                                <div class="mb-3">
                                     <label for="body" class="form-label">@lang('site.discuss_now')</label>
                                     <textarea class="form-control" id="body" name='body' placeholder="@lang('site.please_enter_your_question')" required></textarea>
                                 </div>

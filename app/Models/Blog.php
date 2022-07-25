@@ -66,6 +66,10 @@ class Blog extends Model implements TranslatableContract
 
         return $this->hasMany(BlogTranslation::class , 'blog_id' , 'id');
     }
+    public function comment(){
+
+        return $this->hasMany(Comment::class , 'blog_id' , 'id');
+    }
 
     #-------------------------------- Functions -----------------------------------#
 

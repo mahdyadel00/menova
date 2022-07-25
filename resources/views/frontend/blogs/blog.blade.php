@@ -40,9 +40,9 @@ Menovahub - Blog
           </h2>
           <div class="entry-meta">
             <ul>
-              <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="/blog-single">{{ $blog->user->first_name }} {{ $blog->user->last_name }}</a></li>
-              <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="/blog-single"><time datetime="2020-01-01">{{ date($blog->created_at) }}</time></a></li>
-              <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="/blog-single">12 Comments</a></li>
+              <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="{{ route('blogs.show' , $blog->id) }}">{{ $blog->user->first_name }} {{ $blog->user->last_name }}</a></li>
+              <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="{{ route('blogs.show' , $blog->id) }}"><time datetime="2020-01-01">{{ date($blog->created_at) }}</time></a></li>
+              <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="{{ route('blogs.show' , $blog->id) }}">12 Comments</a></li>
             </ul>
           </div>
           <div class="entry-content">

@@ -35,6 +35,15 @@
                         <input type="text" name="{{$input}}" class="form-control" value="{{ old($input) }}"  autofocus>
                         @error($input) <div class="text-danger">{{$message}}</div>@enderror
                     </div>
+                    {{--Link--}}
+                    <div class="form-group">
+                        @php
+                            $input = 'link';
+                        @endphp
+                        <label>@lang('projects.'.$input)<span class="text-danger">*</span></label>
+                        <input type="text" name="{{$input}}" class="form-control" value="{{ old($input) }}"  autofocus>
+                        @error($input) <div class="text-danger">{{$message}}</div>@enderror
+                    </div>
 
                     {{--Description--}}
                     <div class="form-group">
@@ -46,7 +55,7 @@
                         @error($input) <div class="text-danger">{{$message}}</div>@enderror
                     </div>
 
-                    
+
                     {{--Domain--}}
                     <div class="form-group">
                         @php
@@ -135,14 +144,14 @@
         if ($('#editor').length) {
             CKEDITOR.replace('editor');
         }
-        // Select user 
+        // Select user
         $('#users_list .select2').select2({
             ajax:{
                 url: '{{ route('admin.users.list')}}',
                 type:'get',
                 datatype: 'json',
                 delay:250,
-                data:function(params){ 
+                data:function(params){
                     var query = {
                         query: params.term,
                         page: params.page || 1

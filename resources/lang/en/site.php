@@ -274,4 +274,8 @@ return [
     'menovahub' => 'MenovaHub',
     'find_your_solutaion' => 'Find Your Soluation',
     'roles' => 'Roles',
+    'single_blog' => 'Single Blog',
+    'project_link' => 'Project Link',
+    'leave_comment' => 'Leav Comment',
+    'link_project' => 'Link Project',
 ];

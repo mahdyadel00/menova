@@ -34,6 +34,7 @@ Route::prefix(LaravelLocalization::setLocale())
         Route::get('/rais', [RaisController::class, 'index'])->name('rais.index');
         Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
         Route::get('/blogs/{id}', [BlogController::class, 'show'])->name('blogs.show');
+        Route::get('/comment/store', [BlogController::class, 'storeComment'])->name('blog_comment.store');
         Route::get('/user-profile', [ProfileController::class, 'index'])->name('profile.index');
         Route::post('/user-profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
         Route::post('/rais/create', [RaisController::class, 'store'])->name('rais.store');
@@ -56,20 +57,20 @@ Route::prefix(LaravelLocalization::setLocale())
             return view('frontend.sign_up');
         });
         Route::post('/sign_up', [HomeController::class, 'register'])->name('sign_up');
-        
-        
+
+
         Auth::routes(['verify' => true]);
-        
+
         // UnAuthentication routes.
         Route::name('frontend.')->group(function () {
             // Route::get('blogs', 'HomeController@blogs')->name('blogs');
             // Route::get('blogs/{slug}', 'HomeController@showBlog')->name('blogs.show');
         });
-        
+
         // Auth with provider routes.
         Route::get('auth/{provider}/redirect', 'AuthSocialiteController@redirectToProvider')->name('login_with');
         Route::get('auth/{provider}/callback', 'AuthSocialiteController@handleProviderCallback');
-        
+
         Route::get('discuss', [DiscussController::class , 'index'])->name('discusses.index');
         Route::get('discuss/create', [DiscussController::class , 'create'])->name('discusses.create');
         Route::post('discuss/store', [DiscussController::class , 'store'])->name('discusses.store');
@@ -102,7 +103,7 @@ Route::prefix(LaravelLocalization::setLocale())
                     Route::post('my-projects/{project}/update', [ProjectController::class , 'update'])->name('projects.update');
                     Route::get('my-projects/{project}/delete', [ProjectController::class , 'destroy'])->name('projects.destroy');
                     // Discusses
-                   
+
                     // Comments.
                     Route::post('/comment/store', 'CommentController@store')->name('comment.add');
                     Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');

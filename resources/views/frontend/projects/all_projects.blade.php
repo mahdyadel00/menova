@@ -106,13 +106,13 @@
                                             <img src="{{ $project->image_path }}" class="card-img-top"
                                                 alt="...">
                                             <div class="card-body">
-                                                <h5 class="card-title">{{ $project->data ? $project->data->title : '' }}</h5>
-                                                <p class="card-text">{{ $project->data ? $project->data->description : '' }}</p>
+                                                <h5 class="card-title">{{ $project->title  }}</h5>
+                                                <p class="card-text">{{ Str::limit($project->description , 150)  }}</p>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="social d-flex justify-content-center align-item-center">
-                                                    <a href=""> <i class="bi bi-chat-left-dots-fill"></i>messege</a>
-                                                    <a href=""><i class="bi bi-link"></i>project-link</a>
+                                                    <a href=""> <i class="bi bi-chat-left-dots-fill"></i>@lang('site.message')</a>
+                                                    <a href=""><i class="bi bi-link"></i>@lang('site.project_link')</a>
                                                 </div>
                                             </div>
                                         </div>
