@@ -14,8 +14,12 @@ class BlogController extends Controller
     protected function index(){
 
         $blogs = Blog::with('user')->paginate(3);
+        foreach($blogs as $blog){
 
-        return view('frontend.blogs.blog' , compact('blogs'));
+            $comments = BComment::where('blog_id' , $blog->id)->get();
+        }
+
+        return view('frontend.blogs.blog' , compact('blogs' , 'comments'));
     }
 
     protected function show($id){

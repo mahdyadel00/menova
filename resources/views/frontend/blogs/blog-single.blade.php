@@ -41,16 +41,16 @@
                                 href="{{ route('blogs.show', $blog->id) }}">{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : ' ' }}</a>
                         </h2>
 
-                        <div class="entry-meta">
+                        {{-- <div class="entry-meta">
                             <ul>
                                 <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
                                         href="blog-single.html">John Doe</a></li>
                                 <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
                                         href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
                                 <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                        href="blog-single.html">12 Comments</a></li>
+                                        href="blog-single.html"></a></li>
                             </ul>
-                        </div>
+                        </div> --}}
 
                         <div class="entry-content">
 
@@ -80,29 +80,29 @@
                         @endforeach
                         @auth
 
-                        <div class="reply-form">
-                            <h4>@lang('site.leave_comment')</h4>
-                            <p>{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : ' ' }}</p>
-                            <form action="{{ route('blog_comment.store') }}">
-                                @csrf
-                                <input type="hidden" name="blog_id" value="{{ $blog->id }}">
-                                <div class="row">
-                                    <div class="col-md-12 form-group">
-                                        <input name="name" type="text" class="form-control"
-                                            placeholder="@lang('site.your_name')*">
+                            <div class="reply-form">
+                                <h4>@lang('site.leave_comment')</h4>
+                                <p>{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : ' ' }}</p>
+                                <form action="{{ route('blog_comment.store') }}">
+                                    @csrf
+                                    <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+                                    <div class="row">
+                                        <div class="col-md-12 form-group">
+                                            <input name="name" type="text" class="form-control"
+                                                placeholder="@lang('site.your_name')*">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col form-group">
-                                        <textarea name="comment" class="form-control" placeholder="@lang('site.leave_comment')*"></textarea>
+                                    <div class="row">
+                                        <div class="col form-group">
+                                            <textarea name="comment" class="form-control" placeholder="@lang('site.leave_comment')*"></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <button type="submit" class="btn btn-sub">@lang('site.post_comment')</button>
+                                    <button type="submit" class="btn btn-sub">@lang('site.post_comment')</button>
 
-                            </form>
+                                </form>
 
-                        </div>
-                       @endauth
+                            </div>
+                        @endauth
 
                     </div><!-- End blog comments -->
 
