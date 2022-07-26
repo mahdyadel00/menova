@@ -183,4 +183,10 @@ return [
     'your_name' => 'أدخل اسمك',
     'link_project' => 'رابط الموقع',
     'call_for_fund' => 'دعوه للحصول على تمويل',
+    'vision' => 'الرؤيه',
+    'goals' => 'الاهداف',
+    'domain' => 'النطاق',
+    'select_domain' => 'اختر النطاق',
+    'project_type' => 'نوع المشروع',
+    'select_project_type' => 'أختر نوع المشروع',
 ];

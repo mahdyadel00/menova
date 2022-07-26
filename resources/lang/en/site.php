@@ -279,4 +279,10 @@ return [
     'leave_comment' => 'Leav Comment',
     'link_project' => 'Link Project',
     'call_for_fund' => 'Call For Fund',
+    'vision' => 'Vision',
+    'goals' => 'Goals',
+    'domain' => 'Domain',
+    'select_domain' => 'Select Domain',
+    'select_project_type' => 'Select Project Type',
+    'project_type' => 'Project Type',
 ];

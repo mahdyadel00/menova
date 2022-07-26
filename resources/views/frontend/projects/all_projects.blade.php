@@ -62,26 +62,28 @@
 
 
                             </li>
+                            {{-- <form action="{{ route('project_filter') }}"> --}}
                             <li class="nav-item mt-3 mb-5 h5 w-100 " role="presentation">
-                                <label class="mb-2">category</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1" class="option">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <label class="mb-2">@lang('site.domain')</label>
+                                <select class="form-select" aria-label="Default select example" name="domain_id" id="domain_id" onchange="updateDataTable();">
+                                    <option selected>@lang('site.select_domain')</option>
+                                    @foreach ($domains as $domain)
+                                        <option value="{{ $domain->id }}">{{ $domain->name }}</option>
+                                    @endforeach
                                 </select>
 
                             </li>
                             <li class="nav-item mt-3 mb-25 h5 w-100" role="presentation">
-                                <label class="mb-2">City</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <label class="mb-2">@lang('site.project_type')</label>
+                                <select class="form-select" aria-label="Default select example" namd="project_type_id">
+                                    <option selected>@lang('site.select_project_type')</option>
+                                    @foreach ($project_type as $type)
+                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                    @endforeach
                                 </select>
 
                             </li>
+                        {{-- </form> --}}
 
                         </ul>
                     </div>
@@ -98,26 +100,25 @@
                             </header>
                             <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
                                 @foreach ($projects as $project)
-
-                                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
-                                    data-aos-delay="200">
-                                    <div class="col project-box">
-                                        <div class="card h-100">
-                                            <img src="{{ $project->image_path }}" class="card-img-top"
-                                                alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">{{ $project->title  }}</h5>
-                                                <p class="card-text">{!! Str::limit($project->description , 150)  !!}</p>
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="social d-flex justify-content-center align-item-center">
-                                                    <a href=""> <i class="bi bi-chat-left-dots-fill"></i>@lang('site.message')</a>
-                                                    <a href=""><i class="bi bi-link"></i>@lang('site.project_link')</a>
+                                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                                        data-aos-delay="200">
+                                        <div class="col project-box">
+                                            <div class="card h-100">
+                                                <img src="{{ $project->image_path }}" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{ $project->title }}</h5>
+                                                    <p class="card-text">{!! Str::limit($project->description, 150) !!}</p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="social d-flex justify-content-center align-item-center">
+                                                        <a href=""> <i
+                                                                class="bi bi-chat-left-dots-fill"></i>@lang('site.message')</a>
+                                                        <a href=""><i class="bi bi-link"></i>@lang('site.project_link')</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                                 {{-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
                                     data-aos-delay="300">
@@ -312,4 +313,21 @@
 @endsection
 
 @section('script')
+<script>
+
+            $(document).on('change', '#domain_id', function(event) {
+        alert('test');
+            order: [],
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: "{{ route('frontend.projects') }}",
+                data: function(d) {
+                    d.domain = $('#domain_id').val();
+
+                }
+            },
+
+        });
+</script>
 @endsection

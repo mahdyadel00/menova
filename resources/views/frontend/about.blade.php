@@ -60,13 +60,13 @@ Menovahub - About
         <!-- Tabs -->
         <ul class="nav nav-pills mb-3">
           <li>
-            <a class="nav-link active" data-bs-toggle="pill" href="#tab1">Saepe fuga</a>
+            <a class="nav-link active" data-bs-toggle="pill" href="#tab1">@lang('site.vision')</a>
           </li>
           <li>
-            <a class="nav-link" data-bs-toggle="pill" href="#tab2">Voluptates</a>
+            <a class="nav-link" data-bs-toggle="pill" href="#tab2">@lang('site.message')</a>
           </li>
           <li>
-            <a class="nav-link" data-bs-toggle="pill" href="#tab3">Corrupti</a>
+            <a class="nav-link" data-bs-toggle="pill" href="#tab3">@lang('site.goals')</a>
           </li>
         </ul><!-- End Tabs -->
 

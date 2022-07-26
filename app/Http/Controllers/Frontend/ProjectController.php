@@ -25,25 +25,29 @@ class ProjectController extends Controller
         // $this->middleware('permission:update_projects')->only(['edit', 'update']);
     } // end of __construct
 
-    public function all_projects(){
+    public function all_projects(Request $request)
+    {
         $projects = Project::with([
 
-            'projectType' ,
-            'domain' ,
-            'user' ,
+            'projectType',
+            'domain',
+            'user',
         ])->get();
-        return view('frontend.projects.all_projects' , compact('projects'));
+        $domains = Domain::get();
+        $project_type = ProjectType::get();
+        return view('frontend.projects.all_projects', compact('projects' , 'domains' , 'project_type'));
     }
     public function index(Request $request)
     {
         $currentUser = auth()->user();
         $domains = Domain::get();
+
         $project_type = ProjectType::get();
         $projects = Project::where('user_id', $currentUser->id)
             ->with('user')
             ->paginate(AppServiceProvider::PAGINATION_LIMIT);
 
-        return view('frontend.projects.my-projects', compact('projects' , 'domains' , 'project_type'));
+        return view('frontend.projects.my-projects', compact('projects', 'domains', 'project_type'));
     } //end of index
 
     protected function store(ProjectRequest $request)
@@ -66,7 +70,7 @@ class ProjectController extends Controller
         }
     } //end of store
 
-    protected function show(Request $request , $id)
+    protected function show(Request $request, $id)
     {
         $domains = Domain::get();
         $project_type = ProjectType::get();
@@ -74,19 +78,20 @@ class ProjectController extends Controller
             ->with('user')
             ->paginate(AppServiceProvider::PAGINATION_LIMIT);
 
-        return view('frontend.projects.show', compact('projects' , 'domains' , 'project_type'));
+        return view('frontend.projects.show', compact('projects', 'domains', 'project_type'));
     }
 
-    protected function details(Request $request , $id){
+    protected function details(Request $request, $id)
+    {
 
-        $project = Project::where('id' , $id)->first();
+        $project = Project::where('id', $id)->first();
         // dd($project->domain_id;
-        $domain = Domain::with('data')->where('id' , $project->domain_id)->first();
+        $domain = Domain::with('data')->where('id', $project->domain_id)->first();
         // dd($domain);
-        $project_type = ProjectType::with('data')->where('id' , $project->project_type_id)->first();
+        $project_type = ProjectType::with('data')->where('id', $project->project_type_id)->first();
 
         // dd($project_type);
-        return view('frontend.projects.details' , compact('project' , 'project_type' , 'domain'));
+        return view('frontend.projects.details', compact('project', 'project_type', 'domain'));
     }
 
     protected function getProjectData(Request $request)
@@ -144,3 +149,4 @@ class ProjectController extends Controller
         }
     } //end of destroy
 }
+;
