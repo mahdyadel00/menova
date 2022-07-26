@@ -32,4 +32,5 @@ return [
     'Login'  => 'تسجيل دخول',
     'NO_account'  => 'ليس لديك حساب',
     'Register'  => 'تسجيل جديد',
+    'language'  => 'اللغات',
 ];

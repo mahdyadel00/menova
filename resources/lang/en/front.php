@@ -33,4 +33,5 @@ return [
     'Login'  => 'Login',
     'NO_account'  => "Don't have account",
     'Register'  => 'Register',
+    'language'  => 'Language',
 ];

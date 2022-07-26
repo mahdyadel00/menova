@@ -32,8 +32,8 @@
             </header>
 
             <div class="row gy-4 mt-3">
-                @foreach ($services as $service)
-                    <div class="col-lg-6 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
+                @foreach ($services as $key => $service)
+                    <div class="col-lg-6 col-md-6 col-12" data-aos="fade-up" data-aos-delay="{{300 * $key}}">
                         <div class="service-box blue">
                             <img src="{{ $service->image_path }}"
                                 alt="{{ $service->data->isNotEmpty() ? $service->data->first()->name : '' }}">
