@@ -182,4 +182,5 @@ return [
     'leave_comment' => 'اترك تعليقك',
     'your_name' => 'أدخل اسمك',
     'link_project' => 'رابط الموقع',
+    'call_for_fund' => 'دعوه للحصول على تمويل',
 ];

@@ -26,7 +26,7 @@
         <div class="container" data-aos="fade-up">
 
             <header class="raise-header text-center">
-                <h2>menova hub</h2>
+                <h2>@lang('site.menovahub')</h2>
                 <p>@lang('rais.found_find_your_founder')</p>
             </header>
 
@@ -58,7 +58,7 @@
                     <form action="{{ route('rais.store') }}" method="POST" class="raise-form ">
                         @csrf
                         <div class="row gy-4">
-                            <h2 class="text-center"> call for fund </h2>
+                            <h2 class="text-center">@lang('site.call_for_fund')</h2>
                             <div class="col-md-12 ">
                                 <input type="text" name="name" class="form-control" placeholder="@lang('front.name')">
                                 @error('name')

@@ -32,7 +32,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $sliders = Slider::get();
+        $sliders = Slider::with('data')->get();
         $about_us = AboutUs::take(3)->get();
         $abouts = AboutUs::with('data')->skip(1)->take(1)->first();
         $services = Services::take(4)->get();

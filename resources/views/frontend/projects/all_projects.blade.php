@@ -107,7 +107,7 @@
                                                 alt="...">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $project->title  }}</h5>
-                                                <p class="card-text">{{ Str::limit($project->description , 150)  }}</p>
+                                                <p class="card-text">{!! Str::limit($project->description , 150)  !!}</p>
                                             </div>
                                             <div class="card-footer">
                                                 <div class="social d-flex justify-content-center align-item-center">

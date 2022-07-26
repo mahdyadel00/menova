@@ -53,6 +53,8 @@
         @foreach ($sliders as $slider)
             <div class="carousel--item" style="background-image: url('{{ $slider->image_path }}">
                 <div class="carousel--item-text">
+
+                    <P>{!! $slider->data->isNotEmpty() ? $slider->data->first()->description : '' !!}</P>
                     @if (!auth()->check())
                         <a href="{{ route('login') }}" class="btn-join">@lang('site.get_started')</a>
                     @endif
@@ -106,9 +108,10 @@
     </section><!-- End About Section -->
 
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services sec-bg sec-padding">
+
+    <section id="service" class="service sec-bg sec-padding">
         <div class="container">
-            <div class="services-area">
+            <div class="service-area">
                 <div class="sec-heading" data-aos="fade-up">
                     <h2>@lang('site.services')</h2>
                     <p>@lang('site.how_can_we_help_you') </p>
@@ -118,10 +121,10 @@
                         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                                 <div class="icon"><i class="{{ $service->icon }}"></i></div>
-                                <h4 class="title"><a href="{{ route('services.index') }}">{{ $service->name }} </a>
-                                </h4>
-                                <p class="description">{!! Str::limit($service->description, 100) !!}</p>
+                                <h4 class="service-title"><a href="/services">{{ $service->name }}</a></h4>
+                                <p class="service-description">{!! Str::limit($service->description, 100) !!}</p>
                             </div>
+
                         </div>
                     @endforeach
                 </div>

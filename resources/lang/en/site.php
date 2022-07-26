@@ -278,4 +278,5 @@ return [
     'project_link' => 'Project Link',
     'leave_comment' => 'Leav Comment',
     'link_project' => 'Link Project',
+    'call_for_fund' => 'Call For Fund',
 ];

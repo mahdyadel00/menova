@@ -78,31 +78,31 @@
                                 </div>
                             </div><!-- End comment #1 -->
                         @endforeach
-                        @auth
 
-                            <div class="reply-form">
-                                <h4>@lang('site.leave_comment')</h4>
-                                <p>{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : ' ' }}</p>
-                                <form action="{{ route('blog_comment.store') }}">
-                                    @csrf
-                                    <input type="hidden" name="blog_id" value="{{ $blog->id }}">
-                                    <div class="row">
-                                        <div class="col-md-12 form-group">
-                                            <input name="name" type="text" class="form-control"
-                                                placeholder="@lang('site.your_name')*">
-                                        </div>
+
+                        <div class="reply-form">
+                            <h4>@lang('site.leave_comment')</h4>
+                            <p>{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : ' ' }}</p>
+                            <form action="{{ route('blog_comment.store') }}">
+                                @csrf
+                                <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <input name="name" type="text" class="form-control"
+                                            placeholder="@lang('site.your_name')*">
                                     </div>
-                                    <div class="row">
-                                        <div class="col form-group">
-                                            <textarea name="comment" class="form-control" placeholder="@lang('site.leave_comment')*"></textarea>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col form-group">
+                                        <textarea name="comment" class="form-control" placeholder="@lang('site.leave_comment')*"></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-sub">@lang('site.post_comment')</button>
+                                </div>
+                                <button type="submit" class="btn btn-sub">@lang('site.post_comment')</button>
 
-                                </form>
+                            </form>
 
-                            </div>
-                        @endauth
+                        </div>
+
 
                     </div><!-- End blog comments -->
 
