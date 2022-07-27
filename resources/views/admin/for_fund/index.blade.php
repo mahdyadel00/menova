@@ -3,12 +3,12 @@
 @section('content')
 
     <div>
-        <h2>@lang('for_fund.for_fund')</h2>
+        <h2>@lang('site.for_fund')</h2>
     </div>
 
     <ul class="breadcrumb mt-2">
         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">@lang('site.home')</a></li>
-        <li class="breadcrumb-item">@lang('for_fund.for_fund')</li>
+        <li class="breadcrumb-item">@lang('site.for_fund')</li>
     </ul>
 
     <div class="row">
