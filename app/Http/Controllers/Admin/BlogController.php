@@ -32,14 +32,14 @@ class BlogController extends Controller
     {
         $blogs = Blog::with([
             'domain',
-             'data'  
-             ])->select();
+            'data'
+        ])->select();
 
         return DataTables::of($blogs)
             ->addColumn('record_select', 'admin.blogs.data_table.record_select')
-            ->addColumn('title', function($blogs){
-               
-                return $blogs->data->isNotEmpty()? $blogs->data->first()->title : '';
+            ->addColumn('title', function ($blogs) {
+
+                return $blogs->data->isNotEmpty() ? $blogs->data->first()->title : '';
             })
             // ->editColumn('title', function (Blog $blog) {
             //     return '<a href="' . route('admin.blogs.show', $blog->id) . '" target="_blank">' . $blog->title . '</a>';
@@ -66,7 +66,7 @@ class BlogController extends Controller
 
     protected function store(Request $request)
     {
-    //    dd($request->all());
+        //    dd($request->all());
         $data = [];
         foreach (config('translatable.locales') as $locale) {
             $data[$locale] = [
@@ -141,7 +141,8 @@ class BlogController extends Controller
 
     private function delete(Blog $blog)
     {
-        if ($blog->hasImage()) {
+
+        if ($blog->image) {
             $this->deleteImage($blog->image, 'blogs');
         }
         $blog->delete();

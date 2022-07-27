@@ -79,6 +79,7 @@ Route::group([
         Route::resource('blogs', 'BlogController');
         Route::post('blogs/store' , [BlogController::class , 'store'])->name('blogs.store');
 
+
         // Topics
         Route::get('/discuss/topics/data', 'TopicController@data')->name('topics.data');
         Route::delete('/discuss/topics/bulk_delete', 'TopicController@bulkDelete')->name('topics.bulk_delete');
