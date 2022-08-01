@@ -27,15 +27,36 @@ class ProjectController extends Controller
 
     public function all_projects(Request $request)
     {
+        $domains = Domain::get();
+        $project_type = ProjectType::get();
+        if ($request->all()) {
+
+
+            $projects = Project::with([
+
+                'projectType',
+                'domain',
+                'user',
+            ])->where(function ($query) use ($request) {
+                if ($request->get('domain') != 0) {
+                    $query->where('domain_id', $request->get('domain'));
+                }
+
+            })->where(function ($query) use ($request) {
+                if ($request->get('project_type') != 0) {
+                    $query->where('project_type_id', $request->get('project_type'));
+                }
+            })->get();
+
+            return response()->json(['projects' => $projects, 'domain' => $domains, 'project_type' => $project_type]);
+        }
         $projects = Project::with([
 
             'projectType',
             'domain',
             'user',
         ])->get();
-        $domains = Domain::get();
-        $project_type = ProjectType::get();
-        return view('frontend.projects.all_projects', compact('projects' , 'domains' , 'project_type'));
+        return view('frontend.projects.all_projects', compact('projects', 'domains', 'project_type'));
     }
     public function index(Request $request)
     {
@@ -148,5 +169,4 @@ class ProjectController extends Controller
             return __('site.not_allow');
         }
     } //end of destroy
-}
-;
+};

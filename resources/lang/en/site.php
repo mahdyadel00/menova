@@ -285,4 +285,7 @@ return [
     'select_domain' => 'Select Domain',
     'select_project_type' => 'Select Project Type',
     'project_type' => 'Project Type',
+    'start' => 'Start',
+    'develop' => 'Develop',
+    'fund' => 'Fund',
 ];

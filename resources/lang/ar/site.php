@@ -189,4 +189,7 @@ return [
     'select_domain' => 'اختر النطاق',
     'project_type' => 'نوع المشروع',
     'select_project_type' => 'أختر نوع المشروع',
+    'start' => 'أبدا',
+    'develop' => 'تطوير',
+    'fund' => 'نمويل',
 ];

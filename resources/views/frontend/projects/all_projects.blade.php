@@ -26,7 +26,7 @@
                     <div class="flex-column  align-items-sm-start px-1 pt-2 text-white min-vh-100">
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start align-items-sm-start px-sm-2 px-0"
                             id="myTab" role="tablist">
-                            <li class="nav-item mt-5 mb-3 h5 w-100" role="presentation">
+                            {{-- <li class="nav-item mt-5 mb-3 h5 w-100" role="presentation">
                                 <label class="mb-2">@lang('site.roles')</label>
                                 <div class='m-2'>
                                     <div class="form-check mb-3">
@@ -61,7 +61,7 @@
 
 
 
-                            </li>
+                            </li> --}}
                             {{-- <form action="{{ route('project_filter') }}"> --}}
                             <li class="nav-item mt-3 mb-5 h5 w-100 " role="presentation">
                                 <label class="mb-2">@lang('site.domain')</label>
@@ -76,7 +76,7 @@
                             </li>
                             <li class="nav-item mt-3 mb-25 h5 w-100" role="presentation">
                                 <label class="mb-2">@lang('site.project_type')</label>
-                                <select class="form-select" aria-label="Default select example" namd="project_type_id">
+                                <select class="form-select" aria-label="Default select example" name="project_type_id" id="project_type_id">
                                     <option selected>@lang('site.select_project_type')</option>
                                     @foreach ($project_type as $type)
                                         <option value="{{ $type->id }}">{{ $type->name }}</option>
@@ -99,7 +99,7 @@
                             <header class="sec-inner-heading text-center mb-5">
                                 <h2> @lang('site.projects') </h2>
                             </header>
-                            <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                            <div class="row row-cols-1 row-cols-md-3 g-4 mb-5" id="project-filter">
                                 @foreach ($projects as $project)
                                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
                                         data-aos-delay="200">
@@ -107,7 +107,7 @@
                                             <div class="card h-100">
                                                 <img src="{{ $project->image_path }}" class="card-img-top" alt="...">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">{{ $project->title }}</h5>
+                                                    <h5 class="card-title">{{ $project->title }} </h5>
                                                     <p class="card-text">{!! Str::limit($project->description, 150) !!}</p>
                                                 </div>
                                                 <div class="card-footer">
@@ -313,19 +313,109 @@
     <!-- End projects Section -->
 @endsection
 
-
 @section('script')
     <script>
-        alert('ok')
-        $(document).on('change', '#domain_id', function(event) {
-            alert('test');
+        $(document).on('change', '#domain_id', function(e) {
 
-                ajax: {
-                    url: "{{ route('frontend.projects') }}",
-                    data: function(d) {
-                        d.domain = $('#domain_id').val();
-                    }
+            e.preventDefault();
+            var domain = $('#domain_id').val();
+
+            $.ajax({
+
+                url: "{{ route('frontend.projects') }}",
+                method: "get",
+
+                "_token": "{{ csrf_token() }}",
+                data: {
+                    domain: domain
                 },
+                success: function(response) {
+
+                    $('#project-filter').html('');
+                    $.each(response.projects, function(key, value) {
+                        var url = window.location.origin+"/storage/uploads/images//projects/";
+                        var project_new = `
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                                        data-aos-delay="200">
+                                        <div class="col project-box">
+                                            <div class="card h-100">
+                                                <img src="${url}/${value.image}" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${value.title}</h5>
+                                                    <p class="card-text">${value.description}</p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="social d-flex justify-content-center align-item-center">
+                                                        <a href=""> <i
+                                                                class="bi bi-chat-left-dots-fill"></i>@lang('site.message')</a>
+                                                        <a href=""><i class="bi bi-link"></i>@lang('site.project_link')</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                               `;
+
+                        $('#project-filter').append(project_new);
+                    });
+
+                },
+
+
+
+            });
+
+        });
+        $(document).on('change', '#project_type_id', function(e) {
+
+            e.preventDefault();
+            var project_type = $('#project_type_id').val();
+
+            $.ajax({
+
+                url: "{{ route('frontend.projects') }}",
+                method: "get",
+
+                "_token": "{{ csrf_token() }}",
+                data: {
+                    project_type: project_type
+                },
+                success: function(response) {
+
+                    $('#project-filter').html('');
+                    $.each(response.projects, function(key, value) {
+                        var url = window.location.origin+"/storage/uploads/images//projects/";
+                        var project_new = `
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up"
+                                        data-aos-delay="200">
+                                        <div class="col project-box">
+                                            <div class="card h-100">
+                                                <img src="${url}/${value.image}" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">${value.title}</h5>
+                                                    <p class="card-text">${value.description}</p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="social d-flex justify-content-center align-item-center">
+                                                        <a href=""> <i
+                                                                class="bi bi-chat-left-dots-fill"></i>@lang('site.message')</a>
+                                                        <a href=""><i class="bi bi-link"></i>@lang('site.project_link')</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                               `;
+
+                        $('#project-filter').append(project_new);
+                    });
+
+                },
+
+
+
+            });
+
         });
     </script>
 @endsection

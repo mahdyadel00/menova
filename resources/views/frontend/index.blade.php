@@ -90,8 +90,8 @@
                             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                                 <div class="box">
                                     <img src="{{ $about->image_path }}" class="img-fluid" alt="">
-                                    <h3>{{ $about->title }}</h3>
-                                    <p>{!! Str::limit($about->description, 100) !!}</p>
+                                    <h3>{{ $about->about_title }}</h3>
+                                    <p>{!! Str::limit($about->about_description, 100) !!}</p>
                                 </div>
                             </div>
                         @endforeach
