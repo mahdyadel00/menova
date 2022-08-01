@@ -65,13 +65,21 @@
                             {{-- <form action="{{ route('project_filter') }}"> --}}
                             <li class="nav-item mt-3 mb-5 h5 w-100 " role="presentation">
                                 <label class="mb-2">@lang('site.domain')</label>
-                                <select class="form-select" aria-label="Default select example" name="domain_id" id="domain_id" onchange="updateDataTable();">
+                                {{-- <select class="form-select" aria-label="Default select example" name="domain_id"
+                                    id="domain_id">
                                     <option selected>@lang('site.select_domain')</option>
                                     @foreach ($domains as $domain)
                                         <option value="{{ $domain->id }}">{{ $domain->name }}</option>
                                     @endforeach
-                                </select>
+                                </select> --}}
 
+                                <select name="domain_id" id="domain_id" onchange="updateDataTable();">
+                                    <option class="btn btn-inverse" aria-label="Default select example" value="0" selected>@lang('site.select_domain')</option>
+                                    @foreach ($domains as $domain)
+                                        <option class="btn btn-inverse" value="{{ $domain->id }}">{{ $domain->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </li>
                             <li class="nav-item mt-3 mb-25 h5 w-100" role="presentation">
                                 <label class="mb-2">@lang('site.project_type')</label>
@@ -83,7 +91,7 @@
                                 </select>
 
                             </li>
-                        {{-- </form> --}}
+                            {{-- </form> --}}
 
                         </ul>
                     </div>
@@ -312,22 +320,26 @@
     <!-- End projects Section -->
 @endsection
 
-@section('script')
+
+@push('scripts')
+
 <script>
 
-            $(document).on('change', '#domain_id', function(event) {
-        alert('test');
+ let table = $('#slider_table').DataTable({
             order: [],
             processing: true,
             serverSide: true,
             ajax: {
-                url: "{{ route('frontend.projects') }}",
+                url: "{{ route('contacts.index') }}",
                 data: function(d) {
-                    d.domain = $('#domain_id').val();
-
+                    d.status = $('#single-status').val();
+                    d.branch = $('#single-branch').val();
+                    d.start_date = $('#start_date').val();
+                    d.end_date = $('#end_date').val();
                 }
             },
 
         });
 </script>
-@endsection
+
+@endpush
