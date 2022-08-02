@@ -27,7 +27,12 @@ class RaisController extends Controller
 
     protected function data()
     {
-        $rais = Rais::with('data')->orderBy('id', 'desc')->get();
+        $rais = Rais::with([
+            'data' => function ($query) {
+
+                $query->where('locale', app()->getLocale());
+            },
+        ])->orderBy('id', 'desc')->get();
         return DataTables::of($rais)
             ->addColumn('record_select', 'admin.rais.data_table.record_select')
 
@@ -45,7 +50,7 @@ class RaisController extends Controller
             })
             ->editColumn('icon', function ($rais) {
 
-                return `<div class="badge badge-info"><i class = `. $rais->icon .`></i></div>`;
+                return `<div class="badge badge-info"><i class = ` . $rais->icon . `></i></div>`;
             })
             ->editColumn('created_at', function (Rais $rais) {
                 return $rais->created_at->format('Y-m-d');

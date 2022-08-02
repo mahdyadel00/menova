@@ -30,7 +30,12 @@ class CounterController extends Controller
 
     protected function data()
     {
-        $counters = Counter::orderBy('id', 'desc')->get();
+        $counters = Counter::with([
+            'data' => function($query){
+
+                $query->where('locale' , app()->getLocale());
+            },
+            ])->orderBy('id', 'desc')->get();
 
         return DataTables::of($counters)
             ->addColumn('record_select', 'admin.counters.data_table.record_select')

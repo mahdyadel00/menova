@@ -30,20 +30,25 @@ class AdvisorController extends Controller
 
     protected function data()
     {
-        $advisors = Advisor::orderBy('id' , 'desc')->get();
+        $advisors = Advisor::with([
+            'data' => function($query){
+
+                $query->where('locale' , app()->getLocale());
+            },
+            ])->orderBy('id', 'desc')->get();
 
         return DataTables::of($advisors)
             ->addColumn('record_select', 'admin.advisors.data_table.record_select')
             ->addColumn('title', function($advisors){
-               
+
                 return $advisors->data->isNotEmpty()? $advisors->data->first()->title : '';
             })
             ->addColumn('description', function($advisors){
-               
+
                 return $advisors->data->isNotEmpty()? $advisors->data->first()->description : '';
             })
                 ->addColumn('image', function ($advisors) {
-                   
+
                     $url = asset(rawurlencode($advisors->image));
                     return '<img src=' . $advisors->image_path . ' border="0" style=" width: 80px; height: 80px;" class="img-responsive img-rounded" align="center" />';
                 })
@@ -77,7 +82,7 @@ class AdvisorController extends Controller
                 'description' => $request->input($locale . '_description'),
             ];
         }
-     
+
         if($request->published == 'on'){
 
             $data['published'] = '1' ;
@@ -130,7 +135,7 @@ class AdvisorController extends Controller
     protected function destroy($id)
     {
         $advisors = Advisor::where('id' , $id)->first();
-        
+
         $advisors->delete();
         session()->flash('success', __('site.deleted_successfully'));
         return response(__('site.deleted_successfully'));

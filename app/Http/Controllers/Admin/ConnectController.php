@@ -30,20 +30,25 @@ class ConnectController extends Controller
 
     protected function data()
     {
-        $connects = Connect::orderBy('id' , 'desc')->get();
+        $connects = Connect::with([
+            'data' => function($query){
+
+                $query->where('locale' , app()->getLocale());
+            },
+            ])->orderBy('id', 'desc')->get();
 
         return DataTables::of($connects)
             ->addColumn('record_select', 'admin.connects.data_table.record_select')
             ->addColumn('title', function($connects){
-               
+
                 return $connects->data->isNotEmpty()? $connects->data->first()->title : '';
             })
             ->addColumn('description', function($connects){
-               
+
                 return $connects->data->isNotEmpty()? $connects->data->first()->description : '';
             })
                 ->addColumn('image', function ($connects) {
-                   
+
                     $url = asset(rawurlencode($connects->image));
                     return '<img src=' . $connects->image_path . ' border="0" style=" width: 80px; height: 80px;" class="img-responsive img-rounded" align="center" />';
                 })
@@ -77,7 +82,7 @@ class ConnectController extends Controller
                 'description' => $request->input($locale . '_description'),
             ];
         }
-     
+
         if($request->published == 'on'){
 
             $data['published'] = '1' ;
@@ -130,7 +135,7 @@ class ConnectController extends Controller
     protected function destroy($id)
     {
         $connects = Connect::where('id' , $id)->first();
-        
+
         $connects->delete();
         session()->flash('success', __('site.deleted_successfully'));
         return response(__('site.deleted_successfully'));

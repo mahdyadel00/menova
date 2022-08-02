@@ -30,20 +30,25 @@ class SliderController extends Controller
 
     protected function data()
     {
-        $sliders = Slider::orderBy('id' , 'desc')->get();
+        $sliders = Slider::with([
+            'data' => function($query){
+
+                $query->where('locale' , app()->getLocale());
+            },
+            ])->orderBy('id' , 'desc')->get();
 
         return DataTables::of($sliders)
             ->addColumn('record_select', 'admin.sliders.data_table.record_select')
             ->addColumn('name', function($sliders){
-               
+
                 return $sliders->data->isNotEmpty()? $sliders->data->first()->name : '';
             })
             ->addColumn('description', function($sliders){
-               
+
                 return $sliders->data->isNotEmpty()? $sliders->data->first()->description : '';
             })
                 ->addColumn('image', function ($sliders) {
-                   
+
                     $url = asset(rawurlencode($sliders->image));
                     return '<img src=' . $sliders->image_path . ' border="0" style=" width: 80px; height: 80px;" class="img-responsive img-rounded" align="center" />';
                 })
@@ -109,7 +114,7 @@ class SliderController extends Controller
                 'description' => $request->input($locale . '_description'),
             ];
         }
-      
+
             $data['published'] = $request->published ;
 
         if ($request->image) {

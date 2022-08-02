@@ -32,7 +32,10 @@ class BlogController extends Controller
     {
         $blogs = Blog::with([
             'domain',
-            'data'
+            'data' => function($query){
+
+                $query->where('locale' , app()->getLocale());
+            },
         ])->select();
 
         return DataTables::of($blogs)
@@ -87,18 +90,18 @@ class BlogController extends Controller
         return redirect()->route('admin.blogs.index');
     } // end of store
 
-    public function show(Blog $blog)
+    protected function show(Blog $blog)
     {
         return redirect()->route('frontend.blogs.show', $blog->slug);
     } // end of show
 
-    public function edit(Blog $blog)
+    protected function edit(Blog $blog)
     {
         $domains = Domain::all();
         return view('admin.blogs.edit', compact('blog', 'domains'));
     } // end of edit
 
-    public function update(BlogRequest $request, Blog $blog)
+    protected function update(BlogRequest $request, Blog $blog)
     {
         $data = [];
         foreach (config('translatable.locales') as $locale) {
@@ -121,14 +124,14 @@ class BlogController extends Controller
         return redirect()->route('admin.blogs.index');
     } // end of update
 
-    public function destroy(Blog $blog)
+    protected function destroy(Blog $blog)
     {
         $this->delete($blog);
         session()->flash('success', __('site.deleted_successfully'));
         return response(__('site.deleted_successfully'));
     } // end of destroy
 
-    public function bulkDelete()
+    protected function bulkDelete()
     {
         foreach (json_decode(request()->record_ids) as $recordId) {
             $blog = Blog::FindOrFail($recordId);

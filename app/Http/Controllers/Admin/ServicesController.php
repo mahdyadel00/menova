@@ -30,20 +30,25 @@ class ServicesController extends Controller
 
     protected function data()
     {
-        $services = services::orderBy('id' , 'desc')->get();
+        $services = services::with([
+            'data' => function($query){
+
+                $query->where('locale' , app()->getLocale());
+            },
+            ])->orderBy('id' , 'desc')->get();
 
         return DataTables::of($services)
             ->addColumn('record_select', 'admin.services.data_table.record_select')
             ->addColumn('name', function($services){
-               
+
                 return $services->data->isNotEmpty()? $services->data->first()->name : '';
             })
             ->addColumn('description', function($services){
-               
+
                 return $services->data->isNotEmpty()? $services->data->first()->description : '';
             })
                 ->addColumn('image', function ($services) {
-                   
+
                     $url = asset(rawurlencode($services->image));
                     return '<img src=' . $services->image_path . ' border="0" style=" width: 80px; height: 80px;" class="img-responsive img-rounded" align="center" />';
                 })
