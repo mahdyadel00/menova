@@ -46,7 +46,7 @@ Menovahub - Blog
             </ul>
           </div>
           <div class="entry-content">
-            <p>{!! $blog->data->isNotEmpty() ? $blog->data->first()->body : '' !!} </p>
+            <p>{!! Str::limit($blog->data->isNotEmpty() ? $blog->data->first()->body : '' , 150) !!} </p>
             <div class="read-more">
               <a href="{{ route('blogs.show' , $blog->id) }}">@lang('site.read_more')</a>
             </div>
