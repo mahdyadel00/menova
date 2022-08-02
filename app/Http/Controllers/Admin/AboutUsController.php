@@ -30,44 +30,51 @@ class AboutUsController extends Controller
 
     protected function data()
     {
-        $about_us = AboutUs::orderBy('id' , 'desc')->get();
+        $about_us = AboutUs::with([
+            'data' => function($query){
+
+                $query->where('locale' , app()->getLocale());
+            },
+            ])->orderBy('id', 'desc')->get();
 
         return DataTables::of($about_us)
             ->addColumn('record_select', 'admin.services.data_table.record_select')
-            ->addColumn('title', function($about_us){
-               
-                return $about_us->data->isNotEmpty()? $about_us->data->first()->title : '';
-            })
-            ->addColumn('description', function($about_us){
-               
-                return $about_us->data->isNotEmpty()? $about_us->data->first()->description : '';
-            })
-            ->addColumn('about_title', function($about_us){
-               
-                return $about_us->data->isNotEmpty()? $about_us->data->first()->about_title : '';
-            })
-            ->addColumn('about_description', function($about_us){
-               
-                return $about_us->data->isNotEmpty()? $about_us->data->first()->about_description : '';
-            })
-                ->addColumn('image', function ($about_us) {
-                   
-                    $url = asset(rawurlencode($about_us->image));
-                    return '<img src=' . $about_us->image_path . ' border="0" style=" width: 80px; height: 80px;" class="img-responsive img-rounded" align="center" />';
-                })
-                ->editColumn('published', function ($about_us) {
-                    if ($about_us->published == '0') {
 
-                        return `<div class="badge badge-warning">` . __('about_us.not_published') . `</div>`;
-                    } else {
-                        return `<div class="badge badge-info">` . __('Published') . `</div>`;
-                    }
-                })
+            ->addColumn('title', function ($about_us) {
+
+                return $about_us->data->isNotEmpty() ? $about_us->data->first()->title : '';
+            })
+            ->addColumn('description', function ($about_us) {
+
+                return $about_us->data->isNotEmpty() ? $about_us->data->first()->description : '';
+            })
+            ->addColumn('about_title', function ($about_us) {
+
+                // dd($about_us);
+                return $about_us->data->isNotEmpty() ? $about_us->data->first()->about_title : '';
+            })
+            ->addColumn('about_description', function ($about_us) {
+
+                return $about_us->data->isNotEmpty() ? $about_us->data->first()->about_description : '';
+            })
+            ->addColumn('image', function ($about_us) {
+
+                $url = asset(rawurlencode($about_us->image));
+                return '<img src=' . $about_us->image_path . ' border="0" style=" width: 80px; height: 80px;" class="img-responsive img-rounded" align="center" />';
+            })
+            ->editColumn('published', function ($about_us) {
+                if ($about_us->published == '0') {
+
+                    return `<div class="badge badge-warning">` . __('about_us.not_published') . `</div>`;
+                } else {
+                    return `<div class="badge badge-info">` . __('Published') . `</div>`;
+                }
+            })
             ->editColumn('created_at', function (AboutUs $about_us) {
                 return $about_us->created_at->format('Y-m-d');
             })
             ->addColumn('actions', 'admin.about_us.data_table.actions')
-            ->rawColumns(['record_select', 'actions', 'title' , 'description' , 'image'])
+            ->rawColumns(['record_select', 'actions', 'title', 'description', 'image'])
             ->toJson();
     } // end of data
 
@@ -78,7 +85,7 @@ class AboutUsController extends Controller
 
     protected function store(AboutUsRequest $request)
     {
-        
+
         $data = [];
         foreach (config('translatable.locales') as $locale) {
             $data[$locale] = [
@@ -88,35 +95,34 @@ class AboutUsController extends Controller
                 'about_description' => $request->input($locale . '_about_description'),
             ];
         }
-     
-        if($request->published == 'on'){
 
-            $data['published'] = '1' ;
+        if ($request->published == 'on') {
 
-        }else{
-            $data['published'] = '0' ;
+            $data['published'] = '1';
+        } else {
+            $data['published'] = '0';
         }
 
 
         if ($request->image) {
             $data['image'] = $this->uploadImage($request->image, 'about_us');
         }
-       $about =  AboutUs::create($data);
-     
+        $about =  AboutUs::create($data);
+
 
         session()->flash('success', __('site.added_successfully'));
         return redirect()->route('admin.about_us.index');
     } // end of store
 
-    protected function edit( $id)
+    protected function edit($id)
     {
         $about_us = AboutUs::findOrFail($id);
-            return view('admin.about_us.edit', compact('about_us'));
+        return view('admin.about_us.edit', compact('about_us'));
     } // end of edit
 
-    protected function update(AboutUsRequest $request,$id)
+    protected function update(AboutUsRequest $request, $id)
     {
-        $about_us = AboutUs::where('id' , $id)->first();
+        $about_us = AboutUs::where('id', $id)->first();
         $data = [];
         foreach (config('translatable.locales') as $locale) {
             $data[$locale] = [
@@ -126,7 +132,7 @@ class AboutUsController extends Controller
                 'about_description' => $request->input($locale . '_about_description'),
             ];
         }
-            $data['published'] = $request->published ?? 0 ;
+        $data['published'] = $request->published ?? 0;
 
         if ($request->image) {
             if ($about_us->image) {
@@ -142,8 +148,8 @@ class AboutUsController extends Controller
 
     protected function destroy($id)
     {
-        $about_us = AboutUs::where('id' , $id)->first();
-        
+        $about_us = AboutUs::where('id', $id)->first();
+
         $about_us->delete();
         session()->flash('success', __('site.deleted_successfully'));
         return response(__('site.deleted_successfully'));
@@ -160,9 +166,9 @@ class AboutUsController extends Controller
         return response(__('site.deleted_successfully'));
     } // end of bulkDelete
 
-    private function delete(Request $request , $id)
+    private function delete(Request $request, $id)
     {
-        $about_us = AboutUs::where('id' , $id)->first();
+        $about_us = AboutUs::where('id', $id)->first();
         if ($about_us->image) {
             $this->deleteImage($about_us->image, 'about_us');
         }
