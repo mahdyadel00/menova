@@ -32,17 +32,57 @@ class HomeController extends Controller
 
     public function index()
     {
-        $sliders = Slider::with('data')->get();
+        $sliders = Slider::with([
+            'data' => function ($query) {
+
+                $query->where('locale', app()->getLocale());
+            },
+        ])->get();
         $about_us = AboutUs::take(3)->get();
-        $abouts = AboutUs::with('data')->skip(1)->take(1)->first();
-        $services = Services::take(4)->get();
-        $counters = Counter::with('data')->take(4)->get();
-        $connects = Connect::with('data')->take(1)->get();
-        $advisor = Advisor::with('data')->take(4)->get();
-        $advisor_first = Advisor::with('data')->skip(1)->take(4)->first();
+        $abouts = AboutUs::with([
+            'data' => function ($query) {
+
+                $query->where('locale', app()->getLocale());
+            },
+        ])->skip(1)->take(1)->first();
+        $services = Services::with([
+            'data' => function ($query) {
+
+                $query->where('locale', app()->getLocale());
+            },
+        ])->take(4)->get();
+        $counters = Counter::with([
+            'data' => function ($query) {
+
+                $query->where('locale', app()->getLocale());
+            },
+        ])->take(4)->get();
+        $connects = Connect::with([
+            'data' => function ($query) {
+
+                $query->where('locale', app()->getLocale());
+            },
+        ])->take(1)->get();
+        $advisor = Advisor::with([
+            'data' => function ($query) {
+
+                $query->where('locale', app()->getLocale());
+            },
+        ])->take(4)->get();
+        $advisor_first = Advisor::with([
+            'data' => function ($query) {
+
+                $query->where('locale', app()->getLocale());
+            },
+        ])->skip(1)->take(4)->first();
         $rais = Rais::with('data')->first();
-        $blogs = Blog::with('data')->take(3)->get();
-        return view('frontend.index' , compact('sliders' , 'about_us' , 'abouts' , 'services' , 'counters' , 'connects' , 'advisor' , 'advisor_first' , 'rais' , 'blogs' ));
+        $blogs = Blog::with([
+            'data' => function ($query) {
+
+                $query->where('locale', app()->getLocale());
+            },
+        ])->take(3)->get();
+        return view('frontend.index', compact('sliders', 'about_us', 'abouts', 'services', 'counters', 'connects', 'advisor', 'advisor_first', 'rais', 'blogs'));
     } //end of index
 
     public function contact(ContactRequest $request)
@@ -75,7 +115,8 @@ class HomeController extends Controller
         return view('frontend.blog', compact('blog'));
     } //end of blogs
 
-    protected function register(Request $request){
+    protected function register(Request $request)
+    {
 
         // dd($request->all());
 
@@ -94,8 +135,7 @@ class HomeController extends Controller
 
         $users = User::create($request_data);
 
-            session()->flash('success', __('site.added_successfully'));
-            return redirect()->route('home');
+        session()->flash('success', __('site.added_successfully'));
+        return redirect()->route('home');
     }
-
 }//end of controller

@@ -50,7 +50,6 @@ class AboutUsController extends Controller
             })
             ->addColumn('about_title', function ($about_us) {
 
-                // dd($about_us);
                 return $about_us->data->isNotEmpty() ? $about_us->data->first()->about_title : '';
             })
             ->addColumn('about_description', function ($about_us) {
