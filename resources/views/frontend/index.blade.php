@@ -78,7 +78,7 @@
                     <div class="content">
                         <h3>@lang('site.who_are_you')</h3>
                         <p>
-                            {!! $abouts->data->isNotEmpty() ? $abouts->data->first()->description : '' !!}
+                            {!! Str::limit($abouts->data->isNotEmpty() ? $abouts->data->first()->description : '' , 150) !!}
                         </p>
                     </div>
                 </div>
@@ -302,7 +302,7 @@
                                     alt="{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }}"></div>
                             <span
                                 class="post-date">{{ $blog->data->isNotEmpty() ? $blog->data->first()->title : '' }}</span>
-                            <h3 class="post-title">{!! $blog->data->isNotEmpty() ? mb_substr($blog->data->first()->body, 0, 100) : '' !!}</h3>
+                            {{-- <h3 class="post-title">{!! $blog->data->isNotEmpty() ? mb_substr($blog->data->first()->body, 0, 100) : '' !!}</h3> --}}
                             <a href="{{ route('blogs.show', $blog->id) }}"
                                 class="readmore stretched-link mt-auto"><span>@lang('site.read_more')</span><i
                                     class="bi bi-arrow-right"></i></a>
