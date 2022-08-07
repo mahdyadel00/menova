@@ -117,9 +117,6 @@ class HomeController extends Controller
 
     protected function register(Request $request)
     {
-
-        // dd($request->all());
-
         $request->validate([
 
             'first_name'  => 'required',

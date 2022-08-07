@@ -21,13 +21,13 @@
 	<link rel="stylesheet" href="{{ asset('frontend') }}/assets/bootstrap/css/bootstrap.min.css">
 
 	<link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/owl.carousel.css">
-	
+
 	<link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/magnific-popup.css">
 
 	<link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/animate.css">
 
 	<link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/meanmenu.min.css">
-	
+
 	<link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/main.css">
 
 	<link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css">
@@ -43,20 +43,20 @@
         </div>
     </div>
     <!--PreLoader Ends-->
-    @auth 
-        @include('frontend.includes._header')
+    @auth
+        {{-- @include('frontend.includes._header') --}}
     @endauth
-    @include('frontend.includes._session')
+    {{-- @include('frontend.includes._session') --}}
     <main class="py-4" id="main">
         @yield('content')
     </main>
 
-    @include('frontend.includes._footer',[])
+    {{-- @include('frontend.includes._footer',[]) --}}
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
         <i class="bi bi-arrow-up-short"></i>
     </a>
-    
+
    	<!-- jquery -->
 	<script src="{{ asset('frontend') }}/assets/js/jquery-1.11.3.min.js"></script>
 	<!-- bootstrap -->
@@ -80,4 +80,4 @@
 
 </body>
 </html>
- 
+

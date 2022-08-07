@@ -24,7 +24,7 @@
 
         <!-- Main CSS-->
         <link rel="stylesheet" type="text/css" href="{{ asset('admin_assets/css/main-rtl-teal.css') }}" media="all">
-    
+
         {{--google font--}}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo:400,600&display=swap">
 
