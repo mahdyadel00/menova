@@ -9,60 +9,17 @@
 
 @section('content')
     <!-- ======= hero Section ======= -->
-    {{-- <section id="hero">
-    <div class="hero-container">
-        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-
-            <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
-
-            <div class="carousel-inner" role="listbox">
-            @foreach ($sliders as $slider)
-
-                <div class="carousel-item active" ><img src="{{ $slider->image_path  }}">
-                    <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown"> {{ $slider->name }}</h2>
-                            <p class="animate__animated animate__fadeInUp">{!! $slider->description !!}</p>
-                            @if (!auth()->check())
-                                <a href="{{ route('login') }}" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-                            @else
-                                <a href="{{ route('about_us.index') }}" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-
-            </div>
-        </div>
-    </div>
-</section><!-- End Hero Section --> --}}
-
-    {{-- <div class="carousel">
-        @foreach ($sliders as $slider)
-            <div class="carousel--item" style="background-image: url(assets/img/hero-carousel/3.jpg)">
-                <div class="carousel--item-text">
-                    <a href="" class="btn btn-get-started">@lang('site.get_started')</a>
-                </div>
-        @endforeach
-
-    </div> --}}
-    <!-- ======= hero Section =======-->
 
     <div class="carousel">
         @foreach ($sliders as $slider)
-            <div class="carousel--item" style="background-image: url('{{ $slider->image_path }}">
+            <div class="carousel--item">
+                <img src="{{ $slider->image_path }}">
                 <div class="carousel--item-text">
-
                     <P>{!! $slider->data->isNotEmpty() ? $slider->data->first()->description : '' !!}</P>
-                    @if (!auth()->check())
-                        <a href="{{ route('login') }}" class="btn-join">@lang('site.get_started')</a>
-                    @endif
-
+                    <a href="" class="btn btn-get-started">@lang('site.get_started')</a>
                 </div>
             </div>
         @endforeach
-
 
     </div>
 
@@ -78,7 +35,7 @@
                     <div class="content">
                         <h3>@lang('site.who_are_you')</h3>
                         <p>
-                            {!! Str::limit($abouts->data->isNotEmpty() ? $abouts->data->first()->description : '' , 150) !!}
+                            {!! Str::limit($abouts->data->isNotEmpty() ? $abouts->data->first()->description : '', 150) !!}
                         </p>
                     </div>
                 </div>
