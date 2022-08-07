@@ -81,7 +81,7 @@ Route::prefix(LaravelLocalization::setLocale())
             Route::post('/contact-us', 'HomeController@contact')->name('contact');
             Route::namespace('Frontend')->group(function () {
                 // Authentication routes
-                Route::middleware(['auth', 'verified'])->group(function () {
+                Route::middleware(['auth'])->group(function () {
                     Route::get('/user', 'UserController@index')->name('user_home');
                     Route::get('/user/home', 'UserController@index')->name('user_home');
                     Route::get('/complete-profile', 'UserController@getCompleteProfile')
