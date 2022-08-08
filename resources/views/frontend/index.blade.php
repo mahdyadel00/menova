@@ -95,7 +95,7 @@
             <div class="row">
                 <div class="image col-xl-6  col-lg-7 d-flex align-items-stretch justify-content-center justify-content-xl-start"
                     data-aos="fade-right" data-aos-delay="150">
-                    <img src="{{ asset('frontend/assets/img/clients/home-client.jpeg') }}" alt="" class="img-fluid">
+                    <img src="{{ asset('frontend/assets/img/clients/counts-img.svg') }}" alt="" class="img-fluid">
                 </div>
 
                 <div class="col-xl-6 col-lg-5  d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-left"
