@@ -191,5 +191,6 @@ return [
     'select_project_type' => 'أختر نوع المشروع',
     'start' => 'أبدا',
     'develop' => 'تطوير',
-    'fund' => 'نمويل',
+    'fund' => 'تمويل',
+    'be_part_of_our_family' => 'كن جزء من عائلتنا',
 ];

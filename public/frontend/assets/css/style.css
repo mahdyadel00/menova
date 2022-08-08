@@ -1463,12 +1463,23 @@ MY PROJECTS add
     flex-direction: column;
 }
 
-.recent-blog-posts .post-box .post-img {
+/* .recent-blog-posts .post-box .post-img {
     overflow: hidden;
     margin: -30px -30px 15px -30px;
     position: relative;
+} */
+.recent-blog-posts .post-box .post-img {
+  overflow: hidden;
+  margin: -30px -30px 15px -30px;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
-
+.recent-blog-posts .post-box .post-img img {
+  transition: 0.5s;
+  width: 100%;
+  height: 100%;
+}
 .recent-blog-posts .post-box .post-img img {
     transition: 0.5s;
 }

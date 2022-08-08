@@ -32,7 +32,7 @@
             <div class="row gx-0">
                 <div class="col-sm-12 d-flex flex-column justify-content-center " data-aos="fade-up" data-aos-delay="200">
                     <div class="content">
-                        <h3>@lang('site.who_are_you')</h3>
+                        <h3>{{ $abouts->data->isNotEmpty() ? $abouts->data->first()->title : '' }}</h3>
                         <p>
                             {!! Str::limit($abouts->data->isNotEmpty() ? $abouts->data->first()->description : '', 150) !!}
                         </p>
@@ -95,7 +95,7 @@
             <div class="row">
                 <div class="image col-xl-6  col-lg-7 d-flex align-items-stretch justify-content-center justify-content-xl-start"
                     data-aos="fade-right" data-aos-delay="150">
-                    <img src="{{ asset('frontend/assets/img/clients/client-4.png') }}" alt="" class="img-fluid">
+                    <img src="{{ asset('frontend/assets/img/clients/home-client.jpeg') }}" alt="" class="img-fluid">
                 </div>
 
                 <div class="col-xl-6 col-lg-5  d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-left"

@@ -288,4 +288,5 @@ return [
     'start' => 'Start',
     'develop' => 'Develop',
     'fund' => 'Fund',
+    'be_part_of_our_family' => 'Be Part Of Our Family',
 ];
